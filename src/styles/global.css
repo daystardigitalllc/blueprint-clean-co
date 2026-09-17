@@ -231,31 +231,6 @@ h3 {
   border-radius: var(--radius-lg);
 }
 
-/* Trust / stat cards (used over photography — kept dark for legibility) */
-.trust-card {
-  background: rgba(11, 14, 18, 0.72);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-left: 3px solid var(--accent-on-dark);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  color: #ffffff;
-}
-
-.trust-card .label {
-  display: block;
-  font-weight: 700;
-  font-size: 0.92rem;
-  margin-bottom: 2px;
-  color: #ffffff;
-}
-
-.trust-card .sub {
-  display: block;
-  color: rgba(255,255,255,0.75);
-  font-size: 0.83rem;
-}
-
 /* Marquee ticker */
 .marquee {
   background: var(--accent);

@@ -12,101 +12,78 @@ const typeWords = [
 ];
 ---
 <section class="hero">
-  <div class="hero__bg">
-    <Image src={heroImg} alt="" role="presentation" width={1920} height={1280} loading="eager" fetchpriority="high" />
-  </div>
-  <div class="hero__overlay"></div>
+  <div class="hero__text">
+    <div class="hero__text-inner">
+      <p class="hero__type" aria-hidden="true">
+        <span>Experts in </span><span class="hero__type-text" id="heroType">{typeWords[0]}</span><span class="hero__type-caret"></span>
+      </p>
+      <span class="sr-only">
+        Experts in post-construction cleaning, pre-listing realtor prep, move-in/move-out turnovers, Airbnb turnovers, and recurring residential &amp; commercial cleaning.
+      </span>
 
-  <div class="container hero__content">
-    <p class="hero__type" aria-hidden="true">
-      <span>Experts in </span><span class="hero__type-text" id="heroType">{typeWords[0]}</span><span class="hero__type-caret"></span>
-    </p>
-    <span class="sr-only">
-      Experts in post-construction cleaning, pre-listing realtor prep, move-in/move-out turnovers, Airbnb turnovers, and recurring residential &amp; commercial cleaning.
-    </span>
+      <h1>Precision Cleaning. <span class="accent">Professional Results.</span></h1>
+      <p class="lede hero__sub">
+        Blueprint Clean Co. is Nashville's go-to cleaning partner for realtors, property managers, home builders, and Airbnb hosts — plus the recurring residential &amp; commercial teams to keep any space pristine.
+      </p>
 
-    <h1>Precision Cleaning. <span class="accent">Professional Results.</span></h1>
-    <p class="lede hero__sub">
-      Blueprint Clean Co. is Nashville's go-to cleaning partner for realtors, property managers, home builders, and Airbnb hosts — plus the recurring residential &amp; commercial teams to keep any space pristine.
-    </p>
+      <div class="btn-row">
+        <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+        <a href={site.phoneHref} class="btn">Call {site.phone}</a>
+      </div>
 
-    <div class="btn-row">
-      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
-      <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
+      <ul class="hero__trust">
+        <li>Post-Construction Specialists</li>
+        <li>Trusted by Realtors &amp; PMs</li>
+        <li>Free Estimates</li>
+      </ul>
     </div>
   </div>
 
-  <div class="hero__trust container">
-    <div class="trust-card">
-      <span class="label">Post-Construction Specialists</span>
-      <span class="sub">3-phase new build cleaning</span>
-    </div>
-    <div class="trust-card">
-      <span class="label">Trusted by Realtors &amp; PMs</span>
-      <span class="sub">Pre-listing &amp; turnover experts</span>
-    </div>
-    <div class="trust-card">
-      <span class="label">Free Estimates</span>
-      <span class="sub">Fast, no-pressure quotes</span>
-    </div>
+  <div class="hero__media">
+    <Image src={heroImg} alt="Pristine, freshly cleaned kitchen" width={1200} height={1400} loading="eager" fetchpriority="high" class="graded-img" />
   </div>
 </section>
 
 <style>
   .hero {
-    position: relative;
-    min-height: 78vh;
+    display: grid;
+    grid-template-columns: minmax(0, 620px) 1fr;
+    min-height: 640px;
+  }
+
+  .hero__text {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    padding-top: 56px;
+    padding-bottom: 56px;
+    padding-right: 48px;
+    padding-left: clamp(24px, 5vw, 80px);
+  }
+
+  .hero__text-inner {
+    max-width: 560px;
+  }
+
+  .hero__media {
+    position: relative;
     overflow: hidden;
-    padding-top: 60px;
+    min-height: 320px;
   }
 
-  .hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .hero__bg :global(img) {
+  .hero__media :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: var(--photo-filter);
-    animation: kenburns 26s ease-in-out infinite alternate;
-  }
-
-  @keyframes kenburns {
-    from { transform: scale(1); }
-    to { transform: scale(1.06); }
-  }
-
-  .hero__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-      linear-gradient(180deg, rgba(5,8,12,0.55) 0%, rgba(5,8,12,0.75) 55%, var(--bg) 100%),
-      linear-gradient(90deg, rgba(5,8,12,0.65) 0%, rgba(5,8,12,0.2) 60%);
-  }
-
-  .hero__content {
-    position: relative;
-    z-index: 2;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    max-width: 820px;
   }
 
   .hero__type {
     font-family: var(--font-body);
     font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.06em;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--accent-on-dark);
-    margin-bottom: 18px;
+    color: var(--accent);
+    margin-bottom: 16px;
     min-height: 1.4em;
   }
 
@@ -114,7 +91,7 @@ const typeWords = [
     display: inline-block;
     width: 2px;
     height: 0.9em;
-    background: var(--accent-on-dark);
+    background: var(--accent);
     margin-left: 3px;
     vertical-align: -0.1em;
     animation: caret 0.9s steps(1) infinite;
@@ -125,29 +102,42 @@ const typeWords = [
   }
 
   .hero h1 {
-    font-size: clamp(2.3rem, 4.8vw, 3.5rem);
+    font-size: clamp(2.2rem, 3.6vw, 3.2rem);
     letter-spacing: -0.01em;
-    color: #ffffff;
-  }
-
-  .hero h1 .accent {
-    color: var(--accent-on-dark);
   }
 
   .hero__sub {
-    max-width: 620px;
-    margin-top: 20px;
-    margin-bottom: 32px;
-    color: rgba(255,255,255,0.82);
+    margin-top: 18px;
+    margin-bottom: 28px;
   }
 
   .hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 26px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hero__trust li {
     position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    padding-bottom: 48px;
+    padding-left: 18px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dim);
+  }
+
+  .hero__trust li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .sr-only {
@@ -158,8 +148,21 @@ const typeWords = [
     white-space: nowrap;
   }
 
-  @media (max-width: 900px) {
-    .hero__trust { grid-template-columns: 1fr; }
+  @media (max-width: 1000px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    .hero__media {
+      min-height: 280px;
+      order: -1;
+    }
+    .hero__text {
+      padding: 40px 24px 48px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero__trust { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 </style>
 
