@@ -2,95 +2,124 @@
 import { Image } from 'astro:assets';
 import { coreServices } from '../lib/site';
 import featuredImg from '../assets/photos/hero-kitchen-marble.png';
+
+const featured = coreServices.find((s) => s.featured)!;
+const others = coreServices.filter((s) => !s.featured);
 ---
-<div class="service-bento">
-  {coreServices.map((s) => (
-    <a href={s.href} class:list={['service-card', { 'service-card--featured': s.featured }]}>
-      {s.featured && (
-        <div class="service-card__bg">
-          <Image src={featuredImg} alt="" role="presentation" width={900} height={900} class="graded-img" />
-        </div>
-      )}
-      <span class="service-card__audience">{s.audience}</span>
-      <h3>{s.name}</h3>
-      <p>{s.summary}</p>
-      <span class="service-card__link">Learn more &rarr;</span>
-    </a>
-  ))}
+<div class="service-split">
+  <a href={featured.href} class="service-image">
+    <Image src={featuredImg} alt="" role="presentation" width={900} height={1100} class="graded-img" />
+    <div class="service-image__overlay"></div>
+    <div class="service-image__content">
+      <span class="service-image__audience">{featured.audience}</span>
+      <h3>{featured.name}</h3>
+      <p>{featured.summary}</p>
+      <span class="service-image__link">Learn more &rarr;</span>
+    </div>
+  </a>
+
+  <div class="service-cards">
+    {others.map((s) => (
+      <a href={s.href} class="service-card">
+        <span class="service-card__audience">{s.audience}</span>
+        <h3>{s.name}</h3>
+        <p>{s.summary}</p>
+        <span class="service-card__link">Learn more &rarr;</span>
+      </a>
+    ))}
+  </div>
 </div>
 
 <style>
-  .service-bento {
+  .service-split {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .service-image {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid #14141a;
+    min-height: 480px;
+    padding: 28px;
+  }
+
+  .service-image :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .service-image__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(6,10,16,0.3) 0%, rgba(6,10,16,0.86) 78%);
+  }
+
+  .service-image__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .service-image__audience {
+    display: inline-block;
+    color: var(--accent-on-dark);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .service-image__content h3 {
+    color: #ffffff;
+    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  }
+
+  .service-image__content p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.94rem;
+    margin-bottom: 16px;
+  }
+
+  .service-image__link {
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--accent-on-dark);
+  }
+
+  .service-cards {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
   .service-card {
     position: relative;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: flex-end;
-    grid-column: span 2;
-    padding: 28px;
+    justify-content: center;
+    padding: 26px 28px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
     background: var(--bg-card);
-    min-height: 210px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .service-card:hover {
     border-color: var(--accent);
     box-shadow: 0 2px 12px rgba(11,14,18,0.06);
-  }
-
-  .service-card--featured {
-    grid-column: span 2;
-    grid-row: span 2;
-    min-height: 440px;
-    border-color: #14141a;
-    overflow: hidden;
-  }
-
-  .service-card__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .service-card__bg :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .service-card--featured::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, rgba(6,10,16,0.35) 0%, rgba(6,10,16,0.86) 78%);
-  }
-
-  .service-card--featured > *:not(.service-card__bg) {
-    position: relative;
-    z-index: 2;
-  }
-
-  .service-card--featured .service-card__audience,
-  .service-card--featured .service-card__link {
-    color: var(--accent-on-dark);
-  }
-
-  .service-card--featured h3,
-  .service-card--featured p {
-    color: #ffffff;
-  }
-
-  .service-card--featured h3 {
-    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
   }
 
   .service-card__audience {
@@ -100,13 +129,13 @@ import featuredImg from '../assets/photos/hero-kitchen-marble.png';
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .service-card p {
     color: var(--text-dim);
-    font-size: 0.94rem;
-    margin-bottom: 16px;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
   }
 
   .service-card__link {
@@ -116,12 +145,11 @@ import featuredImg from '../assets/photos/hero-kitchen-marble.png';
   }
 
   @media (max-width: 900px) {
-    .service-bento { grid-template-columns: repeat(2, 1fr); }
-    .service-card, .service-card--featured { grid-column: span 2; grid-row: span 1; min-height: 240px; }
-  }
-
-  @media (max-width: 620px) {
-    .service-bento { grid-template-columns: 1fr; }
-    .service-card, .service-card--featured { grid-column: span 1; }
+    .service-split {
+      grid-template-columns: 1fr;
+    }
+    .service-image {
+      min-height: 320px;
+    }
   }
 </style>
