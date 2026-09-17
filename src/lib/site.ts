@@ -59,7 +59,7 @@ export const coreServices: Service[] = [
     shortName: 'Post-Construction',
     audience: 'Home Builders & Contractors',
     summary:
-      'Our flagship service. A structured 3-phase clean, rough clean, final clean, and touch-up detail, that takes a new build from job site to move-in ready.',
+      'Our flagship service. A structured 3-phase clean, rough clean, touch-up, and final detail clean, that takes a new build from job site to move-in ready.',
     href: '/post-construction-cleaning/',
     keywordFocus: 'post construction cleaning Nashville, new build cleaning Middle Tennessee',
     featured: true,
@@ -169,7 +169,7 @@ export const faqs = [
   },
   {
     q: 'How does post-construction 3-phase cleaning work?',
-    a: 'Phase 1 (rough clean) removes construction debris, dust, and stickers. Phase 2 (final clean) is a detailed top-to-bottom clean of every surface, cabinet, fixture, and floor. Phase 3 (touch-up) happens right before walkthrough to catch any dust that settled and leave the home spotless for buyers or homeowners.',
+    a: 'Phase 1 (rough clean) removes construction debris, dust, and stickers. Phase 2 (touch-up) wipes down surfaces and clears dust and marks left from final trim, flooring, and fixture installs. Phase 3 (final detail clean) is a detailed top-to-bottom clean of every surface, cabinet, fixture, and floor, completed right before walkthrough to leave the home spotless for buyers or homeowners.',
   },
   {
     q: 'Do you work directly with property management companies and realtors?',
