@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import { Image } from 'astro:assets';
+import residentialPhoto from '../assets/photos/residential-kitchen-clean.jpg';
+import galleryShower from '../assets/photos/gallery-shower-glass.jpg';
+import galleryFaucet from '../assets/photos/gallery-bathroom-faucet.jpg';
+import gallerySink from '../assets/photos/gallery-kitchen-sink.jpg';
+import galleryVanity from '../assets/photos/gallery-bathroom-vanity.jpeg';
+
+import toiletBefore from '../assets/photos/before-after/toilet-before.jpg';
+import toiletAfter from '../assets/photos/before-after/toilet-after.jpg';
+import sinkBefore from '../assets/photos/before-after/sink-before.jpg';
+import sinkAfter from '../assets/photos/before-after/sink-after.jpg';
+import ovenBefore from '../assets/photos/before-after/oven-before.jpg';
+import ovenAfter from '../assets/photos/before-after/oven-after.jpg';
+---
+<Layout
+  title="Blueprint Clean Co. | Post-Construction, Realtor & Property Management Cleaning — Nashville"
+  description="Nashville's precision cleaning company for realtors, property managers, home builders, and Airbnb hosts. Specializing in 3-phase post-construction cleaning, pre-listing prep, move-in/move-out turnovers, and Airbnb turnovers."
+>
+  <Hero />
+
+  <section id="what-we-do">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What We Do</p>
+        <h2>Built for the businesses that <span class="accent">depend on us</span></h2>
+        <p class="lede">
+          From new-build cleanup to listing day, we deliver precision cleaning tailored to every property —
+          plus dedicated teams for recurring residential and commercial maintenance.
+        </p>
+      </div>
+      <ServiceGrid />
+      <div style="margin-top:32px;">
+        <a href="/services/" class="btn">See all services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="before-after" style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">See The Difference</p>
+        <h2>Real jobs. <span class="accent">Drag to compare.</span></h2>
+        <p class="lede">No stock photos — these are actual before-and-after results from Blueprint Clean Co. crews.</p>
+      </div>
+      <div class="grid grid-3">
+        <BeforeAfterSlider id="ba-toilet" before={toiletBefore} after={toiletAfter} label="Toilet — Deep Clean" />
+        <BeforeAfterSlider id="ba-sink" before={sinkBefore} after={sinkAfter} label="Bathroom Sink — Deep Clean" />
+        <BeforeAfterSlider id="ba-oven" before={ovenBefore} after={ovenAfter} label="Oven — Deep Clean" />
+      </div>
+    </div>
+  </section>
+
+  <section id="trusted-by">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Who We Work With</p>
+        <h2>Trusted by the people who <span class="accent">put their name on it</span></h2>
+      </div>
+      <TrustBadges />
+    </div>
+  </section>
+
+  <section id="social-proof" style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Rated 5.0 by local <span class="accent">homeowners &amp; partners</span></h2>
+        <div class="stars" style="display:block; font-size:1.2rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <section id="why-us">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center; gap:48px;">
+        <div>
+          <p class="eyebrow">Why Us</p>
+          <h2>The <span class="accent">Blueprint Standard</span></h2>
+          <p class="lede">
+            Precision isn't just a promise, it's our standard. Every service follows proven quality control
+            processes, detailed inspections, and meticulous attention to detail.
+          </p>
+          <ul class="standard-list">
+            <li>Locally owned &amp; operated in Middle Tennessee</li>
+            <li>Right equipment &amp; eco-friendly, high-performance products</li>
+            <li>Property protection on every job, every time</li>
+            <li>Transparent pricing, no surprise fees</li>
+            <li>Fast, responsive communication from quote to walkthrough</li>
+          </ul>
+        </div>
+        <div class="why-us-photo">
+          <Image src={residentialPhoto} alt="Real Blueprint Clean Co. client kitchen, freshly cleaned" width={640} height={760} class="graded-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recent-work" style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Recent Work</p>
+        <h2>Precision you can <span class="accent">see</span></h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="gallery-item"><Image src={galleryShower} alt="Spotless glass shower enclosure after cleaning" width={500} height={620} class="graded-img" /></div>
+        <div class="gallery-item"><Image src={gallerySink} alt="Detailed clean stainless kitchen sink" width={500} height={620} class="graded-img" /></div>
+        <div class="gallery-item"><Image src={galleryVanity} alt="Tidy, spotless bathroom vanity" width={500} height={620} class="graded-img" /></div>
+        <div class="gallery-item"><Image src={galleryFaucet} alt="Polished bathroom faucet detail" width={500} height={620} class="graded-img" /></div>
+      </div>
+      <div style="margin-top:32px;">
+        <a href="/gallery/" class="btn">View full gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container" style="max-width:800px;">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+      </div>
+      <FAQAccordion />
+    </div>
+  </section>
+
+  <ClosingCTA />
+</Layout>
+
+<style>
+  .standard-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .standard-list li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dim);
+  }
+
+  .standard-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .why-us-photo {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .why-us-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+
+  .gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .gallery-item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+
+  @media (max-width: 700px) {
+    .standard-grid { grid-template-columns: 1fr; }
+  }
+</style>

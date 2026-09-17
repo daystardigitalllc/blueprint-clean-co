@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import { Image } from 'astro:assets';
+
+import residentialCover from '../../assets/photos/lived-in-kitchen-clean.jpg';
+import turnoversCover from '../../assets/photos/gallery-airbnb-bed.jpg';
+import postConCover from '../../assets/photos/hero-kitchen-marble.png';
+import preListingCover from '../../assets/photos/hero-living-room-1.png';
+
+const categories = [
+  {
+    title: 'Recurring Residential — Before & After',
+    detail: 'Real before-and-after results from our recurring residential cleaning teams.',
+    href: '/gallery/residential-before-after/',
+    img: residentialCover,
+  },
+  {
+    title: 'Move-In / Move-Out & Airbnb Turnovers',
+    detail: 'Turnover work for property managers and short-term rental hosts.',
+    href: '/gallery/turnovers/',
+    img: turnoversCover,
+  },
+  {
+    title: 'Post-Construction Cleaning',
+    detail: '3-phase new build cleans for home builders and contractors.',
+    href: '/gallery/post-construction/',
+    img: postConCover,
+  },
+  {
+    title: 'Pre-Listing & Open House Prep',
+    detail: 'Show-ready results for realtors and sellers.',
+    href: '/gallery/pre-listing/',
+    img: preListingCover,
+  },
+];
+---
+<Layout
+  title="Gallery | Blueprint Clean Co."
+  description="Browse Blueprint Clean Co.'s work by category: recurring residential before & afters, move-in/move-out and Airbnb turnovers, post-construction cleans, and pre-listing prep."
+>
+  <PageHero eyebrow="Recent Work" title="Precision you can see. Quality you can trust." subtitle="Browse our work by category." />
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2 category-grid">
+        {categories.map((c) => (
+          <a href={c.href} class="category-card">
+            <Image src={c.img} alt="" role="presentation" width={700} height={500} class="graded-img" />
+            <div class="category-card__overlay"></div>
+            <div class="category-card__content">
+              <h3>{c.title}</h3>
+              <p>{c.detail}</p>
+              <span class="category-card__cta">View Gallery &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA />
+</Layout>
+
+<style>
+  .category-grid { gap: 24px; }
+  .category-card {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    min-height: 320px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .category-card :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .category-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5,8,12,0.2) 0%, rgba(5,8,12,0.92) 85%);
+  }
+  .category-card__content {
+    position: relative;
+    z-index: 1;
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 320px;
+  }
+  .category-card__content h3 {
+    color: #ffffff;
+  }
+  .category-card__content p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.92rem;
+  }
+  .category-card__cta {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--accent-on-dark);
+  }
+
+  @media (max-width: 700px) {
+    .category-grid { grid-template-columns: 1fr; }
+  }
+</style>

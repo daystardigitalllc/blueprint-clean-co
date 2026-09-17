@@ -1,0 +1,201 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../lib/site';
+import heroImg from '../assets/photos/hero-kitchen-marble.png';
+
+const typeWords = [
+  'Post-Construction New Builds',
+  'Pre-Listing Realtor Prep',
+  'Move-In / Move-Out Turnovers',
+  'Airbnb Turnovers',
+  'Recurring Residential & Commercial',
+];
+---
+<section class="hero">
+  <div class="hero__bg">
+    <Image src={heroImg} alt="" role="presentation" width={1920} height={1280} loading="eager" fetchpriority="high" />
+  </div>
+  <div class="hero__overlay"></div>
+
+  <div class="container hero__content">
+    <p class="hero__type" aria-hidden="true">
+      <span>Experts in </span><span class="hero__type-text" id="heroType">{typeWords[0]}</span><span class="hero__type-caret"></span>
+    </p>
+    <span class="sr-only">
+      Experts in post-construction cleaning, pre-listing realtor prep, move-in/move-out turnovers, Airbnb turnovers, and recurring residential &amp; commercial cleaning.
+    </span>
+
+    <h1>Precision Cleaning. <span class="accent">Professional Results.</span></h1>
+    <p class="lede hero__sub">
+      Blueprint Clean Co. is Nashville's go-to cleaning partner for realtors, property managers, home builders, and Airbnb hosts — plus the recurring residential &amp; commercial teams to keep any space pristine.
+    </p>
+
+    <div class="btn-row">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
+    </div>
+  </div>
+
+  <div class="hero__trust container">
+    <div class="trust-card">
+      <span class="label">Post-Construction Specialists</span>
+      <span class="sub">3-phase new build cleaning</span>
+    </div>
+    <div class="trust-card">
+      <span class="label">Trusted by Realtors &amp; PMs</span>
+      <span class="sub">Pre-listing &amp; turnover experts</span>
+    </div>
+    <div class="trust-card">
+      <span class="label">Free Estimates</span>
+      <span class="sub">Fast, no-pressure quotes</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 60px;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--photo-filter);
+    animation: kenburns 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenburns {
+    from { transform: scale(1); }
+    to { transform: scale(1.06); }
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(5,8,12,0.55) 0%, rgba(5,8,12,0.75) 55%, var(--bg) 100%),
+      linear-gradient(90deg, rgba(5,8,12,0.65) 0%, rgba(5,8,12,0.2) 60%);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 820px;
+  }
+
+  .hero__type {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-on-dark);
+    margin-bottom: 18px;
+    min-height: 1.4em;
+  }
+
+  .hero__type-caret {
+    display: inline-block;
+    width: 2px;
+    height: 0.9em;
+    background: var(--accent-on-dark);
+    margin-left: 3px;
+    vertical-align: -0.1em;
+    animation: caret 0.9s steps(1) infinite;
+  }
+
+  @keyframes caret {
+    50% { opacity: 0; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 4.8vw, 3.5rem);
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  .hero h1 .accent {
+    color: var(--accent-on-dark);
+  }
+
+  .hero__sub {
+    max-width: 620px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    color: rgba(255,255,255,0.82);
+  }
+
+  .hero__trust {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-bottom: 48px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .hero__trust { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script define:vars={{ typeWords }}>
+  const el = document.getElementById('heroType');
+  if (el) {
+    let wordIndex = 0;
+    let charIndex = typeWords[0].length;
+    let deleting = false;
+
+    function tick() {
+      const word = typeWords[wordIndex];
+      if (!deleting) {
+        charIndex++;
+        if (charIndex > word.length) {
+          deleting = true;
+          setTimeout(tick, 1600);
+          return;
+        }
+      } else {
+        charIndex--;
+        if (charIndex < 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % typeWords.length;
+          el.textContent = '';
+          setTimeout(tick, 300);
+          return;
+        }
+      }
+      el.textContent = word.slice(0, charIndex);
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = typeWords[0];
+      setTimeout(tick, 1600);
+    }
+  }
+</script>

@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceGrid from '../../components/ServiceGrid.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+---
+<Layout
+  title="Cleaning Services Nashville | Blueprint Clean Co."
+  description="Explore Blueprint Clean Co.'s cleaning services: 3-phase post-construction cleaning, pre-listing prep for realtors, move-in/move-out turnovers, and Airbnb turnovers across Nashville."
+>
+  <PageHero
+    eyebrow="Our Services"
+    title="Precision cleaning, tailored to your property"
+    subtitle="From post-construction projects and pre-listing prep to move-in/out services and Airbnb turnovers, we deliver precision cleaning tailored to every property."
+  />
+
+  <section>
+    <div class="container">
+      <ServiceGrid />
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="grid grid-2" style="gap:28px;">
+        <a href="/residential-commercial-cleaning/" class="link-card card">
+          <h3>Recurring Residential &amp; Commercial Cleaning</h3>
+          <p>Dedicated teams for weekly, bi-weekly, or monthly maintenance cleaning — homes and businesses alike.</p>
+          <span class="link-card__cta">Learn More &rarr;</span>
+        </a>
+        <a href="/premium-lifestyle-services/" class="link-card card">
+          <h3>Premium &amp; Lifestyle Packages</h3>
+          <p>Holiday hosting, getaway resets, senior home support, and premium add-on packages.</p>
+          <span class="link-card__cta">Learn More &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA />
+</Layout>
+
+<style>
+  .link-card {
+    display: block;
+    padding: 32px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .link-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  .link-card p {
+    color: var(--text-dim);
+  }
+  .link-card__cta {
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+</style>

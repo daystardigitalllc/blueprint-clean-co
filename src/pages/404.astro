@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../lib/site';
+---
+<Layout title="Page Not Found" description="Page not found." noindex>
+  <section style="padding:220px 0 140px; text-align:center;">
+    <div class="container">
+      <p class="eyebrow" style="justify-content:center;">404</p>
+      <h1>Page Not Found</h1>
+      <p class="lede">The page you're looking for doesn't exist or may have moved.</p>
+      <div class="btn-row" style="justify-content:center; margin-top:24px;">
+        <a href="/" class="btn btn-solid">Back to Home</a>
+        <a href={site.phoneHref} class="btn">Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

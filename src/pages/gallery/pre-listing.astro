@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import { Image } from 'astro:assets';
+
+import living1 from '../../assets/photos/hero-living-room-1.png';
+import vanity from '../../assets/photos/gallery-bathroom-vanity.jpeg';
+import stagedBath from '../../assets/photos/staged-bathroom-vessel-sink.jpg';
+import hallway from '../../assets/photos/hallway-clean.jpg';
+
+const items = [
+  { img: living1, alt: 'Bright, showing-ready living room with fireplace', tag: 'Pre-Listing Prep' },
+  { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings', tag: 'Pre-Listing Prep' },
+  { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings', tag: 'Pre-Listing Prep' },
+  { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready', tag: 'Pre-Listing Prep' },
+];
+---
+<Layout
+  title="Pre-Listing Cleaning Gallery | Blueprint Clean Co."
+  description="See Blueprint Clean Co.'s pre-listing and open house cleaning work for Nashville realtors and sellers."
+>
+  <PageHero
+    eyebrow="Pre-Listing"
+    title="Pre-Listing & Open House Gallery"
+    subtitle="Show-ready results for realtors and sellers — kept separate here from our residential and turnover work."
+  />
+
+  <section>
+    <div class="container">
+      <div class="grid grid-3 gallery-grid">
+        {items.map((item) => (
+          <figure class="gallery-item">
+            <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
+            <figcaption>{item.tag}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <GalleryComingSoon message="More listing photos are on the way as agents share showing results with us." />
+      </div>
+      <div style="text-align:center; margin-top:24px;">
+        <a href="/pre-listing-cleaning/" class="btn btn-sm">See Pre-Listing Service Details</a>
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Have a listing going live soon?" body="Tell us the address and your showing date — we'll get it show-ready." />
+</Layout>
+
+<style>
+  .gallery-grid { gap: 20px; }
+  .gallery-item {
+    margin: 0;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .gallery-item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .gallery-item figcaption {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(6,10,16,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+</style>

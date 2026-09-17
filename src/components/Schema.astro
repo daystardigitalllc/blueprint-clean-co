@@ -1,0 +1,36 @@
+---
+import { site } from '../lib/site';
+
+interface Props {
+  extra?: Record<string, any>[];
+}
+const { extra = [] } = Astro.props;
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: site.name,
+  description:
+    'Precision cleaning for realtors, property managers, home builders, and Airbnb hosts across Nashville and Middle Tennessee. Specializing in pre-listing prep, move-in/move-out turnovers, Airbnb turnovers, and 3-phase post-construction cleaning.',
+  telephone: site.phone,
+  email: site.email,
+  url: 'https://www.blueprintclean.com',
+  image: 'https://www.blueprintclean.com/social-share.jpg',
+  areaServed: {
+    '@type': 'City',
+    name: 'Nashville, TN',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nashville',
+    addressRegion: 'TN',
+    addressCountry: 'US',
+  },
+  priceRange: '$$',
+};
+
+const schemas = [localBusiness, ...extra];
+---
+{schemas.map((s) => (
+  <script type="application/ld+json" set:html={JSON.stringify(s)} />
+))}

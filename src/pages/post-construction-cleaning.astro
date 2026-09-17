@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import heroImg from '../assets/photos/hero-kitchen-marble.png';
+
+const phases = [
+  {
+    phase: 'Phase 1',
+    title: 'Rough Clean',
+    detail:
+      'Removal of construction debris, stickers, tags, and heavy dust from every surface, cabinet interior, window track, and vent. We clear the site so trades and inspectors can move through safely.',
+  },
+  {
+    phase: 'Phase 2',
+    title: 'Final Clean',
+    detail:
+      'A detailed, top-to-bottom clean of every room — cabinets inside and out, all fixtures, baseboards, light fixtures, appliances, and floors. This is the deep clean that makes a new build look finished.',
+  },
+  {
+    phase: 'Phase 3',
+    title: 'Touch-Up & Detail Clean',
+    detail:
+      'Completed right before your final walkthrough or closing. We remove any dust that settled after Phase 2, polish glass and hardware, and do a final inspection so the home is spotless for buyers or homeowners.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'When should I schedule each phase?',
+    a: 'Phase 1 typically happens once major trades finish and drywall/paint are done. Phase 2 follows final trim, flooring, and fixture installs. Phase 3 is scheduled right before your walkthrough or closing date.',
+  },
+  {
+    q: 'Do you work with builders on multiple properties at once?',
+    a: 'Yes — we regularly coordinate with home builders and contractors managing several new builds at a time, and can work around your production schedule.',
+  },
+  {
+    q: 'What is included in a rough clean?',
+    a: 'Debris removal, dusting of all surfaces, removal of protective stickers and window film, initial vacuum/sweep of floors, and clearing construction dust from cabinets, vents, and light fixtures.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Post-Construction Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description:
+      '3-phase post-construction cleaning for home builders and contractors: rough clean, final clean, and touch-up detail clean.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Layout
+  title="Post-Construction Cleaning Nashville | 3-Phase New Build Cleaning"
+  description="3-phase post-construction cleaning for Nashville home builders and contractors — rough clean, final clean, and touch-up detail clean that takes new builds from job site to move-in ready."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For Home Builders & Contractors"
+    title="Post-Construction 3-Phase Cleaning"
+    subtitle="Our flagship service. A structured, three-phase process that takes every new build from job site to move-in ready — on your schedule."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+      <a href="/gallery/post-construction/" class="btn btn-ghost-light">View Gallery</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Our Process</p>
+        <h2>The 3-Phase <span class="accent">Blueprint Standard</span></h2>
+        <p class="lede">
+          Every new build gets the same disciplined process, regardless of size — so builders can count on a
+          consistent, predictable result every time.
+        </p>
+      </div>
+
+      <div class="phase-list">
+        {phases.map((p) => (
+          <div class="phase-card card">
+            <span class="phase-card__tag">{p.phase}</span>
+            <h3>{p.title}</h3>
+            <p>{p.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center; gap:56px;">
+        <div>
+          <p class="eyebrow">Why Builders Choose Us</p>
+          <h2>Built for <span class="accent">production schedules</span></h2>
+          <ul class="standard-list">
+            <li>Coordinated scheduling across multiple lots or units</li>
+            <li>Crews trained specifically on post-construction debris and dust</li>
+            <li>Detailed checklists so every trade's mess gets caught</li>
+            <li>Flexible timing for Phase 3 right up to closing day</li>
+            <li>Direct communication with your site superintendent</li>
+          </ul>
+          <a href="/request-a-quote/" class="btn btn-solid" style="margin-top:16px;">Request a Quote</a>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Also serving builders with:</h3>
+          <ul class="standard-list">
+            <li><a href="/pre-listing-cleaning/">Pre-listing prep</a> for model homes &amp; spec sales</li>
+            <li><a href="/move-in-move-out-cleaning/">Move-in ready</a> cleans for closing day</li>
+            <li><a href="/residential-commercial-cleaning/">Recurring maintenance</a> for sales offices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Post-Construction Cleaning Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Trusted for <span class="accent">show-ready results</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready to schedule your new build?" body="Tell us your production timeline and we'll build a 3-phase plan around it." />
+</Layout>
+
+<style>
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .phase-card {
+    padding: 32px 28px;
+    border-top: 3px solid var(--accent);
+  }
+  .phase-card__tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+    margin-bottom: 10px;
+  }
+  .phase-card p {
+    color: var(--text-dim);
+    font-size: 0.94rem;
+    margin: 0;
+  }
+  .standard-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .standard-list li {
+    padding-left: 26px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .standard-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+  .standard-list a { color: var(--text); font-weight: 600; }
+  .standard-list a:hover { color: var(--accent-bright); }
+
+  @media (max-width: 900px) {
+    .phase-list { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import heroImg from '../assets/photos/residential-kitchen-clean.jpg';
+
+const residential = [
+  'Weekly, bi-weekly, or monthly recurring cleaning',
+  'Kitchens, bathrooms, bedrooms, and living areas',
+  'Dusting, vacuuming, mopping, and trash removal',
+  'Consistent crew assignment so the same team knows your home',
+];
+
+const commercial = [
+  'Offices, retail spaces, and small business locations',
+  'After-hours and flexible scheduling to avoid business disruption',
+  'Restrooms, breakrooms, floors, and common areas',
+  'Custom checklists built around your space and industry',
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Recurring Residential & Commercial Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description: 'Recurring residential and commercial cleaning services in Nashville and Middle Tennessee.',
+  },
+];
+---
+<Layout
+  title="Recurring Residential & Commercial Cleaning Nashville"
+  description="Dedicated teams for recurring residential and commercial cleaning in Nashville — weekly, bi-weekly, or monthly service for homes and businesses."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Recurring Service"
+    title="Residential & Commercial Cleaning"
+    subtitle="While we're known for project-based work, we still have dedicated teams for recurring residential and commercial cleaning — so your space stays constantly pristine."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:28px;">
+        <div class="card" style="padding:32px;">
+          <p class="eyebrow">Residential</p>
+          <h3>Recurring Home Cleaning</h3>
+          <ul class="check-list">
+            {residential.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="card" style="padding:32px;">
+          <p class="eyebrow">Commercial</p>
+          <h3>Business & Office Cleaning</h3>
+          <ul class="check-list">
+            {commercial.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="/gallery/residential-before-after/" class="btn">See Before &amp; After Photos</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Loved by <span class="accent">repeat clients</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Want a consistent cleaning team?" body="Tell us your space and preferred frequency — we'll set up a recurring plan." />
+</Layout>
+
+<style>
+  .check-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .check-list li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .check-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import heroImg from '../assets/photos/hero-living-room-2.png';
+
+const included = [
+  'Inside & outside of all cabinets, drawers, and closets',
+  'Inside oven, refrigerator, and microwave',
+  'Baseboards, blinds, window tracks, and light fixtures',
+  'Bathrooms fully sanitized — tile, grout, fixtures, and mirrors',
+  'Floors vacuumed and mopped throughout',
+  'Move-in / move-out inspection-ready checklist',
+];
+
+const faqs = [
+  {
+    q: 'How fast can you turn a unit around?',
+    a: 'Most move-in/move-out cleans are completed same-day or next-day, depending on unit size and current schedule availability.',
+  },
+  {
+    q: 'Do you work with multiple properties for the same management company?',
+    a: 'Yes — we work with property managers across multiple units and portfolios, and can set up recurring turnover scheduling.',
+  },
+  {
+    q: 'Can you send photos after the clean for our records?',
+    a: 'Yes, we can provide completion photos for your file or for tenant move-in documentation upon request.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Move-In/Move-Out Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description: 'Move-in and move-out cleaning for property managers and landlords across Nashville and Middle Tennessee.',
+  },
+];
+---
+<Layout
+  title="Move-In / Move-Out Cleaning for Property Managers Nashville"
+  description="Fast, detailed move-in and move-out cleaning for Nashville property managers and landlords. Reliable turnovers that protect your unit and your timeline."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For Property Managers"
+    title="Move-In / Move-Out Cleaning"
+    subtitle="Fast, reliable turnovers between tenants — detailed cleaning that protects your unit, your timeline, and your reputation."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+      <a href="/gallery/turnovers/" class="btn btn-ghost-light">View Gallery</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px; align-items:center;">
+        <div>
+          <p class="eyebrow">What's Included</p>
+          <h2>Ready for the <span class="accent">next tenant</span></h2>
+          <ul class="check-list">
+            {included.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Built for turnover timelines</h3>
+          <p>
+            We know vacancy is expensive. Tell us your move-out date and move-in deadline, and we'll schedule
+            the clean to keep your turnaround as tight as possible.
+          </p>
+          <a href="/request-a-quote/" class="btn btn-solid" style="margin-top:12px;">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Move-In / Move-Out Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Trusted by <span class="accent">property managers</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Have a turnover coming up?" body="Give us your dates and unit details — we'll build a plan around your timeline." />
+</Layout>
+
+<style>
+  .check-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .check-list li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .check-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+</style>

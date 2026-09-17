@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import { testimonials } from '../lib/site';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HomeAndConstructionBusiness',
+    name: 'Blueprint Clean Co.',
+    review: testimonials.map((t) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: t.name },
+      reviewBody: t.quote,
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    })),
+  },
+];
+---
+<Layout
+  title="Reviews | Blueprint Clean Co."
+  description="Read what realtors, property managers, and homeowners say about Blueprint Clean Co.'s precision cleaning services in Nashville."
+  schema={schema}
+>
+  <PageHero eyebrow="Trusted by Our Clients" title="Real results, real reviews">
+    <div class="stars" style="font-size:1.4rem; margin-top:8px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-3">
+        {testimonials.map((t) => (
+          <div class="card review-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;{t.quote}&rdquo;</p>
+            <p class="review-card__name">{t.name}{t.detail && <span>, {t.detail}</span>}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready for your 5-star service?" body="Experience the detailed, professional service our clients are talking about." />
+</Layout>
+
+<style>
+  .review-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .review-card p:first-of-type {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  .review-card__name {
+    font-weight: 700;
+    margin: 0;
+  }
+  .review-card__name span {
+    font-weight: 400;
+    color: var(--text-dimmer);
+  }
+</style>

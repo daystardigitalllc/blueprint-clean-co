@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import heroImg from '../assets/photos/hallway-clean.jpg';
+
+const packages = [
+  {
+    name: 'Holiday Hosting Services',
+    tag: 'Take the stress out of hosting',
+    detail:
+      "We clean so you can focus on hosting and spending time with your loved ones for the holidays. You put food on your plate — we'll take the stress off of it.",
+    items: [
+      'Holiday event set up & take down',
+      'Presentation clean before your event',
+      'Deep clean after the event',
+      'Holiday decor put up and taken down',
+      'Dishes, kitchen, and bathroom clean',
+      'Yard set up, dust removal & trash removal',
+    ],
+  },
+  {
+    name: 'Getaway Package',
+    tag: 'Leave relaxed, come home refreshed',
+    detail:
+      "We clean while you're on vacation so you can come home to a fully refreshed house that's ready for you to settle right back into.",
+    items: [
+      'Complete home cleaning',
+      'Kitchen & bathroom refresh',
+      'Made bed & floor care',
+      'Trash removal & general tidying',
+      'Laundry service (optional)',
+      'Grocery shopping & kitchen restock (optional)',
+    ],
+  },
+  {
+    name: 'Senior Home Support',
+    tag: 'Care you can trust',
+    detail:
+      'Designed to help older adults enjoy a clean, safe, dependable, and comfortable home — supporting independence and quality of life.',
+    items: [
+      'Light housekeeping & laundry services',
+      'Grocery shopping',
+      'Secured window & door check',
+      'Bathroom & kitchen refresh',
+      'Dusting, vacuuming, sweeping & mopping',
+      'Home wellness check & reporting to family',
+    ],
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Premium & Lifestyle Cleaning Packages',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description: 'Holiday hosting, getaway, senior home support, and premium lifestyle cleaning packages in Nashville.',
+  },
+];
+---
+<Layout
+  title="Premium & Lifestyle Cleaning Packages | Holiday, Getaway & Senior Support"
+  description="Premium lifestyle cleaning packages from Blueprint Clean Co: holiday hosting assistance, getaway resets, and senior home support in Nashville."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Premium & Lifestyle"
+    title="Life gets busy — we're here to help"
+    subtitle="Customized lifestyle packages designed to simplify your routine, support your home, and give you more time to focus on what matters most."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="package-list">
+        {packages.map((pkg) => (
+          <div class="package-card card">
+            <p class="eyebrow">{pkg.tag}</p>
+            <h3>{pkg.name}</h3>
+            <p class="package-card__detail">{pkg.detail}</p>
+            <h4>What's Included</h4>
+            <ul class="check-list">
+              {pkg.items.map((item) => <li>{item}</li>)}
+            </ul>
+            <a href="/request-a-quote/" class="btn btn-sm">Request This Package</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready for a little help?" body="Tell us which package fits your life right now and we'll build a plan around it." />
+</Layout>
+
+<style>
+  .package-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .package-card {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .package-card__detail {
+    color: var(--text-dim);
+    font-size: 0.94rem;
+  }
+  .package-card h4 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dimmer);
+    margin: 12px 0 12px;
+  }
+  .check-list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .check-list li {
+    padding-left: 26px;
+    position: relative;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .check-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+  @media (max-width: 900px) {
+    .package-list { grid-template-columns: 1fr; }
+  }
+</style>

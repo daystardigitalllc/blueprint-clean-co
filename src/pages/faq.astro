@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import { faqs } from '../lib/site';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Layout
+  title="FAQ — Cleaning Services Nashville"
+  description="Answers to common questions about Blueprint Clean Co.'s post-construction, pre-listing, move-in/move-out, and Airbnb turnover cleaning services in Nashville."
+  schema={schema}
+>
+  <PageHero eyebrow="FAQ" title="Common Questions" subtitle="Everything realtors, property managers, builders, and homeowners ask us before booking." />
+  <section>
+    <div class="container" style="max-width:840px;">
+      <FAQAccordion />
+    </div>
+  </section>
+  <ClosingCTA />
+</Layout>

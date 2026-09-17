@@ -1,0 +1,24 @@
+---
+interface Props {
+  message?: string;
+}
+const { message = "We're adding real job photos to this gallery soon — check back shortly." } = Astro.props;
+---
+<div class="coming-soon card">
+  <p class="eyebrow" style="justify-content:center;">More Photos Coming Soon</p>
+  <p>{message}</p>
+  <a href="/request-a-quote/" class="btn btn-sm">Get a Free Quote</a>
+</div>
+
+<style>
+  .coming-soon {
+    text-align: center;
+    padding: 56px 32px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .coming-soon p:not(.eyebrow) {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+</style>

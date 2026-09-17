@@ -1,0 +1,39 @@
+---
+import { site } from '../lib/site';
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = 'Ready for spotless, stress-free results?',
+  body = "Tell us about your property and timeline — we'll build a plan tailored to your space.",
+} = Astro.props;
+---
+<section class="closing-cta">
+  <div class="container closing-cta__inner reveal">
+    <h2>{heading}</h2>
+    <p class="lede">{body}</p>
+    <div class="btn-row" style="justify-content:center;">
+      <a href="/request-a-quote/" class="btn btn-invert">Get a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .closing-cta {
+    background: var(--accent);
+  }
+  .closing-cta__inner {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .closing-cta h2,
+  .closing-cta .lede {
+    color: #ffffff;
+  }
+  .closing-cta .lede {
+    color: rgba(255,255,255,0.85);
+  }
+</style>

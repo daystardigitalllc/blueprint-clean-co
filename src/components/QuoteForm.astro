@@ -1,0 +1,213 @@
+---
+import { site, coreServices } from '../lib/site';
+---
+<form
+  class="quote-form"
+  action={site.formEndpoint}
+  method="POST"
+  id="quoteForm"
+>
+  <input type="hidden" name="_subject" value="New quote request — Blueprint Clean Co." />
+
+  <div class="quote-form__row">
+    <label>
+      Full Name*
+      <input type="text" name="name" required autocomplete="name" />
+    </label>
+    <label>
+      Phone*
+      <input type="tel" name="phone" required autocomplete="tel" />
+    </label>
+  </div>
+
+  <div class="quote-form__row">
+    <label>
+      Email*
+      <input type="email" name="email" required autocomplete="email" />
+    </label>
+    <label>
+      I need help as a...
+      <select name="role">
+        <option>Realtor / Seller</option>
+        <option>Property Manager</option>
+        <option>Home Builder / Contractor</option>
+        <option>Airbnb / STR Host</option>
+        <option>Homeowner</option>
+        <option>Business Owner</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </div>
+
+  <label>
+    Service Needed*
+    <select name="service" required>
+      {coreServices.map((s) => <option value={s.name}>{s.name}</option>)}
+      <option>Recurring Residential Cleaning</option>
+      <option>Recurring Commercial Cleaning</option>
+      <option>Holiday / Event Assistance</option>
+      <option>Premium / Lifestyle Package</option>
+      <option>Other</option>
+    </select>
+  </label>
+
+  <label>
+    Property Address / City*
+    <input type="text" name="address" required placeholder="Street, City, TN" />
+  </label>
+
+  <fieldset class="quote-form__dates">
+    <legend>
+      Choose two preferred date &amp; time windows — we'll confirm the one that works with our schedule.
+    </legend>
+    <div class="quote-form__row">
+      <label>
+        Option A — Date*
+        <input type="date" name="date_option_a" required />
+      </label>
+      <label>
+        Option A — Time*
+        <input type="time" name="time_option_a" required />
+      </label>
+    </div>
+    <div class="quote-form__row">
+      <label>
+        Option B — Date*
+        <input type="date" name="date_option_b" required />
+      </label>
+      <label>
+        Option B — Time*
+        <input type="time" name="time_option_b" required />
+      </label>
+    </div>
+  </fieldset>
+
+  <label>
+    Tell us about the space
+    <textarea name="message" rows="4" placeholder="Square footage, number of bedrooms/bathrooms, timeline, special requests..."></textarea>
+  </label>
+
+  <p class="quote-form__note">
+    Prefer a fast, accurate quote? Email a short video walkthrough to
+    <a href={site.emailHref}>{site.email}</a>.
+  </p>
+
+  <button type="submit" class="btn btn-solid" style="width:100%;">Request My Two Dates</button>
+
+  <p class="quote-form__status" id="quoteFormStatus" role="status" aria-live="polite"></p>
+</form>
+
+<style>
+  .quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+  }
+
+  .quote-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dim);
+  }
+
+  input, select, textarea {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    color: var(--text);
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  fieldset {
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  legend {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    padding: 0 6px;
+  }
+
+  .quote-form__note {
+    font-size: 0.85rem;
+    color: var(--text-dimmer);
+    margin: 0;
+  }
+
+  .quote-form__note a {
+    color: var(--accent-bright);
+    font-weight: 600;
+  }
+
+  .quote-form__status {
+    text-align: center;
+    font-weight: 600;
+    min-height: 1.2em;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .quote-form { padding: 24px; }
+    .quote-form__row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('quoteForm') as HTMLFormElement | null;
+  const status = document.getElementById('quoteFormStatus');
+
+  form?.addEventListener('submit', async (e) => {
+    if (form.action.includes('YOUR_FORM_ID')) {
+      // Formspree endpoint not configured yet — let it submit normally (will 404),
+      // but warn in console for the site owner/developer.
+      console.warn('QuoteForm: replace site.formEndpoint with a real Formspree endpoint.');
+      return;
+    }
+    e.preventDefault();
+    if (status) status.textContent = 'Sending...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        form.reset();
+        if (status) status.textContent = "Thanks! We'll confirm your appointment shortly.";
+        // GA4 conversion event
+        // @ts-ignore
+        window.gtag?.('event', 'generate_lead', { form: 'quote_request' });
+      } else {
+        if (status) status.textContent = 'Something went wrong — please call or email us directly.';
+      }
+    } catch {
+      if (status) status.textContent = 'Something went wrong — please call or email us directly.';
+    }
+  });
+</script>

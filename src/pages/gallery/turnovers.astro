@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import { Image } from 'astro:assets';
+
+import airbnbBed from '../../assets/photos/gallery-airbnb-bed.jpg';
+import shower from '../../assets/photos/gallery-shower-glass.jpg';
+import emptyLiving from '../../assets/photos/empty-living-room-clean.jpg';
+import livingRoom2 from '../../assets/photos/hero-living-room-2.png';
+import showerStall from '../../assets/photos/shower-stall-clean.jpg';
+
+const items = [
+  { img: airbnbBed, alt: 'Hotel-style bed with folded towels, guest-ready Airbnb turnover', tag: 'Airbnb Turnover' },
+  { img: shower, alt: 'Spotless glass shower enclosure after a tenant turnover', tag: 'Move-Out Clean' },
+  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next tenant', tag: 'Move-In Ready' },
+  { img: livingRoom2, alt: 'Move-in ready living room, fully cleaned', tag: 'Move-In / Move-Out' },
+  { img: showerStall, alt: 'Spotless tub and shower stall, guest and tenant ready', tag: 'Move-In / Airbnb' },
+];
+---
+<Layout
+  title="Move-In / Move-Out & Airbnb Turnover Gallery | Blueprint Clean Co."
+  description="See Blueprint Clean Co.'s turnover cleaning work: move-in/move-out cleans for property managers and Airbnb turnovers for short-term rental hosts across Nashville."
+>
+  <PageHero
+    eyebrow="Turnover Cleaning"
+    title="Move-In / Move-Out & Airbnb Turnovers"
+    subtitle="Fast, reliable turnovers for property managers and short-term rental hosts — kept separate here from our recurring residential and project-based work."
+  />
+
+  <section>
+    <div class="container">
+      <div class="grid grid-4 gallery-grid">
+        {items.map((item) => (
+          <figure class="gallery-item">
+            <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
+            <figcaption>{item.tag}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="btn-row" style="justify-content:center; margin-top:40px;">
+        <a href="/move-in-move-out-cleaning/" class="btn btn-sm">Move-In / Move-Out Details</a>
+        <a href="/airbnb-turnover-cleaning/" class="btn btn-sm">Airbnb Turnover Details</a>
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Have a turnover coming up?" body="Tell us your dates and we'll build a plan around your schedule." />
+</Layout>
+
+<style>
+  .gallery-grid { gap: 20px; }
+  .gallery-item {
+    margin: 0;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .gallery-item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .gallery-item figcaption {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(6,10,16,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+</style>

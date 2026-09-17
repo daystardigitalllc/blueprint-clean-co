@@ -1,0 +1,12 @@
+---
+interface Props {
+  items: string[];
+}
+const { items } = Astro.props;
+const loop = [...items, ...items];
+---
+<div class="marquee" role="marquee" aria-label="Trusted by">
+  <div class="marquee__track">
+    {loop.map((item) => <span class="marquee__item">{item}</span>)}
+  </div>
+</div>

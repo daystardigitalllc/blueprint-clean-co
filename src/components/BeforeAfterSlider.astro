@@ -1,0 +1,205 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  before: ImageMetadata;
+  after: ImageMetadata;
+  label: string;
+  id: string;
+}
+const { before, after, label, id } = Astro.props;
+---
+<div class="ba-slider" data-ba-slider id={id}>
+  <div class="ba-slider__frame">
+    <div class="ba-slider__side ba-slider__side--after">
+      <Image src={after} alt={`${label} — after cleaning`} width={800} height={1000} class="graded-img" />
+      <span class="ba-slider__tag ba-slider__tag--after">After</span>
+    </div>
+    <div class="ba-slider__side ba-slider__side--before" data-ba-before>
+      <Image src={before} alt={`${label} — before cleaning`} width={800} height={1000} class="graded-img" />
+      <span class="ba-slider__tag ba-slider__tag--before">Before</span>
+    </div>
+    <div class="ba-slider__handle" data-ba-handle>
+      <span class="ba-slider__handle-grip">&#10094;&#10095;</span>
+    </div>
+  </div>
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    class="ba-slider__range"
+    data-ba-range
+    aria-label={`Drag to compare before and after: ${label}`}
+  />
+  <p class="ba-slider__label">{label}</p>
+</div>
+
+<style>
+  .ba-slider {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ba-slider__frame {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    user-select: none;
+    touch-action: pan-y;
+  }
+
+  .ba-slider__side {
+    position: absolute;
+    inset: 0;
+  }
+
+  .ba-slider__side :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .ba-slider__side--before {
+    clip-path: inset(0 50% 0 0);
+  }
+
+  .ba-slider__tag {
+    position: absolute;
+    top: 14px;
+    z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(6,10,16,0.78);
+    color: #ffffff;
+  }
+
+  .ba-slider__tag--before {
+    left: 14px;
+  }
+
+  .ba-slider__tag--after {
+    right: 14px;
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+
+  .ba-slider__handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .ba-slider__handle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    width: 2px;
+    background: var(--text);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.3);
+  }
+
+  .ba-slider__handle-grip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    box-shadow: 0 3px 10px rgba(11,14,18,0.28);
+  }
+
+  .ba-slider__range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 36px;
+    margin-top: 12px;
+    background: transparent;
+    cursor: ew-resize;
+  }
+
+  .ba-slider__range::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .ba-slider__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .ba-slider__range::-moz-range-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .ba-slider__range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+  }
+
+  .ba-slider__label {
+    margin: 10px 0 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+</style>
+
+<script>
+  function initSlider(root: HTMLElement) {
+    const range = root.querySelector<HTMLInputElement>('[data-ba-range]');
+    const before = root.querySelector<HTMLElement>('[data-ba-before]');
+    const handle = root.querySelector<HTMLElement>('[data-ba-handle]');
+    if (!range || !before || !handle) return;
+
+    function update(value: number) {
+      before!.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      handle!.style.left = `${value}%`;
+    }
+
+    range.addEventListener('input', () => update(Number(range.value)));
+    update(Number(range.value));
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ba-slider]').forEach(initSlider);
+</script>

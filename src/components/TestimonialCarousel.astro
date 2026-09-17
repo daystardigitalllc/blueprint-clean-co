@@ -1,0 +1,68 @@
+---
+import { testimonials } from '../lib/site';
+---
+<div class="testimonial-rail">
+  <div class="testimonial-rail__track">
+    {testimonials.map((t) => (
+      <div class="testimonial-card">
+        <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-card__quote">&ldquo;{t.quote}&rdquo;</p>
+        <p class="testimonial-card__name">{t.name}{t.detail && <span>, {t.detail}</span>}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .testimonial-rail {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 4px var(--gutter) 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testimonial-rail::-webkit-scrollbar {
+    height: 6px;
+  }
+  .testimonial-rail::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  .testimonial-rail__track {
+    display: flex;
+    gap: 22px;
+  }
+
+  .testimonial-card {
+    scroll-snap-align: start;
+    flex: 0 0 340px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-card__quote {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+
+  .testimonial-card__name {
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .testimonial-card__name span {
+    font-weight: 400;
+    color: var(--text-dimmer);
+  }
+
+  @media (max-width: 560px) {
+    .testimonial-card { flex-basis: 84vw; }
+  }
+</style>

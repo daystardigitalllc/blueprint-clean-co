@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import heroImg from '../../assets/photos/lived-in-bathroom-clean.jpg';
+import type { ImageMetadata } from 'astro';
+
+// TODO(Savannah): drop real before/after photo pairs in here as they come in.
+// Each pair needs a `before` image and an `after` image of the SAME space.
+// Example once photos are ready:
+// import kitchenBefore from '../../assets/photos/residential/kitchen-before.jpg';
+// import kitchenAfter from '../../assets/photos/residential/kitchen-after.jpg';
+// const pairs = [{ before: kitchenBefore, after: kitchenAfter, label: 'Kitchen — Recurring Clean' }];
+const pairs: { before: ImageMetadata; after: ImageMetadata; label?: string }[] = [];
+---
+<Layout
+  title="Recurring Residential Cleaning — Before & After | Blueprint Clean Co."
+  description="Real before-and-after results from Blueprint Clean Co.'s recurring residential cleaning teams in Nashville and Middle Tennessee."
+>
+  <PageHero
+    eyebrow="Recurring Residential"
+    title="Before & After: Recurring Residential Cleaning"
+    subtitle="Recurring residential is a core part of what we do — separate from our project-based turnover, post-construction, and pre-listing work. Here's the difference our teams make, visit after visit."
+    image={heroImg}
+  />
+
+  <section>
+    <div class="container">
+      {pairs.length > 0 ? (
+        <div class="grid grid-3">
+          {pairs.map((p) => <BeforeAfter before={p.before} after={p.after} label={p.label} />)}
+        </div>
+      ) : (
+        <GalleryComingSoon message="Real before-and-after photos from our recurring residential teams are on the way — check back soon, or ask us for examples directly." />
+      )}
+    </div>
+  </section>
+
+  <ClosingCTA heading="Want a consistent, spotless home?" body="Ask about setting up recurring residential service." />
+</Layout>

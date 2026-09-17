@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { site } from '../lib/site';
+---
+<Layout
+  title="Request a Free Quote"
+  description="Request your free cleaning quote from Blueprint Clean Co. Choose two preferred date and time windows and we'll confirm the one that fits our schedule."
+>
+  <PageHero
+    eyebrow="Get Started"
+    title="Your personalized service plan starts here"
+    subtitle="Every property is unique. Whether you're preparing for a move, completing a new build, managing a rental, or looking for recurring service, we'll build a plan around your needs."
+  />
+
+  <section>
+    <div class="container" style="max-width:900px;">
+      <div class="grid grid-2" style="gap:48px; align-items:flex-start;">
+        <QuoteForm />
+        <aside class="quote-aside">
+          <div class="card quote-aside__card">
+            <h3>Prefer to talk it through?</h3>
+            <p>Call or email us directly and we'll get you scheduled.</p>
+            <a href={site.phoneHref} class="btn btn-solid" style="width:100%; margin-bottom:12px;">Call {site.phone}</a>
+            <a href={site.emailHref} class="btn" style="width:100%;">Email Us</a>
+          </div>
+          <div class="card quote-aside__card">
+            <h3>Fast, accurate video quotes</h3>
+            <p>
+              Submit a short video walkthrough of your space to
+              <a href={site.emailHref} class="quote-aside__link">{site.email}</a>
+              for the quickest, most accurate estimate.
+            </p>
+          </div>
+          <div class="card quote-aside__card">
+            <h3>How the two-date request works</h3>
+            <p>
+              Give us two date &amp; time windows that work for you. Our scheduling team locks in whichever
+              option fits, then confirms by phone or email — usually within one business day.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .quote-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 110px;
+  }
+  .quote-aside__card {
+    padding: 26px;
+  }
+  .quote-aside__card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .quote-aside__link {
+    color: var(--accent-bright);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .quote-aside { position: static; }
+  }
+</style>

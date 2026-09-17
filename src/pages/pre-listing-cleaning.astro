@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import heroImg from '../assets/photos/hero-living-room-1.png';
+
+const included = [
+  'Full interior deep clean — kitchens, bathrooms, bedrooms & living areas',
+  'Baseboards, window sills, and light fixtures dusted and wiped',
+  'Interior window & mirror glass, streak-free',
+  'Cabinet fronts, hardware, and countertops detailed',
+  'Floors vacuumed and mopped, edges and corners included',
+  'Fresh, neutral scent — no lingering odors for showings',
+];
+
+const faqs = [
+  {
+    q: 'How far in advance should I book a pre-listing clean?',
+    a: 'We recommend booking 3-5 days before your first photos or showing, so we can also fit in a touch-up before open houses if needed.',
+  },
+  {
+    q: 'Can you work around a stager or photographer\'s schedule?',
+    a: 'Yes — we regularly coordinate directly with agents, stagers, and photographers to make sure the home is camera-ready at the right time.',
+  },
+  {
+    q: 'Do you offer recurring service for open houses?',
+    a: 'Yes. Many agents book us for a touch-up clean before every open house on an active listing.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Pre-Listing Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description: 'Pre-listing and open house cleaning for Nashville realtors and home sellers.',
+  },
+];
+---
+<Layout
+  title="Pre-Listing Cleaning for Realtors Nashville | Blueprint Clean Co."
+  description="Show-ready pre-listing and open house cleaning for Nashville realtors and sellers. Help every listing photograph and show at its absolute best."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For Realtors & Sellers"
+    title="Pre-Listing & Open House Cleaning"
+    subtitle="A spotless home photographs better, shows better, and sells faster. We help you present every listing at its absolute best."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+      <a href="/gallery/pre-listing/" class="btn btn-ghost-light">View Gallery</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px; align-items:center;">
+        <div>
+          <p class="eyebrow">What's Included</p>
+          <h2>Showing-ready, <span class="accent">every time</span></h2>
+          <ul class="check-list">
+            {included.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Built for realtor timelines</h3>
+          <p>
+            We know listings move fast. Send us the property address and your showing or photo date, and
+            we'll build a cleaning schedule around it — including rush turnarounds when needed.
+          </p>
+          <a href="/request-a-quote/" class="btn btn-solid" style="margin-top:12px;">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pre-Listing Cleaning Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>What agents &amp; sellers <span class="accent">are saying</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Have a listing going live soon?" body="Tell us the address and your showing date — we'll get it show-ready." />
+</Layout>
+
+<style>
+  .check-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .check-list li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .check-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+</style>

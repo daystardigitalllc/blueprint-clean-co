@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import { Image } from 'astro:assets';
+
+import kitchen from '../../assets/photos/hero-kitchen-marble.png';
+import sink from '../../assets/photos/gallery-kitchen-sink.jpg';
+import faucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
+
+const items = [
+  { img: kitchen, alt: 'Spotless new-build kitchen after final clean', tag: 'Phase 2 — Final Clean' },
+  { img: sink, alt: 'Detail-cleaned kitchen sink, no construction dust', tag: 'Phase 2 — Detail' },
+  { img: faucet, alt: 'Polished bathroom faucet, post-construction detail', tag: 'Phase 3 — Touch-Up' },
+];
+---
+<Layout
+  title="Post-Construction Cleaning Gallery | Blueprint Clean Co."
+  description="See Blueprint Clean Co.'s 3-phase post-construction cleaning work for Nashville home builders and contractors."
+>
+  <PageHero
+    eyebrow="Post-Construction"
+    title="Post-Construction 3-Phase Cleaning Gallery"
+    subtitle="New builds, taken from rough clean to move-in ready — kept separate here from our residential and turnover work."
+  />
+
+  <section>
+    <div class="container">
+      <div class="grid grid-3 gallery-grid">
+        {items.map((item) => (
+          <figure class="gallery-item">
+            <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
+            <figcaption>{item.tag}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div style="margin-top:32px;">
+        <GalleryComingSoon message="More new-build project photos are on the way as builders share job completions with us." />
+      </div>
+      <div style="text-align:center; margin-top:24px;">
+        <a href="/post-construction-cleaning/" class="btn btn-sm">See Post-Construction Service Details</a>
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Have a new build coming up?" body="Tell us your production timeline and we'll build a 3-phase plan around it." />
+</Layout>
+
+<style>
+  .gallery-grid { gap: 20px; }
+  .gallery-item {
+    margin: 0;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .gallery-item :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .gallery-item figcaption {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(6,10,16,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+</style>

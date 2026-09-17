@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import heroImg from '../assets/photos/gallery-airbnb-bed.jpg';
+
+const included = [
+  'Full reset of kitchen, bathroom(s), and all living spaces',
+  'Fresh linens and hotel-style bed making',
+  'Restocking checklist support (towels, toiletries, coffee, etc.)',
+  'Trash removal and quick-turn same-day availability',
+  'Damage & maintenance flagging so small issues get caught early',
+  'Consistent, guest-ready presentation every stay',
+];
+
+const faqs = [
+  {
+    q: 'Can you handle same-day guest turnovers?',
+    a: 'Yes — quick-turn, same-day cleanings between checkout and check-in are a core part of what we do for STR hosts.',
+  },
+  {
+    q: 'Do you work with multiple listings for the same host?',
+    a: 'Yes, we regularly manage recurring turnover schedules across multiple Airbnb or short-term rental units for the same host or management company.',
+  },
+  {
+    q: 'Will you let us know if something is damaged or missing?',
+    a: 'Yes — our team flags any damage, missing items, or maintenance issues we notice during the turnover so you can address them before the next guest arrives.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Airbnb Turnover Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description: 'Airbnb and short-term rental turnover cleaning for hosts across Nashville and Middle Tennessee.',
+  },
+];
+---
+<Layout
+  title="Airbnb Turnover Cleaning Nashville | Short-Term Rental Cleaning"
+  description="Reliable, quick-turn Airbnb and short-term rental cleaning in Nashville. Consistent, guest-ready presentation for every stay."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For Luxury Airbnb & STR Hosts"
+    title="Airbnb & Short-Term Rental Turnovers"
+    subtitle="Quick-turn cleanings between guests that protect your rating — consistent, hotel-grade presentation every single stay."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+      <a href="/gallery/turnovers/" class="btn btn-ghost-light">View Gallery</a>
+    </div>
+  </PageHero>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px; align-items:center;">
+        <div>
+          <p class="eyebrow">What's Included</p>
+          <h2>Guest-ready, <span class="accent">every stay</span></h2>
+          <ul class="check-list">
+            {included.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Built around your booking calendar</h3>
+          <p>
+            Share your checkout/check-in windows and we'll build a recurring turnover schedule that keeps
+            every stay five-star ready.
+          </p>
+          <a href="/request-a-quote/" class="btn btn-solid" style="margin-top:12px;">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Airbnb Turnover Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Trusted by <span class="accent">local hosts</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready for stress-free turnovers?" body="Send us your listing and booking calendar — we'll take turnovers off your plate." />
+</Layout>
+
+<style>
+  .check-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .check-list li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .check-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import { faqs as defaultFaqs } from '../lib/site';
+interface Props {
+  items?: { q: string; a: string }[];
+}
+const { items = defaultFaqs } = Astro.props;
+---
+<div class="faq-list">
+  {items.map((item, i) => (
+    <details class="faq-item" name="faq">
+      <summary>
+        <span>{item.q}</span>
+        <span class="faq-item__icon" aria-hidden="true">+</span>
+      </summary>
+      <p>{item.a}</p>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    padding: 4px 24px;
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item__icon {
+    color: var(--accent-bright);
+    font-size: 1.3rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item p {
+    color: var(--text-dim);
+    padding-bottom: 20px;
+    margin: 0;
+  }
+</style>
