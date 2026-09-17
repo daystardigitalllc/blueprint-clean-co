@@ -34,7 +34,6 @@ const { before, after, label, id } = Astro.props;
       <span class="ba-slider__handle-grip">&#10094;&#10095;</span>
     </div>
   </div>
-  <p class="ba-slider__label">{label}</p>
 </div>
 
 <style>
@@ -139,14 +138,6 @@ const { before, after, label, id } = Astro.props;
   .ba-slider__handle:focus-visible .ba-slider__handle-grip {
     outline: 2px solid #ffffff;
     outline-offset: 3px;
-  }
-
-  .ba-slider__label {
-    margin: 12px 0 0;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.92rem;
-    color: var(--text);
   }
 </style>
 
