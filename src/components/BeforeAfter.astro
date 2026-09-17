@@ -13,11 +13,11 @@ const { before, after, label } = Astro.props;
   <div class="before-after__pair">
     <div class="before-after__half">
       <span class="before-after__tag">Before</span>
-      <Image src={before} alt={label ? `${label} — before` : 'Before cleaning'} width={500} height={620} class="graded-img" />
+      <Image src={before} alt={label ? `${label}, before` : 'Before cleaning'} width={500} height={620} class="graded-img" />
     </div>
     <div class="before-after__half">
       <span class="before-after__tag before-after__tag--after">After</span>
-      <Image src={after} alt={label ? `${label} — after` : 'After cleaning'} width={500} height={620} class="graded-img" />
+      <Image src={after} alt={label ? `${label}, after` : 'After cleaning'} width={500} height={620} class="graded-img" />
     </div>
   </div>
   {label && <figcaption>{label}</figcaption>}

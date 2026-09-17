@@ -13,11 +13,11 @@ const { before, after, label, id } = Astro.props;
 <div class="ba-slider" data-ba-slider id={id}>
   <div class="ba-slider__frame" data-ba-frame>
     <div class="ba-slider__side ba-slider__side--after">
-      <Image src={after} alt={`${label} — after cleaning`} width={800} height={1000} class="graded-img" />
+      <Image src={after} alt={`${label}, after cleaning`} width={800} height={1000} class="graded-img" />
       <span class="ba-slider__tag ba-slider__tag--after">After</span>
     </div>
     <div class="ba-slider__side ba-slider__side--before" data-ba-before>
-      <Image src={before} alt={`${label} — before cleaning`} width={800} height={1000} class="graded-img" />
+      <Image src={before} alt={`${label}, before cleaning`} width={800} height={1000} class="graded-img" />
       <span class="ba-slider__tag ba-slider__tag--before">Before</span>
     </div>
     <div

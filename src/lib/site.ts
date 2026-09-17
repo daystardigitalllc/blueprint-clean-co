@@ -19,7 +19,7 @@ export const site = {
 };
 
 // Order reflects the client's stated priority: realtors, property management,
-// and general contractors/home builders come first — this is the single most
+// and general contractors/home builders come first, this is the single most
 // important message on the site, per direct client feedback.
 export const trustTicker: string[] = [
   'Trusted by Realtors',
@@ -59,7 +59,7 @@ export const coreServices: Service[] = [
     shortName: 'Post-Construction',
     audience: 'Home Builders & Contractors',
     summary:
-      'Our flagship service. A structured 3-phase clean — rough clean, final clean, and touch-up detail — that takes a new build from job site to move-in ready.',
+      'Our flagship service. A structured 3-phase clean, rough clean, final clean, and touch-up detail, that takes a new build from job site to move-in ready.',
     href: '/post-construction-cleaning/',
     keywordFocus: 'post construction cleaning Nashville, new build cleaning Middle Tennessee',
     featured: true,
@@ -70,7 +70,7 @@ export const coreServices: Service[] = [
     shortName: 'Pre-Listing',
     audience: 'Realtors & Sellers',
     summary:
-      'Show-ready prep that helps listings shine on day one — because a spotless home photographs better, shows better, and sells faster.',
+      'Show-ready prep that helps listings shine on day one, because a spotless home photographs better, shows better, and sells faster.',
     href: '/pre-listing-cleaning/',
     keywordFocus: 'pre-listing cleaning for realtors Nashville, listing prep cleaning',
   },
@@ -80,7 +80,7 @@ export const coreServices: Service[] = [
     shortName: 'Move-In / Move-Out',
     audience: 'Property Managers',
     summary:
-      'Fast, reliable turnovers between tenants — detailed cleaning that protects your unit, your timeline, and your reputation.',
+      'Fast, reliable turnovers between tenants, detailed cleaning that protects your unit, your timeline, and your reputation.',
     href: '/move-in-move-out-cleaning/',
     keywordFocus: 'move out cleaning for property management Nashville, tenant turnover cleaning',
   },
@@ -90,7 +90,7 @@ export const coreServices: Service[] = [
     shortName: 'Airbnb Turnovers',
     audience: 'Luxury Airbnb & STR Hosts',
     summary:
-      'Quick-turn cleanings between guests that protect your rating — consistent, hotel-grade presentation every single stay.',
+      'Quick-turn cleanings between guests that protect your rating: consistent, hotel-grade presentation every single stay.',
     href: '/airbnb-turnover-cleaning/',
     keywordFocus: 'Airbnb turnover cleaning Nashville, short-term rental cleaning service',
   },
@@ -121,12 +121,12 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Blueprint Clean Co did such a good job on our pre-listing clean that they ruined my afternoon plans — I thought I'd have another hour at Hobby Lobby, but the house was already finished. The home looked incredible, smelled fresh, and was absolutely show-ready. Highly recommend!",
+      "Blueprint Clean Co did such a good job on our pre-listing clean that they ruined my afternoon plans, I thought I'd have another hour at Hobby Lobby, but the house was already finished. The home looked incredible, smelled fresh, and was absolutely show-ready. Highly recommend!",
     name: 'Sharon T.',
   },
   {
     quote:
-      "I hired Blueprint Clean Co. for a deep clean. Their attention to detail was incredible, our home looked and felt completely refreshed. Highly recommend — they now clean for us bi-weekly!",
+      "I hired Blueprint Clean Co. for a deep clean. Their attention to detail was incredible, our home looked and felt completely refreshed. Highly recommend, they now clean for us bi-weekly!",
     name: 'Nicole G.',
   },
 ];
@@ -173,7 +173,7 @@ export const faqs = [
   },
   {
     q: 'Do you work directly with property management companies and realtors?',
-    a: "Yes — a large part of our business is built around realtor pre-listing prep and property management turnovers. We're used to working on tight timelines and coordinating directly with agents, PMs, and builders.",
+    a: "Yes, a large part of our business is built around realtor pre-listing prep and property management turnovers. We're used to working on tight timelines and coordinating directly with agents, PMs, and builders.",
   },
   {
     q: 'How do I get a quote?',
@@ -185,10 +185,10 @@ export const faqs = [
   },
   {
     q: 'Do you offer holiday or event cleaning?',
-    a: 'Yes — our Holiday Hosting and premium lifestyle packages cover pre-event setup, post-event deep cleans, and everything in between so you can focus on your guests.',
+    a: 'Yes, our Holiday Hosting and premium lifestyle packages cover pre-event setup, post-event deep cleans, and everything in between so you can focus on your guests.',
   },
   {
     q: "Can I book a specific date and time online?",
-    a: "You can request your two preferred date/time windows through our online request form, and our scheduling team will confirm the one that works best. We're working on full online self-scheduling — for now this two-option request gets you the fastest confirmation.",
+    a: "You can request your two preferred date/time windows through our online request form, and our scheduling team will confirm the one that works best. We're working on full online self-scheduling, for now this two-option request gets you the fastest confirmation.",
   },
 ];

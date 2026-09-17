@@ -7,7 +7,7 @@ import { site, coreServices } from '../lib/site';
   method="POST"
   id="quoteForm"
 >
-  <input type="hidden" name="_subject" value="New quote request — Blueprint Clean Co." />
+  <input type="hidden" name="_subject" value="New quote request - Blueprint Clean Co." />
 
   <div class="quote-form__row">
     <label>
@@ -58,25 +58,25 @@ import { site, coreServices } from '../lib/site';
 
   <fieldset class="quote-form__dates">
     <legend>
-      Choose two preferred date &amp; time windows — we'll confirm the one that works with our schedule.
+      Choose two preferred date &amp; time windows, we'll confirm the one that works with our schedule.
     </legend>
     <div class="quote-form__row">
       <label>
-        Option A — Date*
+        Option A - Date*
         <input type="date" name="date_option_a" required />
       </label>
       <label>
-        Option A — Time*
+        Option A - Time*
         <input type="time" name="time_option_a" required />
       </label>
     </div>
     <div class="quote-form__row">
       <label>
-        Option B — Date*
+        Option B - Date*
         <input type="date" name="date_option_b" required />
       </label>
       <label>
-        Option B — Time*
+        Option B - Time*
         <input type="time" name="time_option_b" required />
       </label>
     </div>
@@ -106,12 +106,14 @@ import { site, coreServices } from '../lib/site';
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 36px;
+    min-width: 0;
   }
 
   .quote-form__row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    min-width: 0;
   }
 
   label {
@@ -125,7 +127,7 @@ import { site, coreServices } from '../lib/site';
 
   input, select, textarea {
     font-family: var(--font-body);
-    font-size: 0.98rem;
+    font-size: 16px;
     color: var(--text);
     background: var(--bg-raised);
     border: 1px solid var(--border);
@@ -145,6 +147,7 @@ import { site, coreServices } from '../lib/site';
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-width: 0;
   }
 
   legend {
@@ -184,7 +187,7 @@ import { site, coreServices } from '../lib/site';
 
   form?.addEventListener('submit', async (e) => {
     if (form.action.includes('YOUR_FORM_ID')) {
-      // Formspree endpoint not configured yet — let it submit normally (will 404),
+      // Formspree endpoint not configured yet, let it submit normally (will 404),
       // but warn in console for the site owner/developer.
       console.warn('QuoteForm: replace site.formEndpoint with a real Formspree endpoint.');
       return;
@@ -204,10 +207,10 @@ import { site, coreServices } from '../lib/site';
         // @ts-ignore
         window.gtag?.('event', 'generate_lead', { form: 'quote_request' });
       } else {
-        if (status) status.textContent = 'Something went wrong — please call or email us directly.';
+        if (status) status.textContent = 'Something went wrong, please call or email us directly.';
       }
     } catch {
-      if (status) status.textContent = 'Something went wrong — please call or email us directly.';
+      if (status) status.textContent = 'Something went wrong, please call or email us directly.';
     }
   });
 </script>

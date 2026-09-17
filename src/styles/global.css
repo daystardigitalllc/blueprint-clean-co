@@ -1,4 +1,4 @@
-/* Blueprint Clean Co. — global design tokens & base styles */
+/* Blueprint Clean Co., global design tokens & base styles */
 
 :root {
   --bg: #ffffff;
@@ -135,7 +135,7 @@ h3 {
   color: var(--text-dim);
 }
 
-/* Buttons — ghost outline, sweep-fill on hover */
+/* Buttons, ghost outline, sweep-fill on hover */
 .btn {
   position: relative;
   isolation: isolate;
@@ -201,7 +201,7 @@ h3 {
   color: var(--accent-bright);
 }
 
-/* Inverted solid button — for use on top of the accent-color band (e.g. ClosingCTA) */
+/* Inverted solid button, for use on top of the accent-color band (e.g. ClosingCTA) */
 .btn-invert {
   background: #ffffff;
   color: var(--accent-bright);
@@ -306,6 +306,12 @@ h3 {
 .grid {
   display: grid;
   gap: 24px;
+}
+
+/* Grid items (fieldset, form, etc.) can otherwise refuse to shrink below
+   their content's intrinsic width and blow out the layout on narrow screens. */
+.grid > * {
+  min-width: 0;
 }
 
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
