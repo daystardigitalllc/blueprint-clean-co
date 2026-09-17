@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import { trustTicker } from '../lib/site';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel.astro';
@@ -26,6 +28,7 @@ import ovenAfter from '../assets/photos/before-after/oven-after.jpg';
   description="Nashville's precision cleaning company for realtors, property managers, home builders, and Airbnb hosts. Specializing in 3-phase post-construction cleaning, pre-listing prep, move-in/move-out turnovers, and Airbnb turnovers."
 >
   <Hero />
+  <Marquee items={trustTicker} />
 
   <section id="what-we-do">
     <div class="container">

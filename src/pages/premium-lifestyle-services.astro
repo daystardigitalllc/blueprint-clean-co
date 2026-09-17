@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
+import Marquee from '../components/Marquee.astro';
+import { trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/hallway-clean.jpg';
 
 const packages = [
@@ -75,6 +77,7 @@ const schema = [
       <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
     </div>
   </PageHero>
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

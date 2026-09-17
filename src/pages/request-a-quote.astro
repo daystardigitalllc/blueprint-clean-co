@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import QuoteForm from '../components/QuoteForm.astro';
-import { site } from '../lib/site';
+import Marquee from '../components/Marquee.astro';
+import { site, trustTicker } from '../lib/site';
 ---
 <Layout
   title="Request a Free Quote"
@@ -13,6 +14,7 @@ import { site } from '../lib/site';
     title="Your personalized service plan starts here"
     subtitle="Every property is unique. Whether you're preparing for a move, completing a new build, managing a rental, or looking for recurring service, we'll build a plan around your needs."
   />
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container" style="max-width:900px;">

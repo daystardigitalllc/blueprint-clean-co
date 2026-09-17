@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ServiceGrid from '../../components/ServiceGrid.astro';
 import ClosingCTA from '../../components/ClosingCTA.astro';
+import Marquee from '../../components/Marquee.astro';
+import { trustTicker } from '../../lib/site';
 ---
 <Layout
   title="Cleaning Services Nashville | Blueprint Clean Co."
@@ -13,6 +15,7 @@ import ClosingCTA from '../../components/ClosingCTA.astro';
     title="Precision cleaning, tailored to your property"
     subtitle="From post-construction projects and pre-listing prep to move-in/out services and Airbnb turnovers, we deliver precision cleaning tailored to every property."
   />
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

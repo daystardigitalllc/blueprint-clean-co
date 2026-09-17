@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ClosingCTA from '../../components/ClosingCTA.astro';
+import Marquee from '../../components/Marquee.astro';
+import { trustTicker } from '../../lib/site';
 import { Image } from 'astro:assets';
 
 import airbnbBed from '../../assets/photos/gallery-airbnb-bed.jpg';
@@ -27,6 +29,7 @@ const items = [
     title="Move-In / Move-Out & Airbnb Turnovers"
     subtitle="Fast, reliable turnovers for property managers and short-term rental hosts, kept separate here from our recurring residential and project-based work."
   />
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

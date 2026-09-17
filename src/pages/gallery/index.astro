@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import ClosingCTA from '../../components/ClosingCTA.astro';
+import Marquee from '../../components/Marquee.astro';
+import { trustTicker } from '../../lib/site';
 import { Image } from 'astro:assets';
 
 import residentialCover from '../../assets/photos/lived-in-kitchen-clean.jpg';
@@ -41,6 +43,7 @@ const categories = [
   description="Browse Blueprint Clean Co.'s work by category: recurring residential before & afters, move-in/move-out and Airbnb turnovers, post-construction cleans, and pre-listing prep."
 >
   <PageHero eyebrow="Recent Work" title="Precision you can see. Quality you can trust." subtitle="Browse our work by category." />
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

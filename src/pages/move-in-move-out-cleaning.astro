@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
+import Marquee from '../components/Marquee.astro';
+import { trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/hero-living-room-2.png';
 
 const included = [
@@ -57,6 +59,7 @@ const schema = [
       <a href="/gallery/turnovers/" class="btn btn-ghost-light">View Gallery</a>
     </div>
   </PageHero>
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
-import { faqs } from '../lib/site';
+import { faqs, trustTicker } from '../lib/site';
+import Marquee from '../components/Marquee.astro';
 
 const schema = [
   {
@@ -23,6 +24,7 @@ const schema = [
   schema={schema}
 >
   <PageHero eyebrow="FAQ" title="Common Questions" subtitle="Everything realtors, property managers, builders, and homeowners ask us before booking." />
+  <Marquee items={trustTicker} />
   <section>
     <div class="container" style="max-width:840px;">
       <FAQAccordion />

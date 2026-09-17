@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
+import Marquee from '../components/Marquee.astro';
+import { trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/hero-kitchen-marble.png';
 
 const phases = [
@@ -79,6 +81,7 @@ const schema = [
       <a href="/gallery/post-construction/" class="btn btn-ghost-light">View Gallery</a>
     </div>
   </PageHero>
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

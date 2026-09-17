@@ -3,7 +3,7 @@ import { site, primaryNav } from '../lib/site';
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 ---
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container site-header__row">
     <a href="/" class="site-header__brand" aria-label={`${site.name}, Home`}>
       <Image src={logo} alt={`${site.name} logo`} width={44} height={44} loading="eager" />
@@ -42,12 +42,26 @@ import logo from '../assets/logo.png';
 
 <style>
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    --hdr-text: #ffffff;
+    --hdr-text-dim: rgba(255, 255, 255, 0.85);
+    --hdr-control-border: rgba(255, 255, 255, 0.45);
+  }
+
+  .site-header.is-solid {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
+    border-bottom-color: var(--border);
+    --hdr-text: var(--text);
+    --hdr-text-dim: var(--text-dim);
+    --hdr-control-border: var(--border);
   }
 
   .site-header__row {
@@ -63,6 +77,7 @@ import logo from '../assets/logo.png';
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
+    color: var(--hdr-text);
   }
 
   .site-header__brand img {
@@ -74,6 +89,8 @@ import logo from '../assets/logo.png';
     font-size: 1.15rem;
     letter-spacing: -0.01em;
     white-space: nowrap;
+    color: var(--hdr-text);
+    transition: color 0.3s ease;
   }
 
   .site-header__nav ul {
@@ -87,13 +104,13 @@ import logo from '../assets/logo.png';
   .site-header__nav a {
     font-size: 0.92rem;
     font-weight: 600;
-    color: var(--text-dim);
+    color: var(--hdr-text-dim);
     transition: color 0.2s ease;
     white-space: nowrap;
   }
 
   .site-header__nav a:hover {
-    color: var(--accent-bright);
+    color: var(--hdr-text);
   }
 
   .site-header__actions {
@@ -107,6 +124,8 @@ import logo from '../assets/logo.png';
     font-weight: 700;
     font-size: 0.95rem;
     white-space: nowrap;
+    color: var(--hdr-text);
+    transition: color 0.3s ease;
   }
 
   .site-header__burger {
@@ -117,17 +136,19 @@ import logo from '../assets/logo.png';
     width: 44px;
     height: 44px;
     background: transparent;
-    border: 1px solid var(--border);
+    border: 1px solid var(--hdr-control-border);
     border-radius: var(--radius-sm);
     cursor: pointer;
+    transition: border-color 0.3s ease;
   }
 
   .site-header__burger span {
     display: block;
     width: 18px;
     height: 2px;
-    background: var(--text);
+    background: var(--hdr-text);
     margin: 0 auto;
+    transition: background-color 0.3s ease;
   }
 
   .mobile-nav {
@@ -151,6 +172,7 @@ import logo from '../assets/logo.png';
     display: block;
     padding: 12px 4px;
     font-weight: 600;
+    color: var(--text);
     border-bottom: 1px solid var(--border);
   }
 
@@ -168,11 +190,41 @@ import logo from '../assets/logo.png';
 </style>
 
 <script>
+  const header = document.getElementById('siteHeader');
   const burger = document.getElementById('burgerBtn');
   const nav = document.getElementById('mobileNav');
+
   burger?.addEventListener('click', () => {
     const open = nav?.classList.toggle('is-open');
     burger.setAttribute('aria-expanded', String(!!open));
     if (nav) nav.hidden = !open;
+    if (open) header?.classList.add('is-solid');
+    else updateSolidState();
+  });
+
+  // Only go transparent-over-hero when the first section is a dark, photo-backed
+  // hero (.bp-hero or .page-hero--photo). Plain white PageHero variants (no image)
+  // would make white header text/logo invisible, so those stay solid immediately.
+  const darkHeroEl = document.querySelector('#main > .bp-hero, #main > .page-hero--photo') as HTMLElement | null;
+  let threshold = -1;
+
+  function computeThreshold() {
+    if (!header || !darkHeroEl) return -1;
+    return Math.max(darkHeroEl.offsetHeight - header.offsetHeight - 40, 10);
+  }
+
+  function updateSolidState() {
+    if (!header) return;
+    if (nav && !nav.hidden) return; // mobile menu open, stays solid
+    header.classList.toggle('is-solid', threshold < 0 || window.scrollY > threshold);
+  }
+
+  threshold = computeThreshold();
+  updateSolidState();
+
+  window.addEventListener('scroll', updateSolidState, { passive: true });
+  window.addEventListener('resize', () => {
+    threshold = computeThreshold();
+    updateSolidState();
   });
 </script>

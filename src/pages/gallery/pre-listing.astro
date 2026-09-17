@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
 import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
 import ClosingCTA from '../../components/ClosingCTA.astro';
+import Marquee from '../../components/Marquee.astro';
+import { trustTicker } from '../../lib/site';
 import { Image } from 'astro:assets';
 
 import living1 from '../../assets/photos/hero-living-room-1.png';
@@ -26,6 +28,7 @@ const items = [
     title="Pre-Listing & Open House Gallery"
     subtitle="Show-ready results for realtors and sellers, kept separate here from our residential and turnover work."
   />
+  <Marquee items={trustTicker} />
 
   <section>
     <div class="container">

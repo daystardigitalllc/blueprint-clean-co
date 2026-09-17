@@ -107,7 +107,7 @@ const typeWords = [
     </div>
     <div class="bp-hero__scrim"></div>
 
-    <div class="container bp-hero__content">
+    <div class="bp-hero__content">
       <p class="bp-hero__type" aria-hidden="true">
         <span>Experts in </span><span class="bp-hero__type-text" id="heroType">{typeWords[0]}</span><span class="bp-hero__type-caret"></span>
       </p>
@@ -144,6 +144,7 @@ const typeWords = [
   .bp-hero {
     position: relative;
     height: 260vh;
+    padding: 0;
   }
 
   .bp-hero__sticky {
@@ -199,7 +200,11 @@ const typeWords = [
   .bp-hero__content {
     position: relative;
     z-index: 4;
-    padding: 40px 24px 64px;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 64px;
+    padding-right: 24px;
+    padding-left: clamp(24px, 5vw, 80px);
     max-width: 640px;
   }
 
