@@ -11,107 +11,241 @@ const typeWords = [
   'Recurring Residential & Commercial',
 ];
 ---
-<section class="hero">
-  <div class="hero__text">
-    <div class="hero__text-inner">
-      <p class="hero__type" aria-hidden="true">
-        <span>Experts in </span><span class="hero__type-text" id="heroType">{typeWords[0]}</span><span class="hero__type-caret"></span>
+<section class="bp-hero" id="bpHero">
+  <div class="bp-hero__sticky">
+    <!-- Stage 1: architectural blueprint -->
+    <div class="bp-hero__blueprint" data-bp-blueprint>
+      <svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+        <defs>
+          <pattern id="bpGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#3a5a8f" stroke-width="0.5" opacity="0.35" />
+          </pattern>
+          <pattern id="bpGridMajor" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#4d729e" stroke-width="0.75" opacity="0.4" />
+          </pattern>
+        </defs>
+
+        <rect width="1000" height="700" fill="#0a1a33" />
+        <rect width="1000" height="700" fill="url(#bpGrid)" />
+        <rect width="1000" height="700" fill="url(#bpGridMajor)" />
+
+        <!-- register marks -->
+        <g stroke="#7ea6ff" stroke-width="1" opacity="0.6">
+          <path d="M60,80 h20 M70,70 v20" />
+          <path d="M940,80 h-20 M930,70 v20" />
+          <path d="M60,620 h20 M70,610 v20" />
+          <path d="M940,620 h-20 M930,610 v20" />
+        </g>
+
+        <!-- outer walls (double line) -->
+        <g fill="none" stroke="#bcd2ff">
+          <rect x="80" y="80" width="840" height="540" stroke-width="3" />
+          <rect x="86" y="86" width="828" height="528" stroke-width="1" opacity="0.6" />
+        </g>
+
+        <!-- interior partitions with door gaps -->
+        <g stroke="#bcd2ff" stroke-width="2" fill="none">
+          <path d="M520,80 V200" />
+          <path d="M520,260 V620" />
+          <path d="M520,340 H600" />
+          <path d="M660,340 H920" />
+        </g>
+        <g stroke="#7ea6ff" stroke-width="1" fill="none" opacity="0.8">
+          <path d="M520,200 A60,60 0 0 1 580,260" />
+          <path d="M600,340 A40,40 0 0 1 600,380" />
+        </g>
+
+        <!-- room labels -->
+        <g fill="#dbe7ff" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" letter-spacing="2">
+          <text x="300" y="345" font-size="22" text-anchor="middle">LIVING ROOM</text>
+          <text x="300" y="370" font-size="12" text-anchor="middle" fill="#7ea6ff">22' - 0" x 18' - 0"</text>
+
+          <text x="720" y="205" font-size="20" text-anchor="middle">KITCHEN</text>
+          <text x="720" y="228" font-size="12" text-anchor="middle" fill="#7ea6ff">14' - 0" x 12' - 0"</text>
+
+          <text x="720" y="483" font-size="20" text-anchor="middle">BATH</text>
+          <text x="720" y="506" font-size="12" text-anchor="middle" fill="#7ea6ff">9' - 0" x 10' - 0"</text>
+        </g>
+
+        <!-- dimension lines -->
+        <g stroke="#7ea6ff" stroke-width="1" opacity="0.85">
+          <path d="M80,55 H920" />
+          <path d="M80,48 V62 M520,48 V62 M920,48 V62" />
+          <path d="M55,80 V620" />
+          <path d="M48,80 H62 M48,350 H62 M48,620 H62" />
+        </g>
+        <g fill="#7ea6ff" font-family="ui-monospace, monospace" font-size="12" letter-spacing="1">
+          <text x="300" y="42" text-anchor="middle">36' - 0"</text>
+          <text x="30" y="356" text-anchor="middle" transform="rotate(-90 30 356)">54' - 0"</text>
+          <text x="150" y="660" font-size="16" fill="#dbe7ff">2,400 SQ FT</text>
+        </g>
+
+        <!-- compass -->
+        <g transform="translate(955,105)" stroke="#bcd2ff" fill="none">
+          <circle r="26" stroke-width="1" opacity="0.7" />
+          <path d="M0,-20 L6,4 L0,-4 L-6,4 Z" fill="#bcd2ff" stroke="none" />
+          <text y="-30" text-anchor="middle" fill="#dbe7ff" font-size="11" font-family="ui-monospace, monospace" stroke="none">N</text>
+        </g>
+
+        <!-- approval stamp -->
+        <g transform="translate(865,660) rotate(-10)">
+          <circle r="52" fill="none" stroke="#7ea6ff" stroke-width="2" />
+          <circle r="45" fill="none" stroke="#7ea6ff" stroke-width="1" opacity="0.6" />
+          <text y="-6" text-anchor="middle" fill="#dbe7ff" font-size="13" font-family="ui-monospace, monospace" font-weight="700" letter-spacing="1">FINAL</text>
+          <text y="12" text-anchor="middle" fill="#dbe7ff" font-size="13" font-family="ui-monospace, monospace" font-weight="700" letter-spacing="1">CLEAN</text>
+          <path d="M-18,22 l10,10 l24,-24" fill="none" stroke="#7ea6ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Stage 2: dust/grain, clears as the space is finished -->
+    <div class="bp-hero__grain" data-bp-grain></div>
+
+    <!-- Stage 3: the real, finished space -->
+    <div class="bp-hero__photo" data-bp-photo>
+      <Image src={heroImg} alt="Pristine, freshly cleaned kitchen" width={1600} height={1000} loading="eager" fetchpriority="high" class="graded-img" />
+    </div>
+    <div class="bp-hero__scrim"></div>
+
+    <div class="container bp-hero__content">
+      <p class="bp-hero__type" aria-hidden="true">
+        <span>Experts in </span><span class="bp-hero__type-text" id="heroType">{typeWords[0]}</span><span class="bp-hero__type-caret"></span>
       </p>
       <span class="sr-only">
         Experts in post-construction cleaning, pre-listing realtor prep, move-in/move-out turnovers, Airbnb turnovers, and recurring residential &amp; commercial cleaning.
       </span>
 
       <h1>Precision Cleaning. <span class="accent">Professional Results.</span></h1>
-      <p class="lede hero__sub">
-        Blueprint Clean Co. is Nashville's go-to cleaning partner for realtors, property managers, home builders, and Airbnb hosts, plus the recurring residential &amp; commercial teams to keep any space pristine.
+      <p class="lede bp-hero__sub">
+        From blueprint to final walkthrough, Blueprint Clean Co. takes properties from job site to spotless,
+        for realtors, property managers, home builders, and Airbnb hosts across Nashville.
       </p>
 
       <div class="btn-row">
         <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
-        <a href={site.phoneHref} class="btn">Call {site.phone}</a>
+        <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
       </div>
 
-      <ul class="hero__trust">
+      <ul class="bp-hero__trust">
         <li>Post-Construction Specialists</li>
         <li>Trusted by Realtors &amp; PMs</li>
         <li>Free Estimates</li>
       </ul>
     </div>
-  </div>
 
-  <div class="hero__media">
-    <Image src={heroImg} alt="Pristine, freshly cleaned kitchen" width={1200} height={1400} loading="eager" fetchpriority="high" class="graded-img" />
+    <div class="bp-hero__cue" data-bp-cue aria-hidden="true">
+      <span>Scroll to see the transformation</span>
+      <span class="bp-hero__cue-arrow"></span>
+    </div>
   </div>
 </section>
 
 <style>
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 640px;
-  }
-
-  .hero__text {
-    display: flex;
-    align-items: center;
-    padding-top: 56px;
-    padding-bottom: 56px;
-    padding-right: 48px;
-    padding-left: clamp(24px, 5vw, 80px);
-  }
-
-  .hero__text-inner {
-    max-width: 560px;
-  }
-
-  .hero__media {
+  .bp-hero {
     position: relative;
-    overflow: hidden;
-    min-height: 320px;
+    height: 260vh;
   }
 
-  .hero__media :global(img) {
+  .bp-hero__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .bp-hero__blueprint,
+  .bp-hero__grain,
+  .bp-hero__photo,
+  .bp-hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .bp-hero__blueprint svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .bp-hero__grain {
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: 0;
+  }
+
+  .bp-hero__photo {
+    z-index: 2;
+    opacity: 0;
+    transform: scale(1.08);
+    will-change: opacity, transform;
+  }
+
+  .bp-hero__photo :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .hero__type {
+  .bp-hero__scrim {
+    z-index: 3;
+    background: linear-gradient(180deg, rgba(4,8,16,0.35) 0%, rgba(4,8,16,0.55) 55%, rgba(4,8,16,0.8) 100%);
+  }
+
+  .bp-hero__content {
+    position: relative;
+    z-index: 4;
+    padding: 40px 24px 64px;
+    max-width: 640px;
+  }
+
+  .bp-hero__type {
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-on-dark);
     margin-bottom: 16px;
     min-height: 1.4em;
   }
 
-  .hero__type-caret {
+  .bp-hero__type-caret {
     display: inline-block;
     width: 2px;
     height: 0.9em;
-    background: var(--accent);
+    background: var(--accent-on-dark);
     margin-left: 3px;
     vertical-align: -0.1em;
-    animation: caret 0.9s steps(1) infinite;
+    animation: bpCaret 0.9s steps(1) infinite;
   }
 
-  @keyframes caret {
+  @keyframes bpCaret {
     50% { opacity: 0; }
   }
 
-  .hero h1 {
-    font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  .bp-hero h1 {
+    font-size: clamp(2.3rem, 4.4vw, 3.6rem);
     letter-spacing: -0.01em;
+    color: #ffffff;
   }
 
-  .hero__sub {
+  .bp-hero h1 .accent {
+    color: var(--accent-on-dark);
+  }
+
+  .bp-hero__sub {
     margin-top: 18px;
     margin-bottom: 28px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
   }
 
-  .hero__trust {
+  .bp-hero__trust {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -121,15 +255,15 @@ const typeWords = [
     list-style: none;
   }
 
-  .hero__trust li {
+  .bp-hero__trust li {
     position: relative;
     padding-left: 18px;
     font-size: 0.88rem;
     font-weight: 600;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.9);
   }
 
-  .hero__trust li::before {
+  .bp-hero__trust li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -137,7 +271,37 @@ const typeWords = [
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent-on-dark);
+  }
+
+  .bp-hero__cue {
+    position: absolute;
+    z-index: 4;
+    right: 32px;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: opacity 0.4s ease;
+  }
+
+  .bp-hero__cue-arrow {
+    width: 18px;
+    height: 18px;
+    border-right: 2px solid rgba(255,255,255,0.7);
+    border-bottom: 2px solid rgba(255,255,255,0.7);
+    transform: rotate(45deg);
+    animation: bpCueBounce 1.6s ease-in-out infinite;
+  }
+
+  @keyframes bpCueBounce {
+    0%, 100% { transform: rotate(45deg) translate(0,0); }
+    50% { transform: rotate(45deg) translate(4px,4px); }
   }
 
   .sr-only {
@@ -148,21 +312,17 @@ const typeWords = [
     white-space: nowrap;
   }
 
-  @media (max-width: 1000px) {
-    .hero {
-      grid-template-columns: 1fr;
-    }
-    .hero__media {
-      min-height: 280px;
-      order: -1;
-    }
-    .hero__text {
-      padding: 40px 24px 48px;
-    }
+  @media (max-width: 640px) {
+    .bp-hero { height: 220vh; }
+    .bp-hero__cue { display: none; }
   }
 
-  @media (max-width: 560px) {
-    .hero__trust { flex-direction: column; align-items: flex-start; gap: 10px; }
+  @media (prefers-reduced-motion: reduce) {
+    .bp-hero { height: auto; }
+    .bp-hero__sticky { position: relative; height: 88vh; min-height: 560px; }
+    .bp-hero__blueprint, .bp-hero__grain { display: none; }
+    .bp-hero__photo { opacity: 1; transform: none; }
+    .bp-hero__cue { display: none; }
   }
 </style>
 
@@ -201,4 +361,54 @@ const typeWords = [
       setTimeout(tick, 1600);
     }
   }
+</script>
+
+<script>
+  function setupBlueprintScroll() {
+    const section = document.getElementById('bpHero');
+    if (!section) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const blueprint = section.querySelector('[data-bp-blueprint]');
+    const grain = section.querySelector('[data-bp-grain]');
+    const photo = section.querySelector('[data-bp-photo]');
+    const cue = section.querySelector('[data-bp-cue]');
+    if (!blueprint || !grain || !photo) return;
+
+    const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+    const mapRange = (v, inMin, inMax) => clamp((v - inMin) / (inMax - inMin), 0, 1);
+
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const rect = section.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      const p = scrollable > 0 ? clamp(-rect.top / scrollable, 0, 1) : 0;
+
+      const blueprintOpacity = 1 - mapRange(p, 0, 0.42);
+      const grainOpacity = mapRange(p, 0.08, 0.22) * (1 - mapRange(p, 0.3, 0.55));
+      const photoOpacity = mapRange(p, 0.28, 0.68);
+      const photoScale = 1.08 - 0.08 * mapRange(p, 0.15, 0.75);
+
+      blueprint.style.opacity = String(blueprintOpacity);
+      grain.style.opacity = String(grainOpacity * 0.5);
+      photo.style.opacity = String(photoOpacity);
+      photo.style.transform = `scale(${photoScale})`;
+      if (cue) cue.style.opacity = p > 0.05 ? '0' : '1';
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
+  setupBlueprintScroll();
 </script>
