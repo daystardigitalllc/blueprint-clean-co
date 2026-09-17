@@ -1,15 +1,12 @@
 ---
 import { site, primaryNav } from '../lib/site';
 import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-transparent.png';
 ---
 <header class="site-header" id="siteHeader">
   <div class="container site-header__row">
     <a href="/" class="site-header__brand" aria-label={`${site.name}, Home`}>
-      <Image src={logo} alt={`${site.name} logo`} width={44} height={44} loading="eager" />
-      <span class="site-header__brand-text">
-        <strong>Blueprint</strong> Clean Co.
-      </span>
+      <Image src={logo} alt={`${site.name} logo`} width={100} height={100} loading="eager" />
     </a>
 
     <nav class="site-header__nav" aria-label="Primary">
@@ -69,33 +66,35 @@ import logo from '../assets/logo.png';
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    height: 84px;
+    height: 108px;
   }
 
   .site-header__brand {
     display: flex;
     align-items: center;
-    gap: 12px;
     flex-shrink: 0;
     color: var(--hdr-text);
   }
 
   .site-header__brand img {
-    border-radius: 6px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
   }
 
-  .site-header__brand-text {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-    color: var(--hdr-text);
-    transition: color 0.3s ease;
+  .site-header__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
   }
 
   .site-header__nav ul {
     display: flex;
-    gap: 28px;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    max-width: 640px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -184,8 +183,9 @@ import logo from '../assets/logo.png';
     .mobile-nav.is-open { display: flex; }
   }
 
-  @media (max-width: 420px) {
-    .site-header__brand-text { font-size: 1rem; }
+  @media (max-width: 480px) {
+    .site-header__brand img { width: 72px; height: 72px; }
+    .site-header__row { height: 84px; }
   }
 </style>
 
