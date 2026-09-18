@@ -1,21 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
-import BeforeAfter from '../../components/BeforeAfter.astro';
-import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
 import ClosingCTA from '../../components/ClosingCTA.astro';
 import Marquee from '../../components/Marquee.astro';
 import { trustTicker } from '../../lib/site';
 import heroImg from '../../assets/photos/lived-in-bathroom-clean.jpg';
-import type { ImageMetadata } from 'astro';
 
-// TODO(Savannah): drop real before/after photo pairs in here as they come in.
-// Each pair needs a `before` image and an `after` image of the SAME space.
-// Example once photos are ready:
-// import kitchenBefore from '../../assets/photos/residential/kitchen-before.jpg';
-// import kitchenAfter from '../../assets/photos/residential/kitchen-after.jpg';
-// const pairs = [{ before: kitchenBefore, after: kitchenAfter, label: 'Kitchen, Recurring Clean' }];
-const pairs: { before: ImageMetadata; after: ImageMetadata; label?: string }[] = [];
+import toiletBefore from '../../assets/photos/before-after/toilet-before.jpg';
+import toiletAfter from '../../assets/photos/before-after/toilet-after.jpg';
+import sinkBefore from '../../assets/photos/before-after/sink-before.jpg';
+import sinkAfter from '../../assets/photos/before-after/sink-after.jpg';
+import ovenBefore from '../../assets/photos/before-after/oven-before.jpg';
+import ovenAfter from '../../assets/photos/before-after/oven-after.jpg';
 ---
 <Layout
   title="Recurring Residential Cleaning, Before & After | Blueprint Clean Co."
@@ -31,13 +28,11 @@ const pairs: { before: ImageMetadata; after: ImageMetadata; label?: string }[] =
 
   <section>
     <div class="container">
-      {pairs.length > 0 ? (
-        <div class="grid grid-3">
-          {pairs.map((p) => <BeforeAfter before={p.before} after={p.after} label={p.label} />)}
-        </div>
-      ) : (
-        <GalleryComingSoon message="Real before-and-after photos from our recurring residential teams are on the way, check back soon, or ask us for examples directly." />
-      )}
+      <div class="grid grid-3">
+        <BeforeAfterSlider id="res-toilet" before={toiletBefore} after={toiletAfter} label="Toilet, Deep Clean" />
+        <BeforeAfterSlider id="res-sink" before={sinkBefore} after={sinkAfter} label="Bathroom Sink, Deep Clean" />
+        <BeforeAfterSlider id="res-oven" before={ovenBefore} after={ovenAfter} label="Oven, Deep Clean" />
+      </div>
     </div>
   </section>
 
