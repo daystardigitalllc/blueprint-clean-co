@@ -13,11 +13,11 @@ import livingRoom2 from '../../assets/photos/hero-living-room-2.png';
 import showerStall from '../../assets/photos/shower-stall-clean.jpg';
 
 const items = [
-  { img: airbnbBed, alt: 'Hotel-style bed with folded towels, guest-ready Airbnb turnover', tag: 'Airbnb Turnover' },
-  { img: shower, alt: 'Spotless glass shower enclosure after a tenant turnover', tag: 'Move-Out Clean' },
-  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next tenant', tag: 'Move-In Ready' },
-  { img: livingRoom2, alt: 'Move-in ready living room, fully cleaned', tag: 'Move-In / Move-Out' },
-  { img: showerStall, alt: 'Spotless tub and shower stall, guest and tenant ready', tag: 'Move-In / Airbnb' },
+  { img: airbnbBed, alt: 'Hotel-style bed with folded towels, guest-ready Airbnb turnover' },
+  { img: shower, alt: 'Spotless glass shower enclosure after a tenant turnover' },
+  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next tenant' },
+  { img: livingRoom2, alt: 'Move-in ready living room, fully cleaned' },
+  { img: showerStall, alt: 'Spotless tub and shower stall, guest and tenant ready' },
 ];
 ---
 <Layout
@@ -37,7 +37,6 @@ const items = [
         {items.map((item) => (
           <figure class="gallery-item">
             <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
-            <figcaption>{item.tag}</figcaption>
           </figure>
         ))}
       </div>
@@ -65,19 +64,5 @@ const items = [
     height: 100%;
     object-fit: cover;
     aspect-ratio: 4/5;
-  }
-  .gallery-item figcaption {
-    position: absolute;
-    left: 12px;
-    bottom: 12px;
-    background: rgba(6,10,16,0.8);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #ffffff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    border-radius: 4px;
   }
 </style>

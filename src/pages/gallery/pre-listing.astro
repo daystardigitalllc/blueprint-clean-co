@@ -13,10 +13,10 @@ import stagedBath from '../../assets/photos/staged-bathroom-vessel-sink.jpg';
 import hallway from '../../assets/photos/hallway-clean.jpg';
 
 const items = [
-  { img: living1, alt: 'Bright, showing-ready living room with fireplace', tag: 'Pre-Listing Prep' },
-  { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings', tag: 'Pre-Listing Prep' },
-  { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings', tag: 'Pre-Listing Prep' },
-  { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready', tag: 'Pre-Listing Prep' },
+  { img: living1, alt: 'Bright, showing-ready living room with fireplace' },
+  { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings' },
+  { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings' },
+  { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready' },
 ];
 ---
 <Layout
@@ -36,7 +36,6 @@ const items = [
         {items.map((item) => (
           <figure class="gallery-item">
             <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
-            <figcaption>{item.tag}</figcaption>
           </figure>
         ))}
       </div>
@@ -66,19 +65,5 @@ const items = [
     height: 100%;
     object-fit: cover;
     aspect-ratio: 4/5;
-  }
-  .gallery-item figcaption {
-    position: absolute;
-    left: 12px;
-    bottom: 12px;
-    background: rgba(6,10,16,0.8);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #ffffff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    border-radius: 4px;
   }
 </style>

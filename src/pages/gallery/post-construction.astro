@@ -12,9 +12,9 @@ import sink from '../../assets/photos/gallery-kitchen-sink.jpg';
 import faucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
 
 const items = [
-  { img: kitchen, alt: 'Spotless new-build kitchen after final detail clean', tag: 'Phase 3, Final Detail Clean' },
-  { img: sink, alt: 'Detail-cleaned kitchen sink, no construction dust', tag: 'Phase 3, Detail' },
-  { img: faucet, alt: 'Polished bathroom faucet, post-construction detail', tag: 'Phase 2, Touch-Up' },
+  { img: kitchen, alt: 'Spotless new-build kitchen after final detail clean' },
+  { img: sink, alt: 'Detail-cleaned kitchen sink, no construction dust' },
+  { img: faucet, alt: 'Polished bathroom faucet, post-construction detail' },
 ];
 ---
 <Layout
@@ -34,7 +34,6 @@ const items = [
         {items.map((item) => (
           <figure class="gallery-item">
             <Image src={item.img} alt={item.alt} width={500} height={620} class="graded-img" />
-            <figcaption>{item.tag}</figcaption>
           </figure>
         ))}
       </div>
@@ -64,19 +63,5 @@ const items = [
     height: 100%;
     object-fit: cover;
     aspect-ratio: 4/5;
-  }
-  .gallery-item figcaption {
-    position: absolute;
-    left: 12px;
-    bottom: 12px;
-    background: rgba(6,10,16,0.8);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #ffffff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    border-radius: 4px;
   }
 </style>
