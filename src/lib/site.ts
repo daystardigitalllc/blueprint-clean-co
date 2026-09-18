@@ -9,7 +9,7 @@ export const site = {
   areaServed: 'Nashville & Middle Tennessee',
   city: 'Nashville',
   region: 'TN',
-  formEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // TODO: replace with real Formspree endpoint
+  formEndpoint: 'https://formspree.io/f/xqpakvqq',
   social: {
     // TODO: add real profile URLs when available
     google: '',
