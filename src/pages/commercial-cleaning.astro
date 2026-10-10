@@ -2,14 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Marquee from '../components/Marquee.astro';
+import Credentials from '../components/Credentials.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import { site, trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/hero-vacuum-living-room.jpg';
 
 const services = [
   {
-    id: 'offices',
-    name: 'Offices & Professional Spaces',
+    id: 'office-cleaning',
+    name: 'Office Cleaning',
     detail: 'A clean, organized workplace that supports your team and impresses clients.',
     items: [
       'Desks, common areas, conference rooms, and entryways',
@@ -19,30 +20,30 @@ const services = [
     ],
   },
   {
-    id: 'retail',
-    name: 'Retail Spaces',
-    detail: 'Storefronts that look inviting from the first step through the door.',
+    id: 'retail-facility',
+    name: 'Retail & Commercial Facility Cleaning',
+    detail: 'Storefronts and facilities that look inviting from the first step through the door.',
     items: [
-      'Sales floors, fitting rooms, and checkout areas',
-      'Glass doors and display windows',
+      'Sales floors, checkout areas, and customer-facing spaces',
+      'Glass doors, windows, and entryways',
       'Restrooms and back-of-house areas',
       'Before-open and after-close scheduling',
     ],
   },
   {
     id: 'janitorial',
-    name: 'Janitorial Services',
+    name: 'Recurring Janitorial Services',
     detail: 'Dependable day-to-day janitorial service on a schedule that suits your business.',
     items: [
       'Daily, weekly, or monthly janitorial service',
-      'Restocking support for paper goods and soap',
       'Dusting, vacuuming, mopping, and sanitizing',
       'Consistent crew who knows your space',
+      'Flexible after-hours scheduling',
     ],
   },
   {
     id: 'property-management',
-    name: 'Property Management',
+    name: 'Property Management Cleaning',
     detail: 'Fast, reliable turnovers and common-area service for the properties you manage.',
     items: [
       'Move-in / move-out unit turnovers',
@@ -53,23 +54,21 @@ const services = [
   },
   {
     id: 'contracts',
-    name: 'Commercial Contracts',
+    name: 'Customized Commercial Cleaning Contracts',
     detail: 'A recurring plan built around your facility, your budget, and your calendar.',
     items: [
       'Custom checklists built around your space and industry',
-      'Weekly, bi-weekly, or monthly contract schedules',
-      'Multiple locations under one point of contact',
+      'Scheduled service with a single point of contact',
+      'Scope and frequency tailored to your needs',
       'Transparent pricing with no surprise fees',
     ],
   },
 ];
 
-const reasons = [
-  'After-hours and flexible scheduling to avoid business disruption',
-  'Consistent crew assignment so the same team knows your space',
-  'Detailed checklists so quality never varies',
-  'Eco-friendly, high-performance products',
-  'Fast, responsive communication from quote to walkthrough',
+const strengths = [
+  { title: 'Flexible scheduling', detail: 'After-hours and off-peak service to avoid business disruption.' },
+  { title: 'Consistent crews', detail: 'The same trained team assigned to your space, so quality never varies.' },
+  { title: 'Documented standards', detail: 'Detailed checklists and inspections on every commercial account.' },
 ];
 
 const schema = [
@@ -80,23 +79,23 @@ const schema = [
     provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
     areaServed: site.serviceCounties.map((c) => `${c} County, TN`),
     description:
-      'Commercial cleaning in Middle Tennessee: offices, retail spaces, janitorial services, property management turnovers, and commercial contracts.',
+      'Commercial cleaning in Middle Tennessee: office cleaning, retail and commercial facility cleaning, recurring janitorial services, property management cleaning, customized commercial contracts, and government and public sector cleaning.',
   },
 ];
 ---
 <Layout
   title="Commercial Cleaning in Middle Tennessee | Blueprint Clean Co."
-  description="Commercial cleaning in Nashville and Middle Tennessee: offices, retail spaces, janitorial services, property management turnovers, and commercial cleaning contracts."
+  description="Commercial cleaning in Nashville and Middle Tennessee: office cleaning, retail and facility cleaning, recurring janitorial, property management cleaning, custom contracts, and government and public sector cleaning."
   schema={schema}
 >
   <PageHero
-    eyebrow="Commercial"
+    eyebrow="For Businesses"
     title="Commercial Cleaning"
-    subtitle="Offices, retail spaces, janitorial services, property management, and commercial contracts, with the precision and reliability your business expects."
+    subtitle="Professional, dependable cleaning for offices, retail spaces, facilities, and property managers, with the consistency your business expects."
     image={heroImg}
   >
     <div class="btn-row" style="margin-top:24px;">
-      <a href={site.quoteHref} class="btn btn-solid">Get a Free Quote</a>
+      <a href={site.quoteHref} class="btn btn-solid">Request a Commercial Quote</a>
       <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
       <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
     </div>
@@ -104,47 +103,58 @@ const schema = [
   <Marquee items={trustTicker} />
 
   <section id="services">
-    <div class="container">
-      <div class="section-head">
+    <div class="container biz">
+      <div class="biz__intro">
         <p class="eyebrow">Commercial Services</p>
         <h2>Cleaning built for <span class="accent">your business</span></h2>
         <p class="lede">From a single office to multiple locations, we tailor the scope and schedule to how your business runs.</p>
+        <a href={site.quoteHref} class="btn btn-solid" style="margin-top:12px;">Request a Quote</a>
       </div>
-      <div class="grid grid-3">
+      <div class="biz__list">
         {services.map((s) => (
-          <div class="card svc-card" id={s.id}>
+          <article class="biz__item" id={s.id}>
             <h3>{s.name}</h3>
             <p>{s.detail}</p>
-            <ul class="check-list">
+            <ul class="check-list biz__checks">
               {s.items.map((item) => <li>{item}</li>)}
             </ul>
-          </div>
+          </article>
         ))}
-        <div class="card svc-card svc-card--cta">
-          <p class="eyebrow">Custom Quote</p>
-          <h3>Not sure what you need?</h3>
-          <p>Tell us about your space and we will recommend a scope and schedule that fits.</p>
-          <div class="btn-row" style="margin-top:auto; padding-top:18px;">
-            <a href={site.quoteHref} class="btn btn-solid">Request a Quote</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <section class="section-alt">
+  <section class="section-alt strengths">
     <div class="container">
-      <div class="grid grid-2" style="gap:56px; align-items:center;">
-        <div>
-          <p class="eyebrow">Why Businesses Choose Us</p>
-          <h2>Professional, <span class="accent">predictable, precise</span></h2>
-          <p class="lede">Every commercial client gets a documented checklist, a consistent crew, and a single point of contact.</p>
+      <div class="grid grid-3">
+        {strengths.map((s) => (
+          <div class="strength">
+            <h3>{s.title}</h3>
+            <p>{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="government" class="section-navy">
+    <div class="container gov">
+      <div>
+        <p class="eyebrow">Government &amp; Public Sector Cleaning</p>
+        <h2>Ready to serve <span class="accent">public sector facilities</span></h2>
+        <p class="lede">
+          Blueprint Clean Co. is a woman-owned business with an assigned CAGE code. We welcome government
+          contracting and bidding opportunities and are ready to bring the same precision and professionalism to
+          public sector facilities.
+        </p>
+        <div class="btn-row" style="margin-top:24px;">
+          <a href={site.quoteHref} class="btn btn-invert">Discuss a Contract</a>
+          <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
         </div>
-        <div class="card" style="padding:32px;">
-          <ul class="check-list" style="margin-top:0;">
-            {reasons.map((r) => <li>{r}</li>)}
-          </ul>
-        </div>
+      </div>
+      <div class="gov__panel">
+        <Credentials tone="dark" />
+        <p class="gov__note">Operated by {site.legalName}</p>
       </div>
     </div>
   </section>
@@ -153,8 +163,114 @@ const schema = [
 </Layout>
 
 <style>
-  .svc-card--cta {
-    background: var(--accent-soft);
-    border-color: #c9d9ff;
+  .biz {
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .biz__intro {
+    position: sticky;
+    top: 150px;
+  }
+
+  .biz__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .biz__item {
+    padding: 28px 0 28px 28px;
+    border-left: 4px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+    margin-left: 0;
+  }
+
+  .biz__item:first-child {
+    padding-top: 6px;
+  }
+
+  .biz__item h3 {
+    margin-bottom: 6px;
+  }
+
+  .biz__item > p {
+    color: var(--text-dim);
+  }
+
+  .biz__checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+
+  .strengths {
+    padding: 56px 0;
+  }
+
+  .strength {
+    padding-top: 18px;
+    border-top: 3px solid var(--accent);
+  }
+
+  .strength h3 {
+    margin-bottom: 6px;
+  }
+
+  .strength p {
+    margin: 0;
+    color: var(--text-dim);
+  }
+
+  .gov {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .gov__panel {
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gov__panel :global(.credentials) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gov__note {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .biz {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .biz__intro {
+      position: static;
+    }
+    .gov {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .biz__checks {
+      grid-template-columns: 1fr;
+    }
+    .biz__item {
+      padding-left: 18px;
+    }
   }
 </style>

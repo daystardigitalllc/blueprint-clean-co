@@ -29,6 +29,34 @@ const phases = [
   },
 ];
 
+const services = [
+  {
+    tag: 'Scope 01',
+    name: 'New Construction Cleaning',
+    detail: 'Complete cleaning for new homes and buildings, taking every space from job site to move-in ready.',
+  },
+  {
+    tag: 'Scope 02',
+    name: 'Rough Cleaning',
+    detail: 'Debris, dust, stickers, and protective film cleared so trades and inspectors can keep moving.',
+  },
+  {
+    tag: 'Scope 03',
+    name: 'Final Detail Cleaning',
+    detail: 'A detailed top-to-bottom clean of every surface, fixture, and floor right before walkthrough or closing.',
+  },
+  {
+    tag: 'Scope 04',
+    name: 'Post-Renovation Cleaning',
+    detail: 'Dust and debris from remodels and renovations removed, leaving the space clean and ready to use.',
+  },
+  {
+    tag: 'Scope 05',
+    name: 'Builder & Contractor Cleaning Services',
+    detail: 'Reliable, schedule-driven cleaning for builders, general contractors, and construction companies.',
+  },
+];
+
 const faqs = [
   {
     q: 'When should I schedule each phase?',
@@ -71,7 +99,7 @@ const schema = [
   schema={schema}
 >
   <PageHero
-    eyebrow="For Home Builders & Contractors"
+    eyebrow="For Builders, General Contractors & Construction Companies"
     title="Post-Construction 3-Phase Cleaning"
     subtitle="A structured, three-phase process that takes every new build from job site to move-in ready, on your schedule."
     image={heroImg}
@@ -85,6 +113,25 @@ const schema = [
     </div>
   </PageHero>
   <Marquee items={trustTicker} />
+
+  <section class="bp-paper">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Construction Cleaning Services</p>
+        <h2>Cleaning for <span class="accent">builders, contractors &amp; construction companies</span></h2>
+        <p class="lede">Whatever stage your project is in, we have a cleaning scope to match it.</p>
+      </div>
+      <div class="scope-grid">
+        {services.map((s) => (
+          <div class="scope-card">
+            <span class="scope-card__tag">{s.tag}</span>
+            <h3>{s.name}</h3>
+            <p>{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="bp-sheet">
     <div class="container">
@@ -163,6 +210,52 @@ const schema = [
 </Layout>
 
 <style>
+  .bp-paper {
+    background-color: #f4f8ff;
+    background-image:
+      linear-gradient(rgba(29, 78, 216, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29, 78, 216, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .scope-card {
+    position: relative;
+    padding: 28px 26px;
+    background: #ffffff;
+    border: 1.5px solid var(--navy);
+  }
+  .scope-card::before {
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    left: -1.5px;
+    width: 18px;
+    height: 18px;
+    border-top: 4px solid var(--accent);
+    border-left: 4px solid var(--accent);
+  }
+  .scope-card__tag {
+    display: inline-block;
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .scope-card h3 {
+    margin-bottom: 8px;
+  }
+  .scope-card p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.94rem;
+  }
   .bp-sheet {
     background-color: #0a1a33;
     background-image:
@@ -245,5 +338,10 @@ const schema = [
 
   @media (max-width: 900px) {
     .phase-list { grid-template-columns: 1fr; }
+    .scope-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .scope-grid { grid-template-columns: 1fr; }
   }
 </style>

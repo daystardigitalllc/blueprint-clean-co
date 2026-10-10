@@ -100,22 +100,22 @@
     },
     {
       "source": "/airbnb-turnover-cleaning/",
-      "destination": "/residential-cleaning/#short-term-rentals",
+      "destination": "/residential-cleaning/",
       "permanent": true
     },
     {
       "source": "/airbnb-turnover-cleaning",
-      "destination": "/residential-cleaning/#short-term-rentals",
+      "destination": "/residential-cleaning/",
       "permanent": true
     },
     {
       "source": "/premium-lifestyle-services/",
-      "destination": "/residential-cleaning/#home-support",
+      "destination": "/residential-cleaning/#senior-cleaning",
       "permanent": true
     },
     {
       "source": "/premium-lifestyle-services",
-      "destination": "/residential-cleaning/#home-support",
+      "destination": "/residential-cleaning/#senior-cleaning",
       "permanent": true
     },
     {
@@ -130,22 +130,22 @@
     },
     {
       "source": "/gallery/turnovers/",
-      "destination": "/gallery/#move-in-out",
+      "destination": "/gallery/#residential",
       "permanent": true
     },
     {
       "source": "/gallery/turnovers",
-      "destination": "/gallery/#move-in-out",
+      "destination": "/gallery/#residential",
       "permanent": true
     },
     {
       "source": "/gallery/pre-listing/",
-      "destination": "/gallery/#pre-listing",
+      "destination": "/gallery/#residential",
       "permanent": true
     },
     {
       "source": "/gallery/pre-listing",
-      "destination": "/gallery/#pre-listing",
+      "destination": "/gallery/#residential",
       "permanent": true
     },
     {

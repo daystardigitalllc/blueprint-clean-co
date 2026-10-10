@@ -11,6 +11,7 @@ const year = new Date().getFullYear();
       <p class="site-footer__tagline">{site.subTagline}</p>
       <p class="site-footer__hours">Mon–Sat 8:00 AM–8:00 PM &middot; Sun 9:00 AM–6:00 PM</p>
       <p class="site-footer__hours">Serving {site.serviceCounties.length} Middle Tennessee counties</p>
+      <p class="site-footer__hours">Proudly Woman-Owned &middot; CAGE Code Assigned</p>
     </div>
 
     <div>
@@ -45,7 +46,7 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="container site-footer__bottom">
-    <p>&copy; {year} {site.name} All rights reserved.</p>
+    <p>&copy; {year} {site.legalName}, operating as {site.name} All rights reserved.</p>
     <p>{site.tagline}</p>
   </div>
 </footer>

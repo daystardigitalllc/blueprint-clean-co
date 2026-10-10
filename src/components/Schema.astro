@@ -11,15 +11,13 @@ const localBusiness = {
   '@type': 'HomeAndConstructionBusiness',
   name: site.name,
   description:
-    'Precision cleaning for realtors, property managers, home builders, and Airbnb hosts across Nashville and Middle Tennessee. Specializing in pre-listing prep, move-in/move-out turnovers, Airbnb turnovers, and 3-phase post-construction cleaning.',
+    'Woman-owned residential and commercial cleaning for homeowners, businesses, and government facilities across Middle Tennessee, plus post-construction cleaning for builders and contractors.',
   telephone: site.phone,
   email: site.email,
   url: 'https://www.blueprintclean.com',
   image: 'https://www.blueprintclean.com/social-share.jpg',
-  areaServed: {
-    '@type': 'City',
-    name: 'Nashville, TN',
-  },
+  legalName: site.legalName,
+  areaServed: site.serviceCounties.map((c) => ({ '@type': 'AdministrativeArea', name: `${c} County, TN` })),
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Nashville',

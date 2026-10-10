@@ -7,13 +7,21 @@ import ClosingCTA from '../components/ClosingCTA.astro';
 import { Image } from 'astro:assets';
 import { site, trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/lived-in-kitchen-clean.jpg';
+import deepImg from '../assets/photos/residential-kitchen-clean.jpg';
+import recurringImg from '../assets/photos/lived-in-bathroom-clean.jpg';
+import moveImg from '../assets/photos/empty-living-room-clean.jpg';
+import listingImg from '../assets/photos/hero-living-room-1.png';
 import organizedCloset from '../assets/photos/before-after/closet-after.jpg';
+import carpetImg from '../assets/photos/carpet-clean-room.jpg';
+import seniorImg from '../assets/photos/senior-home-support.png';
 
 const services = [
   {
     id: 'deep-cleaning',
     name: 'Deep Cleaning',
     detail: 'A top-to-bottom reset for homes that need more than a surface clean.',
+    img: deepImg,
+    alt: 'Spotless home kitchen after a deep clean',
     items: [
       'Kitchens: inside oven, cabinet fronts, sinks, and appliances',
       'Bathrooms: tile, grout, glass, toilets, and fixtures',
@@ -23,10 +31,12 @@ const services = [
   },
   {
     id: 'recurring-cleaning',
-    name: 'Recurring Cleaning',
+    name: 'Weekly, Biweekly & Monthly Cleaning',
     detail: 'The same dedicated crew on your schedule, so your home stays pristine.',
+    img: recurringImg,
+    alt: 'Clean, bright home bathroom',
     items: [
-      'Weekly, bi-weekly, or monthly service',
+      'Weekly, biweekly, or monthly service',
       'Dusting, vacuuming, mopping, and trash removal',
       'Kitchens, bathrooms, bedrooms, and living areas',
       'Consistent crew assignment so the same team knows your home',
@@ -36,6 +46,8 @@ const services = [
     id: 'move-in-move-out',
     name: 'Move-In / Move-Out Cleaning',
     detail: 'Leave it spotless or start fresh in a home that is truly move-in ready.',
+    img: moveImg,
+    alt: 'Empty, freshly cleaned living room',
     items: [
       'Inside and outside of cabinets, drawers, and closets',
       'Inside oven, refrigerator, and microwave',
@@ -44,69 +56,16 @@ const services = [
     ],
   },
   {
-    id: 'organization',
-    name: 'Home Organization',
-    detail: 'Closets, pantries, and storage spaces sorted, labeled, and easy to keep up.',
-    items: [
-      'Closet and pantry organization',
-      'Bins, labels, and simple systems that last',
-      'Decluttering and sorting by category',
-      'Pairs well with a deep clean or move-in reset',
-    ],
-  },
-  {
     id: 'pre-listing',
-    name: 'Pre-Listing & Open House',
-    detail: 'Show-ready cleans that help listings photograph and sell at their best.',
+    name: 'Pre-Listing Cleaning',
+    detail: 'Show-ready cleans that help your home photograph, show, and sell at its best.',
+    img: listingImg,
+    alt: 'Bright, showing-ready living room',
     items: [
       'Full interior deep clean before photos and showings',
       'Windows, mirrors, and glass streak-free',
       'Fresh, neutral scent with no lingering odors',
       'Touch-up cleans before open houses',
-    ],
-  },
-  {
-    id: 'short-term-rentals',
-    name: 'Airbnb & Short-Term Rentals',
-    detail: 'Quick-turn cleans between guests that protect your reviews.',
-    items: [
-      'Full reset of kitchen, bathrooms, and living spaces',
-      'Fresh linens and hotel-style bed making',
-      'Restocking checklist support',
-      'Damage and maintenance flagging after every stay',
-    ],
-  },
-];
-
-const packages = [
-  {
-    name: 'Holiday Hosting',
-    tag: 'Take the stress out of hosting',
-    items: [
-      'Event set up and take down',
-      'Presentation clean before your event',
-      'Deep clean after the event',
-      'Dishes, kitchen, and bathroom clean',
-    ],
-  },
-  {
-    name: 'Getaway Package',
-    tag: 'Leave relaxed, come home refreshed',
-    items: [
-      'Complete home cleaning while you are away',
-      'Kitchen and bathroom refresh',
-      'Made bed and floor care',
-      'Laundry and grocery restock (optional)',
-    ],
-  },
-  {
-    name: 'Senior Home Support',
-    tag: 'Care you can trust',
-    items: [
-      'Light housekeeping and laundry',
-      'Grocery shopping',
-      'Bathroom and kitchen refresh',
-      'Home wellness check and reporting to family',
     ],
   },
 ];
@@ -119,19 +78,19 @@ const schema = [
     provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
     areaServed: site.serviceCounties.map((c) => `${c} County, TN`),
     description:
-      'Residential cleaning in Middle Tennessee: deep cleaning, recurring cleaning, move-in/move-out cleaning, home organization, and more.',
+      'Residential cleaning in Middle Tennessee: deep cleaning, weekly, biweekly and monthly cleaning, move-in/move-out and pre-listing cleaning, home organization, carpet and upholstery cleaning, and senior cleaning services.',
   },
 ];
 ---
 <Layout
   title="Residential Cleaning in Middle Tennessee | Blueprint Clean Co."
-  description="Residential cleaning in Nashville and Middle Tennessee: deep cleaning, recurring service, move-in/move-out cleaning, home organization, pre-listing prep, and home support packages."
+  description="Residential cleaning for Middle Tennessee homeowners: deep cleaning, weekly, biweekly and monthly service, move-in/move-out, pre-listing, home organization, carpet and upholstery, and senior cleaning services."
   schema={schema}
 >
   <PageHero
-    eyebrow="Residential"
+    eyebrow="For Homeowners"
     title="Residential Cleaning"
-    subtitle="Deep cleaning, recurring service, move-in/move-out cleaning, organization, and more, so your home always feels fresh, calm, and cared for."
+    subtitle="A cleaner, calmer home with a team you can trust. Deep cleans, regular service, organization, and more, tailored to your family and your schedule."
     image={heroImg}
   >
     <div class="btn-row" style="margin-top:24px;">
@@ -145,18 +104,23 @@ const schema = [
   <section id="services">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Home Services</p>
-        <h2>Everything your home <span class="accent">needs</span></h2>
-        <p class="lede">Pick one service or combine them. We will build a plan around your home and your schedule.</p>
+        <p class="eyebrow">Cleaning for Your Home</p>
+        <h2>Choose what your home <span class="accent">needs most</span></h2>
+        <p class="lede">One-time or ongoing, we will build a plan around your home and your routine.</p>
       </div>
-      <div class="grid grid-3">
+      <div class="grid grid-2 res-grid">
         {services.map((s) => (
-          <div class="card svc-card" id={s.id}>
-            <h3>{s.name}</h3>
-            <p>{s.detail}</p>
-            <ul class="check-list">
-              {s.items.map((item) => <li>{item}</li>)}
-            </ul>
+          <div class="card res-card" id={s.id}>
+            <div class="res-card__photo">
+              <Image src={s.img} alt={s.alt} width={720} height={420} class="graded-img" />
+            </div>
+            <div class="res-card__body">
+              <h3>{s.name}</h3>
+              <p>{s.detail}</p>
+              <ul class="check-list">
+                {s.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
@@ -170,7 +134,7 @@ const schema = [
     <div class="container">
       <div class="feature-row">
         <div>
-          <p class="eyebrow">Organization</p>
+          <p class="eyebrow">Home Organization</p>
           <h2>A home that is <span class="accent">clean and organized</span></h2>
           <p class="lede">
             A deep clean is even better when everything has a place. We sort, label, and set up simple systems for
@@ -192,28 +156,63 @@ const schema = [
     </div>
   </section>
 
-  <section id="home-support">
+  <section id="carpet-upholstery">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Home Support Packages</p>
-        <h2>Life gets busy, <span class="accent">we're here to help</span></h2>
-        <p class="lede">Customized packages that simplify your routine and give you more time for what matters most.</p>
-      </div>
-      <div class="grid grid-3">
-        {packages.map((p) => (
-          <div class="card svc-card">
-            <p class="eyebrow">{p.tag}</p>
-            <h3>{p.name}</h3>
-            <ul class="check-list">
-              {p.items.map((item) => <li>{item}</li>)}
-            </ul>
+      <div class="feature-row feature-row--flip">
+        <div class="feature-row__media">
+          <Image src={carpetImg} alt="Freshly cleaned carpet in a bright room" width={900} height={650} class="graded-img" />
+        </div>
+        <div>
+          <p class="eyebrow">Carpet &amp; Upholstery Cleaning</p>
+          <h2>Fresh floors and <span class="accent">refreshed furniture</span></h2>
+          <p class="lede">
+            Carpets and upholstered furniture hold on to everyday wear. We bring them back to life so your home looks
+            and feels fresher.
+          </p>
+          <ul class="check-list">
+            <li>Carpet cleaning for living areas, bedrooms, and stairs</li>
+            <li>Upholstery cleaning for sofas, chairs, and cushions</li>
+            <li>Attention to high-traffic areas and visible spots</li>
+            <li>A great add-on to a deep clean, move-in, or pre-listing service</li>
+          </ul>
+          <div class="btn-row" style="margin-top:28px;">
+            <a href={site.quoteHref} class="btn btn-solid">Request Carpet &amp; Upholstery Cleaning</a>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section-alt">
+  <section id="senior-cleaning" class="section-alt">
+    <div class="container">
+      <div class="feature-row">
+        <div>
+          <p class="eyebrow">Senior Cleaning Services</p>
+          <h2>Care you can <span class="accent">trust</span></h2>
+          <p class="lede">
+            Designed to help older adults enjoy a clean, safe, dependable, and comfortable home, supporting
+            independence and quality of life.
+          </p>
+          <ul class="check-list">
+            <li>Light housekeeping and laundry</li>
+            <li>Dusting, vacuuming, sweeping, and mopping</li>
+            <li>Bathroom and kitchen refresh</li>
+            <li>Grocery shopping</li>
+            <li>Window and door security check</li>
+            <li>Home wellness check and reporting to family</li>
+          </ul>
+          <div class="btn-row" style="margin-top:28px;">
+            <a href={site.quoteHref} class="btn btn-solid">Ask About Senior Services</a>
+          </div>
+        </div>
+        <div class="feature-row__media">
+          <Image src={seniorImg} alt="Smiling senior woman in a bright, comfortable home" width={900} height={650} class="graded-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Reviews</p>
@@ -225,3 +224,44 @@ const schema = [
 
   <ClosingCTA heading="Ready for a spotless home?" body="Tell us about your home and we will put together a plan, one-time or recurring." />
 </Layout>
+
+<style>
+  .res-grid {
+    gap: 28px;
+  }
+
+  .res-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .res-card__photo {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .res-card__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .res-card__body {
+    padding: 28px 30px 32px;
+  }
+
+  .res-card__body > p {
+    color: var(--text-dim);
+  }
+
+  .feature-row--flip .feature-row__media {
+    order: -1;
+  }
+
+  @media (max-width: 800px) {
+    .feature-row--flip .feature-row__media {
+      order: 0;
+    }
+  }
+</style>

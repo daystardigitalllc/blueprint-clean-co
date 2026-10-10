@@ -22,8 +22,6 @@ import pantryAfter from '../../assets/photos/before-after/pantry-after.jpg';
 import livedInKitchen from '../../assets/photos/lived-in-kitchen-clean.jpg';
 import residentialKitchen from '../../assets/photos/residential-kitchen-clean.jpg';
 import livedInBathroom from '../../assets/photos/lived-in-bathroom-clean.jpg';
-
-import airbnbBed from '../../assets/photos/gallery-airbnb-bed.jpg';
 import shower from '../../assets/photos/gallery-shower-glass.jpg';
 import emptyLiving from '../../assets/photos/empty-living-room-clean.jpg';
 import livingRoom2 from '../../assets/photos/hero-living-room-2.png';
@@ -34,7 +32,6 @@ import kitchenAngle1 from '../../assets/photos/turnover-kitchen-angle1.jpg';
 import kitchenAngle2 from '../../assets/photos/turnover-kitchen-angle2.jpg';
 import livingRoomShelf from '../../assets/photos/turnover-living-room-shelf.jpg';
 import livingRoomAccentWall from '../../assets/photos/turnover-living-room-accent-wall.jpg';
-
 import living1 from '../../assets/photos/hero-living-room-1.png';
 import vanity from '../../assets/photos/gallery-bathroom-vanity.jpeg';
 import stagedBath from '../../assets/photos/staged-bathroom-vessel-sink.jpg';
@@ -44,28 +41,27 @@ import postConKitchen from '../../assets/photos/hero-kitchen-marble.png';
 import postConSink from '../../assets/photos/gallery-kitchen-sink.jpg';
 import postConFaucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
 
-const residentialPhotos = [
+const homePhotos = [
   { img: livedInKitchen, alt: 'Freshly cleaned home kitchen' },
   { img: residentialKitchen, alt: 'Spotless residential kitchen after a deep clean' },
   { img: livedInBathroom, alt: 'Clean, bright home bathroom' },
+  { img: shower, alt: 'Spotless glass shower enclosure' },
+  { img: showerStall, alt: 'Spotless tub and shower stall' },
+  { img: stoveClean, alt: 'Detail-cleaned glass-top stove and range, no cooking residue' },
 ];
 
-const turnoverPhotos = [
-  { img: airbnbBed, alt: 'Hotel-style bed with folded towels, guest-ready Airbnb turnover' },
-  { img: shower, alt: 'Spotless glass shower enclosure after a tenant turnover' },
-  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next tenant' },
+const moveOutPhotos = [
+  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next move-in' },
   { img: livingRoom2, alt: 'Move-in ready living room, fully cleaned' },
-  { img: showerStall, alt: 'Spotless tub and shower stall, guest and tenant ready' },
-  { img: fridgeEmpty, alt: 'Empty, spotless refrigerator ready for the next tenant' },
-  { img: stoveClean, alt: 'Detail-cleaned glass-top stove and range, no cooking residue' },
+  { img: fridgeEmpty, alt: 'Empty, spotless refrigerator after a move-out clean' },
   { img: kitchenAngle1, alt: 'Move-out ready kitchen with spotless counters and appliances' },
   { img: kitchenAngle2, alt: 'Freshly cleaned kitchen, cabinets and floors ready for move-in' },
   { img: livingRoomShelf, alt: 'Empty living room with built-in shelving, move-out ready' },
   { img: livingRoomAccentWall, alt: 'Empty living room with accent wall, spotless floors' },
 ];
 
-const preListingPhotos = [
-  { img: living1, alt: 'Bright, showing-ready living room with fireplace' },
+const listingPhotos = [
+  { img: living1, alt: 'Bright, showing-ready living room' },
   { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings' },
   { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings' },
   { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready' },
@@ -79,125 +75,147 @@ const postConPhotos = [
 
 const sections = [
   { id: 'residential', label: 'Residential' },
-  { id: 'move-in-out', label: 'Move-In / Move-Out & Rentals' },
-  { id: 'pre-listing', label: 'Pre-Listing' },
-  { id: 'post-construction', label: 'Post-Construction' },
   { id: 'commercial', label: 'Commercial' },
+  { id: 'post-construction', label: 'Post-Construction' },
 ];
 ---
 <Layout
   title="Our Work | Before & After Gallery | Blueprint Clean Co."
-  description="See Blueprint Clean Co.'s work by cleaning type: residential before and afters, move-in/move-out and Airbnb turnovers, pre-listing prep, and post-construction cleaning."
+  description="See Blueprint Clean Co.'s work organized by residential, commercial, and post-construction cleaning, with interactive before and after sliders."
 >
   <PageHero eyebrow="Our Work" title="Precision you can see." subtitle="Drag the sliders to compare before and after, or browse our work by cleaning type." />
   <Marquee items={trustTicker} />
 
-  <section class="jump">
-    <div class="container">
-      <nav class="jump__list" aria-label="Gallery sections">
-        {sections.map((s) => <a href={`#${s.id}`} class="jump__chip">{s.label}</a>)}
-      </nav>
-    </div>
-  </section>
+  <div class="gallery-blue">
+    <section class="jump">
+      <div class="container">
+        <nav class="jump__list" aria-label="Gallery sections">
+          {sections.map((s) => <a href={`#${s.id}`} class="jump__chip">{s.label}</a>)}
+        </nav>
+      </div>
+    </section>
 
-  <section id="residential">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Residential</p>
-        <h2>Home cleaning <span class="accent">before &amp; after</span></h2>
-        <p class="lede">Real jobs from our residential crews. Drag the handle to compare.</p>
-      </div>
-      <div class="grid grid-3">
-        <BeforeAfterSlider id="g-toilet" before={toiletBefore} after={toiletAfter} label="Toilet, Deep Clean" />
-        <BeforeAfterSlider id="g-sink" before={sinkBefore} after={sinkAfter} label="Bathroom Sink, Deep Clean" />
-        <BeforeAfterSlider id="g-oven" before={ovenBefore} after={ovenAfter} label="Oven, Deep Clean" />
-      </div>
+    <section id="residential">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Residential</p>
+          <h2>Home cleaning <span class="accent">before &amp; after</span></h2>
+          <p class="lede">Real jobs from our residential crews. Drag the handle to compare.</p>
+        </div>
+        <div class="grid grid-3">
+          <BeforeAfterSlider id="g-toilet" before={toiletBefore} after={toiletAfter} label="Toilet, Deep Clean" />
+          <BeforeAfterSlider id="g-sink" before={sinkBefore} after={sinkAfter} label="Bathroom Sink, Deep Clean" />
+          <BeforeAfterSlider id="g-oven" before={ovenBefore} after={ovenAfter} label="Oven, Deep Clean" />
+        </div>
 
-      <h3 class="sub-head">Home organization</h3>
-      <div class="grid grid-2">
-        <BeforeAfterSlider id="g-closet" before={closetBefore} after={closetAfter} label="Closet Organization" landscape />
-        <BeforeAfterSlider id="g-pantry" before={pantryBefore} after={pantryAfter} label="Pantry Organization" landscape />
-      </div>
+        <h3 class="sub-head">Home organization</h3>
+        <div class="grid grid-2">
+          <BeforeAfterSlider id="g-closet" before={closetBefore} after={closetAfter} label="Closet Organization" landscape />
+          <BeforeAfterSlider id="g-pantry" before={pantryBefore} after={pantryAfter} label="Pantry Organization" landscape />
+        </div>
 
-      <h3 class="sub-head">Finished homes</h3>
-      <div class="grid grid-3 gallery-grid">
-        {residentialPhotos.map((p) => (
-          <figure class="gallery-item">
-            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
+        <h3 class="sub-head">Finished homes</h3>
+        <div class="grid grid-3 gallery-grid">
+          {homePhotos.map((p) => (
+            <figure class="gallery-item">
+              <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+            </figure>
+          ))}
+        </div>
 
-  <section id="move-in-out" class="section-alt">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Move-In / Move-Out &amp; Rentals</p>
-        <h2>Turnovers that are <span class="accent">ready for the next guest</span></h2>
-        <p class="lede">Move-in, move-out, and Airbnb turnovers for homeowners, property managers, and hosts.</p>
-      </div>
-      <div class="grid grid-4 gallery-grid">
-        {turnoverPhotos.map((p) => (
-          <figure class="gallery-item">
-            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
+        <h3 class="sub-head">Move-in &amp; move-out cleaning</h3>
+        <div class="grid grid-4 gallery-grid">
+          {moveOutPhotos.map((p) => (
+            <figure class="gallery-item">
+              <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+            </figure>
+          ))}
+        </div>
 
-  <section id="pre-listing">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Pre-Listing</p>
-        <h2>Show-ready <span class="accent">for every listing</span></h2>
-        <p class="lede">Pre-listing and open house cleans for realtors and sellers.</p>
+        <h3 class="sub-head">Pre-listing cleaning</h3>
+        <div class="grid grid-4 gallery-grid">
+          {listingPhotos.map((p) => (
+            <figure class="gallery-item">
+              <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+            </figure>
+          ))}
+        </div>
       </div>
-      <div class="grid grid-4 gallery-grid">
-        {preListingPhotos.map((p) => (
-          <figure class="gallery-item">
-            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="post-construction" class="section-alt">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Post-Construction</p>
-        <h2>New builds, <span class="accent">move-in ready</span></h2>
-        <p class="lede">Our 3-phase cleaning takes new construction from job site to final walkthrough.</p>
+    <section id="commercial" class="band">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Commercial</p>
+          <h2>Offices, retail &amp; <span class="accent">commercial spaces</span></h2>
+        </div>
+        <GalleryComingSoon message="Commercial project photos are on the way, check back soon, or ask us for examples directly." />
       </div>
-      <div class="grid grid-3 gallery-grid">
-        {postConPhotos.map((p) => (
-          <figure class="gallery-item">
-            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="commercial">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Commercial</p>
-        <h2>Offices, retail &amp; <span class="accent">commercial spaces</span></h2>
+    <section id="post-construction">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Post-Construction</p>
+          <h2>New builds, <span class="accent">move-in ready</span></h2>
+          <p class="lede">Our 3-phase cleaning takes new construction from job site to final walkthrough.</p>
+        </div>
+        <div class="grid grid-3 gallery-grid">
+          {postConPhotos.map((p) => (
+            <figure class="gallery-item">
+              <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+            </figure>
+          ))}
+        </div>
       </div>
-      <GalleryComingSoon message="Commercial project photos are on the way, check back soon, or ask us for examples directly." />
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <ClosingCTA heading="Want results like these?" body="Tell us about your space and we will put together a plan." />
+  <ClosingCTA tone="navy" heading="Want results like these?" body="Tell us about your space and we will put together a plan." />
 </Layout>
 
 <style>
+  .gallery-blue {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .gallery-blue :global(h2),
+  .gallery-blue :global(h3) {
+    color: #ffffff;
+  }
+
+  .gallery-blue :global(.eyebrow),
+  .gallery-blue :global(.accent) {
+    color: #bcd2ff;
+  }
+
+  .gallery-blue :global(.lede) {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .band {
+    background: #1a43c4;
+  }
+
+  .gallery-blue :global(.gallery-item) {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .gallery-blue :global(.ba-slider__tag--after) {
+    background: #ffffff;
+    color: var(--accent-bright);
+    border-color: #ffffff;
+  }
+
+  .gallery-blue :global(.ba-slider__frame) {
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 28px rgba(5, 15, 50, 0.3);
+  }
+
   .jump {
     padding: 28px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .jump__list {
@@ -207,23 +225,19 @@ const sections = [
   }
 
   .jump__chip {
-    padding: 9px 16px;
-    border: 1.5px solid var(--border);
+    padding: 9px 18px;
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
     border-radius: var(--radius-sm);
     font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--text-dim);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    font-size: 0.9rem;
+    color: #ffffff;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .jump__chip:hover,
   .jump__chip:focus-visible {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  section[id] {
-    scroll-margin-top: 90px;
+    background: #ffffff;
+    color: var(--accent-bright);
   }
 
   .sub-head {

@@ -3,13 +3,15 @@ import { site } from '../lib/site';
 interface Props {
   heading?: string;
   body?: string;
+  tone?: 'blue' | 'navy';
 }
 const {
   heading = 'Ready for spotless, stress-free results?',
   body = "Tell us about your space and timeline, we'll build a plan tailored to you.",
+  tone = 'blue',
 } = Astro.props;
 ---
-<section class="closing-cta">
+<section class={`closing-cta closing-cta--${tone}`}>
   <div class="container closing-cta__inner reveal">
     <h2>{heading}</h2>
     <p class="lede">{body}</p>
@@ -22,8 +24,11 @@ const {
 </section>
 
 <style>
-  .closing-cta {
+  .closing-cta--blue {
     background: var(--accent);
+  }
+  .closing-cta--navy {
+    background: var(--navy);
   }
   .closing-cta__inner {
     text-align: center;

@@ -450,3 +450,49 @@ h3 {
 [id] {
   scroll-margin-top: 110px;
 }
+
+/* Royal blue sections */
+:root {
+  --navy: #0b1f4d;
+}
+
+.section-blue {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.section-blue h2,
+.section-blue h3 {
+  color: #ffffff;
+}
+
+.section-blue .eyebrow {
+  color: #bcd2ff;
+}
+
+.section-blue .accent {
+  color: #bcd2ff;
+}
+
+.section-blue .lede {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.section-navy {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.section-navy h2,
+.section-navy h3 {
+  color: #ffffff;
+}
+
+.section-navy .eyebrow,
+.section-navy .accent {
+  color: #9fbcff;
+}
+
+.section-navy .lede {
+  color: rgba(255, 255, 255, 0.85);
+}

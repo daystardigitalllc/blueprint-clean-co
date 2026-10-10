@@ -1,54 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
-import TrustBadges from '../components/TrustBadges.astro';
+import Credentials from '../components/Credentials.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import Marquee from '../components/Marquee.astro';
-import { blueprintStandard, trustTicker } from '../lib/site';
+import { site, blueprintStandard, trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/lived-in-kitchen-clean.jpg';
+
+const differences = [
+  {
+    title: 'Quality and professionalism',
+    detail:
+      'Every job follows a documented checklist and a final inspection, because professional results should never depend on who shows up.',
+  },
+  {
+    title: 'Woman-owned and operated',
+    detail:
+      'Blueprint Clean Co. is proudly woman-owned and operated, built on hands-on leadership and pride in every project.',
+  },
+  {
+    title: 'Homes and businesses, equally',
+    detail:
+      'Residential and commercial clients get the same dedication, the same standards, and the same dependable crews.',
+  },
+  {
+    title: 'Attention to detail',
+    detail:
+      'We catch what other cleaners miss: baseboards, fixtures, corners, and finishing touches that make a space feel truly clean.',
+  },
+];
 ---
 <Layout
-  title="About Us | Blueprint Clean Co."
-  description="Blueprint Clean Co. delivers precision cleaning and professional results for homeowners, businesses, property managers, and home builders across Nashville and Middle Tennessee."
+  title="About Us | Woman-Owned Cleaning Company | Blueprint Clean Co."
+  description="Blueprint Clean Co. is a woman-owned and operated cleaning company serving homeowners, businesses, and government facilities across Middle Tennessee. Sidonio Enterprises LLC operates as Blueprint Clean Co."
 >
   <PageHero eyebrow="About Us" title="Precision cleaning, professional results" image={heroImg} />
   <Marquee items={trustTicker} />
 
   <section>
     <div class="container" style="max-width:820px;">
+      <p class="eyebrow">Our Story</p>
       <p class="lede">
         At Blueprint Clean Co., we believe a clean space is more than just appearance, it's the final touch
         that brings a property to life. What started as a vision for dependable, detail-focused cleaning has
         grown into a company built on professionalism, precision, and pride in every project.
       </p>
       <p class="lede">
-        We serve homes and businesses equally: residential deep cleaning, recurring service, move-in and move-out
-        cleans, and home organization, alongside commercial cleaning for offices, retail spaces, and property
-        managers, plus 3-phase post-construction cleanup for new builds across Middle Tennessee.
+        We are proudly woman-owned and operated, and we serve homeowners and business owners with equal
+        dedication. Whether it's a family home, a busy office, a retail space, or a brand-new build, the standard
+        is the same: spotless results delivered by a team you can count on.
       </p>
       <p class="lede">
-        Our mission is simple: deliver spotless results with reliable service that homeowners,
-        business owners, property managers, contractors, and realtors can truly depend on. We don't just clean spaces. We help
-        create fresh starts, polished presentations, and stress-free transitions through precision cleaning
-        and professional results.
+        Our mission is simple: deliver spotless results with reliable service that homeowners, business owners,
+        property managers, contractors, and realtors can truly depend on. We don't just clean spaces. We help
+        create fresh starts, polished presentations, and stress-free transitions through precision cleaning and
+        professional results.
       </p>
     </div>
   </section>
 
-  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <section class="section-alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">The Blueprint Standard</p>
-        <h2>Precision isn't a promise, <span class="accent">it's our standard</span></h2>
+        <p class="eyebrow">What Sets Us Apart</p>
+        <h2>What makes Blueprint Clean Co. <span class="accent">different</span></h2>
       </div>
-      <div class="standard-list">
-        {blueprintStandard.map((item, i) => (
-          <div class="standard-row">
-            <span class="standard-row__num">0{i + 1}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </div>
+      <div class="grid grid-2 diff-grid">
+        {differences.map((d) => (
+          <div class="diff">
+            <h3>{d.title}</h3>
+            <p>{d.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-blue">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Our Values</p>
+        <h2>The Blueprint <span class="accent">Standard</span></h2>
+        <p class="lede">Precision isn't a promise, it's our standard. These are the values behind every clean.</p>
+      </div>
+      <div class="grid grid-4 values">
+        {blueprintStandard.map((item) => (
+          <div class="value">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
           </div>
         ))}
       </div>
@@ -56,46 +95,96 @@ import heroImg from '../assets/photos/lived-in-kitchen-clean.jpg';
   </section>
 
   <section>
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Who We Serve</p>
-        <h2>Built on <span class="accent">trust</span></h2>
+    <div class="container company">
+      <div>
+        <p class="eyebrow">The Company</p>
+        <h2>Sidonio Enterprises LLC, <span class="accent">operating as Blueprint Clean Co.</span></h2>
+        <p class="lede">
+          {site.legalName} operates as {site.name} We have been assigned a CAGE code and are expanding into
+          government contracting, bringing the same precision and professionalism to public sector facilities that
+          our homeowner and business clients rely on every day.
+        </p>
+        <div class="btn-row" style="margin-top:24px;">
+          <a href="/commercial-cleaning/#government" class="btn btn-solid">Government &amp; Public Sector Cleaning</a>
+        </div>
       </div>
-      <TrustBadges />
+      <div class="company__panel card">
+        <Credentials />
+        <p>Based in Nashville and serving {site.serviceCounties.length} Middle Tennessee counties.</p>
+      </div>
     </div>
   </section>
 
-  <ClosingCTA />
+  <ClosingCTA tone="navy" />
 </Layout>
 
 <style>
-  .standard-list {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--border);
+  .diff-grid {
+    gap: 32px 48px;
   }
-  .standard-row {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 20px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
+
+  .diff {
+    padding-left: 22px;
+    border-left: 4px solid var(--accent);
   }
-  .standard-row__num {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: var(--accent);
-    font-size: 1.3rem;
-  }
-  .standard-row h3 {
+
+  .diff h3 {
     margin-bottom: 6px;
   }
-  .standard-row p {
-    color: var(--text-dim);
-    font-size: 0.94rem;
+
+  .diff p {
     margin: 0;
+    color: var(--text-dim);
   }
-  @media (max-width: 560px) {
-    .standard-row { grid-template-columns: 40px 1fr; }
+
+  .values {
+    gap: 28px;
+  }
+
+  .value {
+    padding-top: 18px;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .value h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .value p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.94rem;
+  }
+
+  .company {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .company__panel {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .company__panel p {
+    margin: 0;
+    color: var(--text-dim);
+  }
+
+  .company__panel :global(.credentials) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .company {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
   }
 </style>

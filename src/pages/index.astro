@@ -3,46 +3,59 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Marquee from '../components/Marquee.astro';
 import ServiceAreaMap from '../components/ServiceAreaMap.astro';
+import Credentials from '../components/Credentials.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import { site, trustTicker } from '../lib/site';
 import { Image } from 'astro:assets';
 import residentialPhoto from '../assets/photos/residential-kitchen-clean.jpg';
 import commercialPhoto from '../assets/photos/hero-vacuum-living-room.jpg';
-import whyPhoto from '../assets/photos/hero-living-room-1.png';
 
 const residential = [
   'Deep cleaning',
-  'Recurring weekly, bi-weekly & monthly service',
-  'Move-in / move-out cleaning',
+  'Weekly, biweekly & monthly cleaning',
+  'Move-in / move-out & pre-listing cleaning',
   'Home organization',
-  'Holiday, getaway & senior home support',
+  'Carpet, upholstery & senior cleaning services',
 ];
 
 const commercial = [
-  'Offices & professional spaces',
-  'Retail spaces & storefronts',
-  'Janitorial services',
-  'Property management turnovers',
-  'Commercial cleaning contracts',
+  'Office cleaning',
+  'Retail & commercial facility cleaning',
+  'Recurring janitorial services',
+  'Property management cleaning',
+  'Custom contracts & government cleaning',
 ];
 ---
 <Layout
   title="Blueprint Clean Co. | Residential & Commercial Cleaning in Middle Tennessee"
-  description="Blueprint Clean Co. delivers precision cleaning and professional results for homes and businesses across 11 Middle Tennessee counties: residential, commercial, and post-construction cleaning."
+  description="Woman-owned Blueprint Clean Co. provides precision residential and commercial cleaning across 11 Middle Tennessee counties, plus post-construction cleaning for builders and contractors."
 >
   <Hero />
   <Marquee items={trustTicker} />
 
-  <section id="what-we-do">
+  <section id="welcome">
+    <div class="container welcome">
+      <p class="eyebrow">Welcome</p>
+      <h2>Residential and commercial cleaning, <span class="accent">done right</span></h2>
+      <p class="lede">
+        Blueprint Clean Co. is a woman-owned and operated cleaning company serving homeowners, businesses, and
+        government facilities throughout Middle Tennessee. We bring the same precision, detailed checklists, and
+        professional results to every space we clean, big or small.
+      </p>
+      <div class="btn-row welcome__cta">
+        <a href={site.quoteHref} class="btn btn-solid">Request a Free Quote</a>
+        <a href={site.phoneHref} class="btn">Call Now</a>
+        <a href={site.smsHref} class="btn">Text Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="what-we-do" class="section-alt">
     <div class="container">
       <div class="section-head center">
         <p class="eyebrow">What We Do</p>
-        <h2>Cleaning for <span class="accent">homes and businesses</span></h2>
-        <p class="lede">
-          Whether it's your home or your business, our crews deliver the same precision, the same checklists,
-          and the same professional results.
-        </p>
+        <h2>Choose the cleaning that <span class="accent">fits your space</span></h2>
       </div>
 
       <div class="grid grid-2 split">
@@ -51,15 +64,14 @@ const commercial = [
             <Image src={residentialPhoto} alt="Freshly cleaned home kitchen" width={720} height={480} class="graded-img" />
           </div>
           <div class="split-card__body">
-            <p class="eyebrow">Residential</p>
+            <p class="eyebrow">For Homeowners</p>
             <h3>Residential Cleaning</h3>
-            <p>Spotless homes, whether it's a one-time reset or a recurring routine you can count on.</p>
+            <p>Spotless homes, whether it's a one-time reset or a routine you can count on.</p>
             <ul class="check-list">
               {residential.map((item) => <li>{item}</li>)}
             </ul>
             <div class="btn-row split-card__cta">
-              <a href="/residential-cleaning/" class="btn btn-solid">Explore Residential</a>
-              <a href={site.quoteHref} class="btn">Get a Quote</a>
+              <a href="/residential-cleaning/" class="btn btn-solid">Residential Cleaning</a>
             </div>
           </div>
         </article>
@@ -69,53 +81,22 @@ const commercial = [
             <Image src={commercialPhoto} alt="Professional cleaner vacuuming a bright, modern space" width={720} height={480} class="graded-img" />
           </div>
           <div class="split-card__body">
-            <p class="eyebrow">Commercial</p>
+            <p class="eyebrow">For Businesses</p>
             <h3>Commercial Cleaning</h3>
             <p>Clean, welcoming workplaces that make the right impression on your team and your customers.</p>
             <ul class="check-list">
               {commercial.map((item) => <li>{item}</li>)}
             </ul>
             <div class="btn-row split-card__cta">
-              <a href="/commercial-cleaning/" class="btn btn-solid">Explore Commercial</a>
-              <a href={site.quoteHref} class="btn">Get a Quote</a>
+              <a href="/commercial-cleaning/" class="btn btn-solid">Commercial Cleaning</a>
             </div>
           </div>
         </article>
       </div>
 
-      <div class="postcon card">
-        <div>
-          <p class="eyebrow">New Builds</p>
-          <h3>Post-Construction 3-Phase Cleaning</h3>
-          <p>Rough clean, touch-up, and final detail clean that takes a new build from job site to move-in ready.</p>
-        </div>
-        <a href="/post-construction-cleaning/" class="btn btn-solid">See the 3-Phase Process</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="why-us" class="section-alt">
-    <div class="container">
-      <div class="grid grid-2" style="align-items:center; gap:48px;">
-        <div>
-          <p class="eyebrow">Why Us</p>
-          <h2>The <span class="accent">Blueprint Standard</span></h2>
-          <p class="lede">
-            Precision isn't just a promise, it's our standard. Every service follows proven quality control
-            processes, detailed inspections, and meticulous attention to detail.
-          </p>
-          <ul class="check-list">
-            <li>Locally owned &amp; operated in Middle Tennessee</li>
-            <li>Right equipment &amp; eco-friendly, high-performance products</li>
-            <li>Property protection on every job, every time</li>
-            <li>Transparent pricing, no surprise fees</li>
-            <li>Fast, responsive communication from quote to walkthrough</li>
-          </ul>
-        </div>
-        <div class="why-photo">
-          <Image src={whyPhoto} alt="Real Blueprint Clean Co. client kitchen, freshly cleaned" width={640} height={760} class="graded-img" />
-        </div>
-      </div>
+      <p class="builders">
+        Building or renovating? <a href="/post-construction-cleaning/">See our post-construction cleaning for builders &amp; contractors &rarr;</a>
+      </p>
     </div>
   </section>
 
@@ -130,7 +111,17 @@ const commercial = [
     </div>
   </section>
 
-  <section id="reviews" class="section-alt">
+  <section id="credentials" class="section-blue creds">
+    <div class="container creds__inner">
+      <div>
+        <p class="eyebrow">Credentials</p>
+        <h2>Professional, accountable, <span class="accent">and proud of it</span></h2>
+      </div>
+      <Credentials tone="dark" />
+    </div>
+  </section>
+
+  <section id="reviews">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Reviews</p>
@@ -141,7 +132,7 @@ const commercial = [
     </div>
   </section>
 
-  <section id="our-work">
+  <section id="our-work" class="section-alt">
     <div class="container work-cta">
       <p class="eyebrow">Our Work</p>
       <h2>See the difference <span class="accent">for yourself</span></h2>
@@ -154,6 +145,16 @@ const commercial = [
 </Layout>
 
 <style>
+  .welcome {
+    max-width: 780px;
+    text-align: center;
+  }
+
+  .welcome__cta {
+    justify-content: center;
+    margin-top: 28px;
+  }
+
   .split {
     gap: 28px;
     align-items: stretch;
@@ -192,48 +193,36 @@ const commercial = [
     padding-top: 26px;
   }
 
-  .postcon {
-    margin-top: 28px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    background: var(--accent-soft);
-    border-color: #c9d9ff;
-  }
-
-  .postcon h3 {
-    margin-bottom: 4px;
-  }
-
-  .postcon p:not(.eyebrow) {
-    margin: 0;
+  .builders {
+    margin: 32px 0 0;
+    text-align: center;
     color: var(--text-dim);
   }
 
-  .why-photo {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border);
+  .builders a {
+    color: var(--accent-bright);
+    font-weight: 700;
   }
 
-  .why-photo :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 4 / 5;
+  .creds {
+    padding: 56px 0;
+  }
+
+  .creds__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .creds h2 {
+    margin: 0;
+    max-width: 420px;
   }
 
   .work-cta {
     text-align: center;
     max-width: 640px;
-  }
-
-  @media (max-width: 800px) {
-    .postcon {
-      flex-direction: column;
-      align-items: flex-start;
-    }
   }
 </style>

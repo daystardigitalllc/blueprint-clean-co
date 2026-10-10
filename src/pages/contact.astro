@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Marquee from '../components/Marquee.astro';
 import QuoteForm from '../components/QuoteForm.astro';
+import PhoneChooser from '../components/PhoneChooser.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { site, faqs, trustTicker } from '../lib/site';
 
@@ -32,17 +33,11 @@ const schema = [
 
   <section class="contact-actions">
     <div class="container">
-      <div class="grid grid-3">
-        <a href={site.phoneHref} class="card action-card">
-          <span class="action-card__label">Call Now</span>
-          <span class="action-card__value">{site.phone}</span>
-          <span class="action-card__hint">Tap to call</span>
-        </a>
-        <a href={site.smsHref} class="card action-card">
-          <span class="action-card__label">Text Us</span>
-          <span class="action-card__value">{site.phone}</span>
-          <span class="action-card__hint">Tap to send a text</span>
-        </a>
+      <div class="grid grid-2">
+        <div class="card action-card">
+          <span class="action-card__label">Call or Text Us</span>
+          <PhoneChooser />
+        </div>
         <a href={site.emailHref} class="card action-card">
           <span class="action-card__label">Email Us</span>
           <span class="action-card__value action-card__value--email">{site.email}</span>

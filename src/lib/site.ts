@@ -2,7 +2,8 @@ export const site = {
   name: 'Blueprint Clean Co.',
   tagline: 'Precision Cleaning, Professional Results',
   subTagline: 'Spotless Transitions, Stress-Free Cleanings',
-  phone: '629-932-6356',
+  legalName: 'Sidonio Enterprises LLC',
+  phone: '(629) 932-6356',
   phoneHref: 'tel:+16299326356',
   smsHref: 'sms:+16299326356',
   quoteHref: '/contact/#quote',
@@ -43,18 +44,21 @@ export const primaryNav: NavLink[] = [
 
 export const quoteServices: string[] = [
   'Residential Deep Cleaning',
-  'Recurring Residential Cleaning',
+  'Weekly, Biweekly & Monthly Cleaning',
   'Move-In / Move-Out Cleaning',
+  'Pre-Listing Cleaning',
   'Home Organization',
-  'Pre-Listing & Open House Cleaning',
-  'Airbnb & Short-Term Rental Turnover',
-  'Holiday / Event Assistance',
-  'Senior Home Support',
-  'Office & Retail Cleaning',
-  'Janitorial Services',
-  'Property Management Turnovers',
-  'Commercial Contract Cleaning',
-  'Post-Construction 3-Phase Cleaning',
+  'Carpet & Upholstery Cleaning',
+  'Senior Cleaning Services',
+  'Office Cleaning',
+  'Retail & Commercial Facility Cleaning',
+  'Recurring Janitorial Services',
+  'Property Management Cleaning',
+  'Commercial Cleaning Contract',
+  'Government & Public Sector Cleaning',
+  'New Construction Cleaning',
+  'Post-Renovation Cleaning',
+  'Builder & Contractor Cleaning',
   'Other',
 ];
 
@@ -93,18 +97,6 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export type TrustAudience = {
-  label: string;
-  detail: string;
-};
-
-export const trustAudiences: TrustAudience[] = [
-  { label: 'Homeowners', detail: 'Deep cleans, recurring service & home organization' },
-  { label: 'Businesses & Offices', detail: 'Janitorial, retail & commercial contracts' },
-  { label: 'Realtors & Property Managers', detail: 'Pre-listing prep & move-in / move-out turnovers' },
-  { label: 'Home Builders & Contractors', detail: '3-phase post-construction cleaning' },
-];
-
 export const blueprintStandard = [
   {
     title: 'Multi-Stage Inspection',
@@ -135,7 +127,7 @@ export const faqs = [
   },
   {
     q: 'How do I get a quote?',
-    a: 'Submit a request through our quote form, call or text us at 629-932-6356, or send a short video walkthrough of the space to savannah.s@sidonioenterprises.com for a fast, accurate quote.',
+    a: 'Submit a request through our quote form, call or text us at (629) 932-6356, or send a short video walkthrough of the space to savannah.s@sidonioenterprises.com for a fast, accurate quote.',
   },
   {
     q: 'Can I schedule recurring cleanings?',
@@ -150,8 +142,8 @@ export const faqs = [
     a: "Yes. We're used to working on tight timelines and coordinating directly with agents, property managers, and builders for pre-listing prep and move-in/move-out turnovers.",
   },
   {
-    q: 'Do you offer holiday or event cleaning?',
-    a: 'Yes, our Holiday Hosting and home support packages cover pre-event setup, post-event deep cleans, and everything in between so you can focus on your guests.',
+    q: 'Do you work with government agencies?',
+    a: 'Yes. Blueprint Clean Co. is a woman-owned business with an assigned CAGE code, and we welcome government contracting and bidding opportunities for public sector facilities.',
   },
   {
     q: 'Can I book a specific date and time?',
