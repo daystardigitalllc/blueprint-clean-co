@@ -37,9 +37,9 @@ import vanity from '../../assets/photos/gallery-bathroom-vanity.jpeg';
 import stagedBath from '../../assets/photos/staged-bathroom-vessel-sink.jpg';
 import hallway from '../../assets/photos/hallway-clean.jpg';
 
-import postConKitchen from '../../assets/photos/hero-kitchen-marble.png';
-import postConSink from '../../assets/photos/gallery-kitchen-sink.jpg';
-import postConFaucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
+import marbleKitchen from '../../assets/photos/hero-kitchen-marble.png';
+import kitchenSink from '../../assets/photos/gallery-kitchen-sink.jpg';
+import bathroomFaucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
 
 const homePhotos = [
   { img: livedInKitchen, alt: 'Freshly cleaned home kitchen' },
@@ -48,6 +48,9 @@ const homePhotos = [
   { img: shower, alt: 'Spotless glass shower enclosure' },
   { img: showerStall, alt: 'Spotless tub and shower stall' },
   { img: stoveClean, alt: 'Detail-cleaned glass-top stove and range, no cooking residue' },
+  { img: marbleKitchen, alt: 'Spotless kitchen with marble counters after a deep clean' },
+  { img: kitchenSink, alt: 'Detail-cleaned kitchen sink' },
+  { img: bathroomFaucet, alt: 'Polished bathroom faucet and countertop' },
 ];
 
 const moveOutPhotos = [
@@ -65,12 +68,6 @@ const listingPhotos = [
   { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings' },
   { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings' },
   { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready' },
-];
-
-const postConPhotos = [
-  { img: postConKitchen, alt: 'Spotless new-build kitchen after final detail clean' },
-  { img: postConSink, alt: 'Detail-cleaned kitchen sink, no construction dust' },
-  { img: postConFaucet, alt: 'Polished bathroom faucet, post-construction detail' },
 ];
 
 const sections = [
@@ -157,16 +154,10 @@ const sections = [
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Post-Construction</p>
-          <h2>New builds, <span class="accent">move-in ready</span></h2>
+          <h2>New Build, <span class="accent">Final Clean</span></h2>
           <p class="lede">Our 3-phase cleaning takes new construction from job site to final walkthrough.</p>
         </div>
-        <div class="grid grid-3 gallery-grid">
-          {postConPhotos.map((p) => (
-            <figure class="gallery-item">
-              <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
-            </figure>
-          ))}
-        </div>
+        <GalleryComingSoon message="New build photos are on the way, check back soon, or ask us for examples directly." />
       </div>
     </section>
   </div>

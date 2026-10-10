@@ -135,7 +135,7 @@ export const faqs = [
   },
   {
     q: 'How does post-construction 3-phase cleaning work?',
-    a: 'Phase 1 (rough clean) removes construction debris, dust, and stickers. Phase 2 (touch-up) wipes down surfaces and clears dust and marks left from final trim, flooring, and fixture installs. Phase 3 (final detail clean) is a detailed top-to-bottom clean of every surface, cabinet, fixture, and floor, completed right before walkthrough to leave the home spotless for buyers or homeowners.',
+    a: 'Phase 01 (initial construction cleanup) removes construction debris, dust, stickers, and protective film. Phase 02 (rough and progress cleaning) wipes down surfaces and clears dust and marks as trades finish trim, flooring, and fixture installs. Phase 03 (final detail and turnover cleaning) is a detailed top-to-bottom clean of every surface, cabinet, fixture, and floor, completed right before walkthrough.',
   },
   {
     q: 'Do you work directly with property management companies and realtors?',

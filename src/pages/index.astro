@@ -117,7 +117,10 @@ const commercial = [
         <p class="eyebrow">Credentials</p>
         <h2>Professional, accountable, <span class="accent">and proud of it</span></h2>
       </div>
-      <Credentials tone="dark" />
+      <div class="creds__right">
+        <Credentials tone="dark" />
+        <a href="/credentials/" class="creds__link">View our credentials &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -214,6 +217,19 @@ const commercial = [
     justify-content: space-between;
     gap: 32px;
     flex-wrap: wrap;
+  }
+
+  .creds__right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .creds__link {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .creds h2 {

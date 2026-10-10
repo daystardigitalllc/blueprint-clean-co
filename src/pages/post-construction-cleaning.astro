@@ -10,64 +10,36 @@ import heroImg from '../assets/photos/gallery-bathroom-vanity.jpeg';
 
 const phases = [
   {
-    phase: 'Phase 1',
-    title: 'Rough Clean',
+    phase: 'Phase 01',
+    title: 'Initial Construction Cleanup',
     detail:
-      'Removal of construction debris, stickers, tags, and heavy dust from every surface, cabinet interior, window track, and vent. We clear the site so trades and inspectors can move through safely.',
+      'Removal of construction debris, stickers, tags, protective film, and heavy dust from every surface, cabinet interior, window track, and vent. We clear the site so trades and inspectors can move through safely.',
   },
   {
-    phase: 'Phase 2',
-    title: 'Touch-Up',
+    phase: 'Phase 02',
+    title: 'Rough & Progress Cleaning',
     detail:
-      'A lighter pass once final trades wrap up, wiping down surfaces, spot-cleaning fingerprints and marks left from trim, flooring, and fixture installs, and clearing any dust stirred up along the way.',
+      'Ongoing cleaning as trades finish: wiping down surfaces, spot-cleaning marks left from trim, flooring, and fixture installs, and clearing any dust stirred up along the way.',
   },
   {
-    phase: 'Phase 3',
-    title: 'Final Detail Clean',
+    phase: 'Phase 03',
+    title: 'Final Detail & Turnover Cleaning',
     detail:
-      'The deep, top-to-bottom clean, cabinets inside and out, all fixtures, baseboards, light fixtures, appliances, and floors, completed right before your final walkthrough or closing so the home is spotless for buyers or homeowners.',
-  },
-];
-
-const services = [
-  {
-    tag: 'Scope 01',
-    name: 'New Construction Cleaning',
-    detail: 'Complete cleaning for new homes and buildings, taking every space from job site to move-in ready.',
-  },
-  {
-    tag: 'Scope 02',
-    name: 'Rough Cleaning',
-    detail: 'Debris, dust, stickers, and protective film cleared so trades and inspectors can keep moving.',
-  },
-  {
-    tag: 'Scope 03',
-    name: 'Final Detail Cleaning',
-    detail: 'A detailed top-to-bottom clean of every surface, fixture, and floor right before walkthrough or closing.',
-  },
-  {
-    tag: 'Scope 04',
-    name: 'Post-Renovation Cleaning',
-    detail: 'Dust and debris from remodels and renovations removed, leaving the space clean and ready to use.',
-  },
-  {
-    tag: 'Scope 05',
-    name: 'Builder & Contractor Cleaning Services',
-    detail: 'Reliable, schedule-driven cleaning for builders, general contractors, and construction companies.',
+      'The deep, top-to-bottom clean, cabinets inside and out, all fixtures, baseboards, light fixtures, appliances, and floors, completed right before your final walkthrough or closing so the property is spotless for buyers, owners, or tenants.',
   },
 ];
 
 const faqs = [
   {
     q: 'When should I schedule each phase?',
-    a: 'Phase 1 typically happens once major trades finish and drywall/paint are done. Phase 2 follows final trim, flooring, and fixture installs. Phase 3 is scheduled right before your walkthrough or closing date.',
+    a: 'Phase 01 typically happens once major trades finish and drywall/paint are done. Phase 02 follows as trim, flooring, and fixture installs wrap up. Phase 03 is scheduled right before your walkthrough or closing date.',
   },
   {
     q: 'Do you work with builders on multiple properties at once?',
     a: 'Yes, we regularly coordinate with home builders and contractors managing several new builds at a time, and can work around your production schedule.',
   },
   {
-    q: 'What is included in a rough clean?',
+    q: 'What is included in Phase 01, Initial Construction Cleanup?',
     a: 'Debris removal, dusting of all surfaces, removal of protective stickers and window film, initial vacuum/sweep of floors, and clearing construction dust from cabinets, vents, and light fixtures.',
   },
 ];
@@ -80,7 +52,7 @@ const schema = [
     provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
     areaServed: 'Nashville, TN',
     description:
-      '3-phase post-construction cleaning for home builders and contractors: rough clean, touch-up, and final detail clean.',
+      'Post-construction cleaning for general contractors, builders, developers, and property managers in three phases: initial construction cleanup, rough and progress cleaning, and final detail and turnover cleaning.',
   },
   {
     '@context': 'https://schema.org',
@@ -95,7 +67,7 @@ const schema = [
 ---
 <Layout
   title="Post-Construction Cleaning Nashville | 3-Phase New Build Cleaning"
-  description="3-phase post-construction cleaning for Nashville home builders and contractors, rough clean, touch-up, and final detail clean that takes new builds from job site to move-in ready."
+  description="Professional post-construction cleaning for general contractors, builders, developers, and property managers in Middle Tennessee: initial construction cleanup, rough and progress cleaning, and final detail and turnover cleaning."
   schema={schema}
 >
   <PageHero
@@ -114,33 +86,14 @@ const schema = [
   </PageHero>
   <Marquee items={trustTicker} />
 
-  <section class="bp-paper">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Construction Cleaning Services</p>
-        <h2>Cleaning for <span class="accent">builders, contractors &amp; construction companies</span></h2>
-        <p class="lede">Whatever stage your project is in, we have a cleaning scope to match it.</p>
-      </div>
-      <div class="scope-grid">
-        {services.map((s) => (
-          <div class="scope-card">
-            <span class="scope-card__tag">{s.tag}</span>
-            <h3>{s.name}</h3>
-            <p>{s.detail}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="bp-sheet">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Our Process</p>
-        <h2>The 3-Phase <span class="accent">Blueprint Standard</span></h2>
+        <p class="eyebrow">Professional Post-Construction Cleaning Services</p>
+        <h2>Construction Site to <span class="accent">Move-In Ready</span></h2>
         <p class="lede">
-          Every new build gets the same disciplined process, regardless of size, so builders can count on a
-          consistent, predictable result every time.
+          Blueprint Clean Co. provides detailed post-construction cleaning services for general contractors,
+          builders, developers, and property managers.
         </p>
       </div>
 
@@ -175,7 +128,7 @@ const schema = [
           <h3>Also serving builders with:</h3>
           <ul class="standard-list">
             <li>Pre-listing prep for model homes &amp; spec sales</li>
-            <li>Move-in ready cleans for closing day</li>
+            <li>Final clean and turnover for closing day</li>
             <li><a href="/commercial-cleaning/">Recurring maintenance</a> for sales offices</li>
             <li><a href="/gallery/#post-construction">See our post-construction work</a></li>
           </ul>
@@ -210,52 +163,6 @@ const schema = [
 </Layout>
 
 <style>
-  .bp-paper {
-    background-color: #f4f8ff;
-    background-image:
-      linear-gradient(rgba(29, 78, 216, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(29, 78, 216, 0.08) 1px, transparent 1px);
-    background-size: 24px 24px;
-    border-bottom: 1px solid var(--border);
-  }
-  .scope-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-  .scope-card {
-    position: relative;
-    padding: 28px 26px;
-    background: #ffffff;
-    border: 1.5px solid var(--navy);
-  }
-  .scope-card::before {
-    content: '';
-    position: absolute;
-    top: -1.5px;
-    left: -1.5px;
-    width: 18px;
-    height: 18px;
-    border-top: 4px solid var(--accent);
-    border-left: 4px solid var(--accent);
-  }
-  .scope-card__tag {
-    display: inline-block;
-    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .scope-card h3 {
-    margin-bottom: 8px;
-  }
-  .scope-card p {
-    margin: 0;
-    color: var(--text-dim);
-    font-size: 0.94rem;
-  }
   .bp-sheet {
     background-color: #0a1a33;
     background-image:
@@ -338,10 +245,6 @@ const schema = [
 
   @media (max-width: 900px) {
     .phase-list { grid-template-columns: 1fr; }
-    .scope-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (max-width: 600px) {
-    .scope-grid { grid-template-columns: 1fr; }
-  }
 </style>
