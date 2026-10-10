@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Marquee from '../components/Marquee.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { site, faqs, trustTicker } from '../lib/site';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Layout
+  title="Contact Us | Request a Free Quote"
+  description="Call, text, or request a free cleaning quote from Blueprint Clean Co. Residential, commercial, and post-construction cleaning across 11 Middle Tennessee counties."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Let's talk about your space"
+    subtitle="Call or text us any time, or send a quote request and we'll get back to you quickly. Free estimates for homes and businesses."
+  />
+  <Marquee items={trustTicker} />
+
+  <section class="contact-actions">
+    <div class="container">
+      <div class="grid grid-3">
+        <a href={site.phoneHref} class="card action-card">
+          <span class="action-card__label">Call Now</span>
+          <span class="action-card__value">{site.phone}</span>
+          <span class="action-card__hint">Tap to call</span>
+        </a>
+        <a href={site.smsHref} class="card action-card">
+          <span class="action-card__label">Text Us</span>
+          <span class="action-card__value">{site.phone}</span>
+          <span class="action-card__hint">Tap to send a text</span>
+        </a>
+        <a href={site.emailHref} class="card action-card">
+          <span class="action-card__label">Email Us</span>
+          <span class="action-card__value action-card__value--email">{site.email}</span>
+          <span class="action-card__hint">Send a short video walkthrough for the fastest quote</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" class="section-alt">
+    <div class="container" style="max-width:960px;">
+      <div class="section-head">
+        <p class="eyebrow">Request a Free Quote</p>
+        <h2>Tell us what you <span class="accent">need cleaned</span></h2>
+        <p class="lede">Choose two preferred date and time windows and we'll confirm the one that fits our schedule.</p>
+      </div>
+      <div class="grid grid-2" style="gap:48px; align-items:flex-start;">
+        <QuoteForm />
+        <aside class="quote-aside">
+          <div class="card quote-aside__card">
+            <h3>Hours</h3>
+            <p>Mon-Sat 8:00 AM-8:00 PM<br />Sun 9:00 AM-6:00 PM</p>
+          </div>
+          <div class="card quote-aside__card">
+            <h3>Where we work</h3>
+            <p>
+              We serve {site.serviceCounties.length} Middle Tennessee counties: {site.serviceCounties.join(', ')}.
+            </p>
+          </div>
+          <div class="card quote-aside__card">
+            <h3>How the two-date request works</h3>
+            <p>
+              Give us two date &amp; time windows that work for you. Our scheduling team locks in whichever
+              option fits, then confirms by phone or email, usually within one business day.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container" style="max-width:840px;">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+      </div>
+      <FAQAccordion />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-actions {
+    padding: 56px 0 0;
+  }
+
+  .action-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 28px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .action-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .action-card__label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .action-card__value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+
+  .action-card__value--email {
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+  }
+
+  .action-card__hint {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+
+  .quote-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 130px;
+  }
+
+  .quote-aside__card {
+    padding: 26px;
+  }
+
+  .quote-aside__card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .quote-aside { position: static; }
+  }
+</style>

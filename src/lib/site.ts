@@ -4,9 +4,12 @@ export const site = {
   subTagline: 'Spotless Transitions, Stress-Free Cleanings',
   phone: '629-932-6356',
   phoneHref: 'tel:+16299326356',
+  smsHref: 'sms:+16299326356',
+  quoteHref: '/contact/#quote',
   email: 'savannah.s@sidonioenterprises.com',
   emailHref: 'mailto:savannah.s@sidonioenterprises.com?subject=Cleaning%20Service%20Inquiry',
   areaServed: 'Nashville & Middle Tennessee',
+  serviceCounties: ['Davidson', 'Macon', 'Montgomery', 'Putnam', 'Robertson', 'Rutherford', 'Smith', 'Sumner', 'Trousdale', 'Williamson', 'Wilson'],
   city: 'Nashville',
   region: 'TN',
   formEndpoint: 'https://formspree.io/f/xqpakvqq',
@@ -18,82 +21,41 @@ export const site = {
   },
 };
 
-// Order reflects the client's stated priority: realtors, property management,
-// and general contractors/home builders come first, this is the single most
-// important message on the site, per direct client feedback.
 export const trustTicker: string[] = [
-  'Trusted by Realtors',
-  'Trusted by Property Management',
+  'Trusted by Homeowners',
+  'Trusted by Businesses & Offices',
+  'Trusted by Realtors & Property Managers',
   'Trusted by General Contractors & Home Builders',
-  'Luxury Airbnb Hosts',
-  'Serving Nashville & Middle Tennessee',
+  'Serving 11 Middle Tennessee Counties',
 ];
 
 export type NavLink = { label: string; href: string };
 
 export const primaryNav: NavLink[] = [
-  { label: 'Services', href: '/services/' },
-  { label: 'Residential & Commercial', href: '/residential-commercial-cleaning/' },
-  { label: 'Premium & Lifestyle', href: '/premium-lifestyle-services/' },
+  { label: 'Home', href: '/' },
+  { label: 'Residential', href: '/residential-cleaning/' },
+  { label: 'Commercial', href: '/commercial-cleaning/' },
+  { label: 'Post-Construction', href: '/post-construction-cleaning/' },
   { label: 'Gallery', href: '/gallery/' },
-  { label: 'Reviews', href: '/reviews/' },
-  { label: 'About', href: '/about/' },
-  { label: 'FAQ', href: '/faq/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
-export type Service = {
-  slug: string;
-  name: string;
-  shortName: string;
-  audience: string;
-  summary: string;
-  href: string;
-  keywordFocus: string;
-  featured?: boolean;
-};
-
-export const coreServices: Service[] = [
-  {
-    slug: 'post-construction-cleaning',
-    name: 'Post-Construction 3-Phase Cleaning',
-    shortName: 'Post-Construction',
-    audience: 'Home Builders & Contractors',
-    summary:
-      'Our flagship service. A structured 3-phase clean, rough clean, touch-up, and final detail clean, that takes a new build from job site to move-in ready.',
-    href: '/post-construction-cleaning/',
-    keywordFocus: 'post construction cleaning Nashville, new build cleaning Middle Tennessee',
-    featured: true,
-  },
-  {
-    slug: 'pre-listing-cleaning',
-    name: 'Pre-Listing & Open House Cleaning',
-    shortName: 'Pre-Listing',
-    audience: 'Realtors & Sellers',
-    summary:
-      'Show-ready prep that helps listings shine on day one, because a spotless home photographs better, shows better, and sells faster.',
-    href: '/pre-listing-cleaning/',
-    keywordFocus: 'pre-listing cleaning for realtors Nashville, listing prep cleaning',
-  },
-  {
-    slug: 'move-in-move-out-cleaning',
-    name: 'Move-In / Move-Out Cleaning',
-    shortName: 'Move-In / Move-Out',
-    audience: 'Property Managers',
-    summary:
-      'Fast, reliable turnovers between tenants, detailed cleaning that protects your unit, your timeline, and your reputation.',
-    href: '/move-in-move-out-cleaning/',
-    keywordFocus: 'move out cleaning for property management Nashville, tenant turnover cleaning',
-  },
-  {
-    slug: 'airbnb-turnover-cleaning',
-    name: 'Airbnb & Short-Term Rental Turnovers',
-    shortName: 'Airbnb Turnovers',
-    audience: 'Luxury Airbnb & STR Hosts',
-    summary:
-      'Quick-turn cleanings between guests that protect your rating: consistent, hotel-grade presentation every single stay.',
-    href: '/airbnb-turnover-cleaning/',
-    keywordFocus: 'Airbnb turnover cleaning Nashville, short-term rental cleaning service',
-  },
+export const quoteServices: string[] = [
+  'Residential Deep Cleaning',
+  'Recurring Residential Cleaning',
+  'Move-In / Move-Out Cleaning',
+  'Home Organization',
+  'Pre-Listing & Open House Cleaning',
+  'Airbnb & Short-Term Rental Turnover',
+  'Holiday / Event Assistance',
+  'Senior Home Support',
+  'Office & Retail Cleaning',
+  'Janitorial Services',
+  'Property Management Turnovers',
+  'Commercial Contract Cleaning',
+  'Post-Construction 3-Phase Cleaning',
+  'Other',
 ];
 
 export type Testimonial = {
@@ -137,10 +99,10 @@ export type TrustAudience = {
 };
 
 export const trustAudiences: TrustAudience[] = [
-  { label: 'Realtors', detail: 'Pre-listing prep & showing-ready turnarounds' },
-  { label: 'Property Managers', detail: 'Move-in / move-out turnovers on your timeline' },
+  { label: 'Homeowners', detail: 'Deep cleans, recurring service & home organization' },
+  { label: 'Businesses & Offices', detail: 'Janitorial, retail & commercial contracts' },
+  { label: 'Realtors & Property Managers', detail: 'Pre-listing prep & move-in / move-out turnovers' },
   { label: 'Home Builders & Contractors', detail: '3-phase post-construction cleaning' },
-  { label: 'Airbnb & STR Hosts', detail: 'Reliable guest-to-guest turnovers' },
 ];
 
 export const blueprintStandard = [
@@ -165,7 +127,19 @@ export const blueprintStandard = [
 export const faqs = [
   {
     q: 'What areas do you serve?',
-    a: 'We provide cleaning services throughout Nashville and Middle Tennessee, including surrounding suburbs. Reach out with your address and we can confirm coverage.',
+    a: 'We serve 11 Middle Tennessee counties: Davidson, Macon, Montgomery, Putnam, Robertson, Rutherford, Smith, Sumner, Trousdale, Williamson, and Wilson. Reach out with your address and we can confirm coverage.',
+  },
+  {
+    q: 'Do you clean both homes and businesses?',
+    a: 'Yes. Residential and commercial cleaning are equal parts of what we do, from deep cleans, recurring service, and move-in/out cleans for homes to offices, retail spaces, and janitorial contracts for businesses.',
+  },
+  {
+    q: 'How do I get a quote?',
+    a: 'Submit a request through our quote form, call or text us at 629-932-6356, or send a short video walkthrough of the space to savannah.s@sidonioenterprises.com for a fast, accurate quote.',
+  },
+  {
+    q: 'Can I schedule recurring cleanings?',
+    a: 'Yes. We have dedicated teams for recurring residential and commercial cleaning on a weekly, bi-weekly, or monthly basis.',
   },
   {
     q: 'How does post-construction 3-phase cleaning work?',
@@ -173,22 +147,14 @@ export const faqs = [
   },
   {
     q: 'Do you work directly with property management companies and realtors?',
-    a: "Yes, a large part of our business is built around realtor pre-listing prep and property management turnovers. We're used to working on tight timelines and coordinating directly with agents, PMs, and builders.",
-  },
-  {
-    q: 'How do I get a quote?',
-    a: 'Submit a request through our quote form, call us, or send a short video walkthrough of the space to savannah.s@sidonioenterprises.com for a fast, accurate quote.',
-  },
-  {
-    q: 'Can I schedule recurring cleanings?',
-    a: 'Yes. We have dedicated teams for recurring residential and commercial cleaning on a weekly, bi-weekly, or monthly basis, separate from our project-based teams.',
+    a: "Yes. We're used to working on tight timelines and coordinating directly with agents, property managers, and builders for pre-listing prep and move-in/move-out turnovers.",
   },
   {
     q: 'Do you offer holiday or event cleaning?',
-    a: 'Yes, our Holiday Hosting and premium lifestyle packages cover pre-event setup, post-event deep cleans, and everything in between so you can focus on your guests.',
+    a: 'Yes, our Holiday Hosting and home support packages cover pre-event setup, post-event deep cleans, and everything in between so you can focus on your guests.',
   },
   {
-    q: "Can I book a specific date and time online?",
-    a: "You can request your two preferred date/time windows through our online request form, and our scheduling team will confirm the one that works best. We're working on full online self-scheduling, for now this two-option request gets you the fastest confirmation.",
+    q: 'Can I book a specific date and time?',
+    a: "You can request your two preferred date/time windows through our online request form, and our scheduling team will confirm the one that works best.",
   },
 ];

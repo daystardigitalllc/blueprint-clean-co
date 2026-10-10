@@ -349,3 +349,104 @@ h3 {
   left: 16px;
   top: 16px;
 }
+
+/* Section backdrop used between sections */
+.section-alt {
+  background: var(--bg-raised);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Check-mark list used on service pages */
+.check-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.check-list li {
+  padding-left: 28px;
+  position: relative;
+  color: var(--text-dim);
+  font-size: 0.96rem;
+}
+
+.check-list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Service cards (Residential / Commercial pages) */
+.svc-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-card h3 {
+  margin-bottom: 8px;
+}
+
+.svc-card > p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* Text + photo split */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.feature-row__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.feature-row__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 800px) {
+  .feature-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Photo grids (Gallery page) */
+.gallery-grid {
+  gap: 20px;
+}
+
+.gallery-item {
+  margin: 0;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+/* Anchor targets sit below the fixed header */
+[id] {
+  scroll-margin-top: 110px;
+}

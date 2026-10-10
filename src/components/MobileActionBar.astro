@@ -1,0 +1,69 @@
+---
+import { site } from '../lib/site';
+---
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a href={site.smsHref} class="mobile-bar__btn mobile-bar__btn--text" aria-label={`Text us at ${site.phone}`}>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 1-2Z"/></svg>
+    Text Us
+  </a>
+  <a href={site.quoteHref} class="mobile-bar__btn mobile-bar__btn--quote">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M5 3h10l4 4v14H5V3Zm9 1.5V8h3.5L14 4.5ZM8 12h8v1.5H8V12Zm0 3.5h8V17H8v-1.5Z"/></svg>
+    Get a Free Quote
+  </a>
+</nav>
+
+<style>
+  .mobile-bar {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 95;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 10px;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, 0.97);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 18px rgba(11, 14, 18, 0.1);
+    }
+
+    :global(body) {
+      padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    }
+  }
+
+  .mobile-bar__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--accent);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .mobile-bar__btn--text {
+    color: var(--accent);
+    background: #ffffff;
+  }
+
+  .mobile-bar__btn--quote {
+    color: #ffffff;
+    background: var(--accent);
+  }
+
+  .mobile-bar__btn:active {
+    transform: translateY(1px);
+  }
+</style>

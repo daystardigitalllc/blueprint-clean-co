@@ -5,7 +5,7 @@ import TestimonialCarousel from '../components/TestimonialCarousel.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import Marquee from '../components/Marquee.astro';
-import { trustTicker } from '../lib/site';
+import { site, trustTicker } from '../lib/site';
 import heroImg from '../assets/photos/gallery-bathroom-vanity.jpeg';
 
 const phases = [
@@ -73,17 +73,20 @@ const schema = [
   <PageHero
     eyebrow="For Home Builders & Contractors"
     title="Post-Construction 3-Phase Cleaning"
-    subtitle="Our flagship service. A structured, three-phase process that takes every new build from job site to move-in ready, on your schedule."
+    subtitle="A structured, three-phase process that takes every new build from job site to move-in ready, on your schedule."
     image={heroImg}
+    blueprint
+    sheetLabel="Sheet P-01 / 3-Phase Cleaning Plan"
   >
     <div class="btn-row" style="margin-top:24px;">
-      <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
-      <a href="/gallery/post-construction/" class="btn btn-ghost-light">View Gallery</a>
+      <a href={site.quoteHref} class="btn btn-solid">Get a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
+      <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
     </div>
   </PageHero>
   <Marquee items={trustTicker} />
 
-  <section>
+  <section class="bp-sheet">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Our Process</p>
@@ -96,7 +99,7 @@ const schema = [
 
       <div class="phase-list">
         {phases.map((p) => (
-          <div class="phase-card card">
+          <div class="phase-card">
             <span class="phase-card__tag">{p.phase}</span>
             <h3>{p.title}</h3>
             <p>{p.detail}</p>
@@ -106,7 +109,7 @@ const schema = [
     </div>
   </section>
 
-  <section style="background:var(--bg-raised); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <section class="section-alt">
     <div class="container">
       <div class="grid grid-2" style="align-items:center; gap:56px;">
         <div>
@@ -119,14 +122,15 @@ const schema = [
             <li>Flexible timing for Phase 3 right up to closing day</li>
             <li>Direct communication with your site superintendent</li>
           </ul>
-          <a href="/request-a-quote/" class="btn btn-solid" style="margin-top:16px;">Request a Quote</a>
+          <a href={site.quoteHref} class="btn btn-solid" style="margin-top:16px;">Request a Quote</a>
         </div>
         <div class="card" style="padding:32px;">
           <h3>Also serving builders with:</h3>
           <ul class="standard-list">
-            <li><a href="/pre-listing-cleaning/">Pre-listing prep</a> for model homes &amp; spec sales</li>
-            <li><a href="/move-in-move-out-cleaning/">Move-in ready</a> cleans for closing day</li>
-            <li><a href="/residential-commercial-cleaning/">Recurring maintenance</a> for sales offices</li>
+            <li>Pre-listing prep for model homes &amp; spec sales</li>
+            <li>Move-in ready cleans for closing day</li>
+            <li><a href="/commercial-cleaning/">Recurring maintenance</a> for sales offices</li>
+            <li><a href="/gallery/#post-construction">See our post-construction work</a></li>
           </ul>
         </div>
       </div>
@@ -159,26 +163,60 @@ const schema = [
 </Layout>
 
 <style>
+  .bp-sheet {
+    background-color: #0a1a33;
+    background-image:
+      linear-gradient(rgba(126, 166, 255, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(126, 166, 255, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .bp-sheet h2,
+  .bp-sheet h3 {
+    color: #ffffff;
+  }
+  .bp-sheet .eyebrow {
+    color: var(--accent-on-dark);
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    letter-spacing: 0.18em;
+  }
+  .bp-sheet .accent {
+    color: var(--accent-on-dark);
+  }
+  .bp-sheet .lede {
+    color: rgba(219, 231, 255, 0.85);
+  }
   .phase-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
   .phase-card {
+    position: relative;
     padding: 32px 28px;
-    border-top: 3px solid var(--accent);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(126, 166, 255, 0.4);
+  }
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 18px;
+    height: 18px;
+    border-top: 3px solid var(--accent-on-dark);
+    border-left: 3px solid var(--accent-on-dark);
   }
   .phase-card__tag {
     display: inline-block;
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
     font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent-bright);
+    color: var(--accent-on-dark);
     margin-bottom: 10px;
   }
   .phase-card p {
-    color: var(--text-dim);
+    color: rgba(219, 231, 255, 0.85);
     font-size: 0.94rem;
     margin: 0;
   }

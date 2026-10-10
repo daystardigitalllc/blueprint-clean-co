@@ -1,122 +1,232 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/PageHero.astro';
-import ClosingCTA from '../../components/ClosingCTA.astro';
 import Marquee from '../../components/Marquee.astro';
-import { trustTicker } from '../../lib/site';
+import ClosingCTA from '../../components/ClosingCTA.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import GalleryComingSoon from '../../components/GalleryComingSoon.astro';
 import { Image } from 'astro:assets';
+import { trustTicker } from '../../lib/site';
 
-import residentialCover from '../../assets/photos/lived-in-kitchen-clean.jpg';
-import turnoversCover from '../../assets/photos/gallery-airbnb-bed.jpg';
-import postConCover from '../../assets/photos/hero-kitchen-marble.png';
-import preListingCover from '../../assets/photos/hero-living-room-1.png';
+import toiletBefore from '../../assets/photos/before-after/toilet-before.jpg';
+import toiletAfter from '../../assets/photos/before-after/toilet-after.jpg';
+import sinkBefore from '../../assets/photos/before-after/sink-before.jpg';
+import sinkAfter from '../../assets/photos/before-after/sink-after.jpg';
+import ovenBefore from '../../assets/photos/before-after/oven-before.jpg';
+import ovenAfter from '../../assets/photos/before-after/oven-after.jpg';
+import closetBefore from '../../assets/photos/before-after/closet-before.jpg';
+import closetAfter from '../../assets/photos/before-after/closet-after.jpg';
+import pantryBefore from '../../assets/photos/before-after/pantry-before.jpg';
+import pantryAfter from '../../assets/photos/before-after/pantry-after.jpg';
 
-const categories = [
-  {
-    title: 'Recurring Residential - Before & After',
-    detail: 'Real before-and-after results from our recurring residential cleaning teams.',
-    href: '/gallery/residential-before-after/',
-    img: residentialCover,
-  },
-  {
-    title: 'Move-In / Move-Out & Airbnb Turnovers',
-    detail: 'Turnover work for property managers and short-term rental hosts.',
-    href: '/gallery/turnovers/',
-    img: turnoversCover,
-  },
-  {
-    title: 'Post-Construction Cleaning',
-    detail: '3-phase new build cleans for home builders and contractors.',
-    href: '/gallery/post-construction/',
-    img: postConCover,
-  },
-  {
-    title: 'Pre-Listing & Open House Prep',
-    detail: 'Show-ready results for realtors and sellers.',
-    href: '/gallery/pre-listing/',
-    img: preListingCover,
-  },
+import livedInKitchen from '../../assets/photos/lived-in-kitchen-clean.jpg';
+import residentialKitchen from '../../assets/photos/residential-kitchen-clean.jpg';
+import livedInBathroom from '../../assets/photos/lived-in-bathroom-clean.jpg';
+
+import airbnbBed from '../../assets/photos/gallery-airbnb-bed.jpg';
+import shower from '../../assets/photos/gallery-shower-glass.jpg';
+import emptyLiving from '../../assets/photos/empty-living-room-clean.jpg';
+import livingRoom2 from '../../assets/photos/hero-living-room-2.png';
+import showerStall from '../../assets/photos/shower-stall-clean.jpg';
+import fridgeEmpty from '../../assets/photos/turnover-fridge-empty.jpg';
+import stoveClean from '../../assets/photos/turnover-stove-clean.jpg';
+import kitchenAngle1 from '../../assets/photos/turnover-kitchen-angle1.jpg';
+import kitchenAngle2 from '../../assets/photos/turnover-kitchen-angle2.jpg';
+import livingRoomShelf from '../../assets/photos/turnover-living-room-shelf.jpg';
+import livingRoomAccentWall from '../../assets/photos/turnover-living-room-accent-wall.jpg';
+
+import living1 from '../../assets/photos/hero-living-room-1.png';
+import vanity from '../../assets/photos/gallery-bathroom-vanity.jpeg';
+import stagedBath from '../../assets/photos/staged-bathroom-vessel-sink.jpg';
+import hallway from '../../assets/photos/hallway-clean.jpg';
+
+import postConKitchen from '../../assets/photos/hero-kitchen-marble.png';
+import postConSink from '../../assets/photos/gallery-kitchen-sink.jpg';
+import postConFaucet from '../../assets/photos/gallery-bathroom-faucet.jpg';
+
+const residentialPhotos = [
+  { img: livedInKitchen, alt: 'Freshly cleaned home kitchen' },
+  { img: residentialKitchen, alt: 'Spotless residential kitchen after a deep clean' },
+  { img: livedInBathroom, alt: 'Clean, bright home bathroom' },
+];
+
+const turnoverPhotos = [
+  { img: airbnbBed, alt: 'Hotel-style bed with folded towels, guest-ready Airbnb turnover' },
+  { img: shower, alt: 'Spotless glass shower enclosure after a tenant turnover' },
+  { img: emptyLiving, alt: 'Empty, freshly cleaned living room ready for the next tenant' },
+  { img: livingRoom2, alt: 'Move-in ready living room, fully cleaned' },
+  { img: showerStall, alt: 'Spotless tub and shower stall, guest and tenant ready' },
+  { img: fridgeEmpty, alt: 'Empty, spotless refrigerator ready for the next tenant' },
+  { img: stoveClean, alt: 'Detail-cleaned glass-top stove and range, no cooking residue' },
+  { img: kitchenAngle1, alt: 'Move-out ready kitchen with spotless counters and appliances' },
+  { img: kitchenAngle2, alt: 'Freshly cleaned kitchen, cabinets and floors ready for move-in' },
+  { img: livingRoomShelf, alt: 'Empty living room with built-in shelving, move-out ready' },
+  { img: livingRoomAccentWall, alt: 'Empty living room with accent wall, spotless floors' },
+];
+
+const preListingPhotos = [
+  { img: living1, alt: 'Bright, showing-ready living room with fireplace' },
+  { img: vanity, alt: 'Tidy, staged bathroom vanity ready for showings' },
+  { img: stagedBath, alt: 'Bright, staged bathroom with vessel sink ready for showings' },
+  { img: hallway, alt: 'Freshly cleaned hallway and entry, showing-ready' },
+];
+
+const postConPhotos = [
+  { img: postConKitchen, alt: 'Spotless new-build kitchen after final detail clean' },
+  { img: postConSink, alt: 'Detail-cleaned kitchen sink, no construction dust' },
+  { img: postConFaucet, alt: 'Polished bathroom faucet, post-construction detail' },
+];
+
+const sections = [
+  { id: 'residential', label: 'Residential' },
+  { id: 'move-in-out', label: 'Move-In / Move-Out & Rentals' },
+  { id: 'pre-listing', label: 'Pre-Listing' },
+  { id: 'post-construction', label: 'Post-Construction' },
+  { id: 'commercial', label: 'Commercial' },
 ];
 ---
 <Layout
-  title="Gallery | Blueprint Clean Co."
-  description="Browse Blueprint Clean Co.'s work by category: recurring residential before & afters, move-in/move-out and Airbnb turnovers, post-construction cleans, and pre-listing prep."
+  title="Our Work | Before & After Gallery | Blueprint Clean Co."
+  description="See Blueprint Clean Co.'s work by cleaning type: residential before and afters, move-in/move-out and Airbnb turnovers, pre-listing prep, and post-construction cleaning."
 >
-  <PageHero eyebrow="Recent Work" title="Precision you can see. Quality you can trust." subtitle="Browse our work by category." />
+  <PageHero eyebrow="Our Work" title="Precision you can see." subtitle="Drag the sliders to compare before and after, or browse our work by cleaning type." />
   <Marquee items={trustTicker} />
 
-  <section>
+  <section class="jump">
     <div class="container">
-      <div class="grid grid-2 category-grid">
-        {categories.map((c) => (
-          <a href={c.href} class="category-card">
-            <Image src={c.img} alt="" role="presentation" width={700} height={500} class="graded-img" />
-            <div class="category-card__overlay"></div>
-            <div class="category-card__content">
-              <h3>{c.title}</h3>
-              <p>{c.detail}</p>
-              <span class="category-card__cta">View Gallery &rarr;</span>
-            </div>
-          </a>
+      <nav class="jump__list" aria-label="Gallery sections">
+        {sections.map((s) => <a href={`#${s.id}`} class="jump__chip">{s.label}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  <section id="residential">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Residential</p>
+        <h2>Home cleaning <span class="accent">before &amp; after</span></h2>
+        <p class="lede">Real jobs from our residential crews. Drag the handle to compare.</p>
+      </div>
+      <div class="grid grid-3">
+        <BeforeAfterSlider id="g-toilet" before={toiletBefore} after={toiletAfter} label="Toilet, Deep Clean" />
+        <BeforeAfterSlider id="g-sink" before={sinkBefore} after={sinkAfter} label="Bathroom Sink, Deep Clean" />
+        <BeforeAfterSlider id="g-oven" before={ovenBefore} after={ovenAfter} label="Oven, Deep Clean" />
+      </div>
+
+      <h3 class="sub-head">Home organization</h3>
+      <div class="grid grid-2">
+        <BeforeAfterSlider id="g-closet" before={closetBefore} after={closetAfter} label="Closet Organization" landscape />
+        <BeforeAfterSlider id="g-pantry" before={pantryBefore} after={pantryAfter} label="Pantry Organization" landscape />
+      </div>
+
+      <h3 class="sub-head">Finished homes</h3>
+      <div class="grid grid-3 gallery-grid">
+        {residentialPhotos.map((p) => (
+          <figure class="gallery-item">
+            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+          </figure>
         ))}
       </div>
     </div>
   </section>
 
-  <ClosingCTA />
+  <section id="move-in-out" class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Move-In / Move-Out &amp; Rentals</p>
+        <h2>Turnovers that are <span class="accent">ready for the next guest</span></h2>
+        <p class="lede">Move-in, move-out, and Airbnb turnovers for homeowners, property managers, and hosts.</p>
+      </div>
+      <div class="grid grid-4 gallery-grid">
+        {turnoverPhotos.map((p) => (
+          <figure class="gallery-item">
+            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="pre-listing">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pre-Listing</p>
+        <h2>Show-ready <span class="accent">for every listing</span></h2>
+        <p class="lede">Pre-listing and open house cleans for realtors and sellers.</p>
+      </div>
+      <div class="grid grid-4 gallery-grid">
+        {preListingPhotos.map((p) => (
+          <figure class="gallery-item">
+            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="post-construction" class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Post-Construction</p>
+        <h2>New builds, <span class="accent">move-in ready</span></h2>
+        <p class="lede">Our 3-phase cleaning takes new construction from job site to final walkthrough.</p>
+      </div>
+      <div class="grid grid-3 gallery-grid">
+        {postConPhotos.map((p) => (
+          <figure class="gallery-item">
+            <Image src={p.img} alt={p.alt} width={500} height={620} class="graded-img" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="commercial">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Commercial</p>
+        <h2>Offices, retail &amp; <span class="accent">commercial spaces</span></h2>
+      </div>
+      <GalleryComingSoon message="Commercial project photos are on the way, check back soon, or ask us for examples directly." />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Want results like these?" body="Tell us about your space and we will put together a plan." />
 </Layout>
 
 <style>
-  .category-grid { gap: 24px; }
-  .category-card {
-    position: relative;
-    display: block;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    min-height: 320px;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-  .category-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-  .category-card :global(img) {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .category-card__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(5,8,12,0.2) 0%, rgba(5,8,12,0.92) 85%);
-  }
-  .category-card__content {
-    position: relative;
-    z-index: 1;
-    padding: 28px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 320px;
-  }
-  .category-card__content h3 {
-    color: #ffffff;
-  }
-  .category-card__content p {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.92rem;
-  }
-  .category-card__cta {
-    font-weight: 700;
-    font-size: 0.88rem;
-    color: var(--accent-on-dark);
+  .jump {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
   }
 
-  @media (max-width: 700px) {
-    .category-grid { grid-template-columns: 1fr; }
+  .jump__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .jump__chip {
+    padding: 9px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .jump__chip:hover,
+  .jump__chip:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  section[id] {
+    scroll-margin-top: 90px;
+  }
+
+  .sub-head {
+    margin: 56px 0 20px;
   }
 </style>

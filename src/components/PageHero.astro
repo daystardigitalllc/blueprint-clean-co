@@ -7,16 +7,20 @@ interface Props {
   title: string;
   subtitle?: string;
   image?: ImageMetadata;
+  blueprint?: boolean;
+  sheetLabel?: string;
 }
-const { eyebrow, title, subtitle, image } = Astro.props;
+const { eyebrow, title, subtitle, image, blueprint = false, sheetLabel } = Astro.props;
 ---
-<section class={`page-hero ${image ? 'page-hero--photo' : ''}`}>
+<section class={`page-hero ${image ? 'page-hero--photo' : ''} ${blueprint ? 'page-hero--blueprint' : ''}`}>
   {image && (
     <div class="page-hero__bg">
       <Image src={image} alt="" role="presentation" width={1920} height={900} loading="eager" fetchpriority="high" />
     </div>
   )}
   {image && <div class="page-hero__overlay"></div>}
+  {blueprint && <div class="page-hero__grid" aria-hidden="true"></div>}
+  {blueprint && sheetLabel && <span class="page-hero__sheet" aria-hidden="true">{sheetLabel}</span>}
   <div class="container page-hero__content">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h1>{title}</h1>
@@ -72,7 +76,43 @@ const { eyebrow, title, subtitle, image } = Astro.props;
     color: var(--accent-on-dark);
   }
 
+  /* Blueprint variant: used only on the Post-Construction page */
+  .page-hero--blueprint .page-hero__overlay {
+    background: linear-gradient(180deg, rgba(10, 26, 51, 0.88) 0%, rgba(10, 26, 51, 0.94) 100%);
+  }
+
+  .page-hero__grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(126, 166, 255, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(126, 166, 255, 0.16) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .page-hero__sheet {
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    z-index: 2;
+    padding: 6px 10px;
+    border: 1px solid rgba(126, 166, 255, 0.55);
+    color: var(--accent-on-dark);
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .page-hero--blueprint .eyebrow {
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    letter-spacing: 0.18em;
+  }
+
   @media (max-width: 768px) {
     .page-hero { padding: 124px 0 52px; }
+    .page-hero__sheet { display: none; }
   }
 </style>

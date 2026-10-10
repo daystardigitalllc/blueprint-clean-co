@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Marquee from '../components/Marquee.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import { site, trustTicker } from '../lib/site';
+import heroImg from '../assets/photos/hero-vacuum-living-room.jpg';
+
+const services = [
+  {
+    id: 'offices',
+    name: 'Offices & Professional Spaces',
+    detail: 'A clean, organized workplace that supports your team and impresses clients.',
+    items: [
+      'Desks, common areas, conference rooms, and entryways',
+      'Restrooms and breakrooms fully sanitized',
+      'Trash and recycling removal',
+      'Floors vacuumed and mopped',
+    ],
+  },
+  {
+    id: 'retail',
+    name: 'Retail Spaces',
+    detail: 'Storefronts that look inviting from the first step through the door.',
+    items: [
+      'Sales floors, fitting rooms, and checkout areas',
+      'Glass doors and display windows',
+      'Restrooms and back-of-house areas',
+      'Before-open and after-close scheduling',
+    ],
+  },
+  {
+    id: 'janitorial',
+    name: 'Janitorial Services',
+    detail: 'Dependable day-to-day janitorial service on a schedule that suits your business.',
+    items: [
+      'Daily, weekly, or monthly janitorial service',
+      'Restocking support for paper goods and soap',
+      'Dusting, vacuuming, mopping, and sanitizing',
+      'Consistent crew who knows your space',
+    ],
+  },
+  {
+    id: 'property-management',
+    name: 'Property Management',
+    detail: 'Fast, reliable turnovers and common-area service for the properties you manage.',
+    items: [
+      'Move-in / move-out unit turnovers',
+      'Common areas, lobbies, and leasing offices',
+      'Same-day or next-day availability',
+      'Completion photos for your records on request',
+    ],
+  },
+  {
+    id: 'contracts',
+    name: 'Commercial Contracts',
+    detail: 'A recurring plan built around your facility, your budget, and your calendar.',
+    items: [
+      'Custom checklists built around your space and industry',
+      'Weekly, bi-weekly, or monthly contract schedules',
+      'Multiple locations under one point of contact',
+      'Transparent pricing with no surprise fees',
+    ],
+  },
+];
+
+const reasons = [
+  'After-hours and flexible scheduling to avoid business disruption',
+  'Consistent crew assignment so the same team knows your space',
+  'Detailed checklists so quality never varies',
+  'Eco-friendly, high-performance products',
+  'Fast, responsive communication from quote to walkthrough',
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Commercial Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: site.serviceCounties.map((c) => `${c} County, TN`),
+    description:
+      'Commercial cleaning in Middle Tennessee: offices, retail spaces, janitorial services, property management turnovers, and commercial contracts.',
+  },
+];
+---
+<Layout
+  title="Commercial Cleaning in Middle Tennessee | Blueprint Clean Co."
+  description="Commercial cleaning in Nashville and Middle Tennessee: offices, retail spaces, janitorial services, property management turnovers, and commercial cleaning contracts."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Commercial"
+    title="Commercial Cleaning"
+    subtitle="Offices, retail spaces, janitorial services, property management, and commercial contracts, with the precision and reliability your business expects."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href={site.quoteHref} class="btn btn-solid">Get a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
+      <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
+    </div>
+  </PageHero>
+  <Marquee items={trustTicker} />
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Commercial Services</p>
+        <h2>Cleaning built for <span class="accent">your business</span></h2>
+        <p class="lede">From a single office to multiple locations, we tailor the scope and schedule to how your business runs.</p>
+      </div>
+      <div class="grid grid-3">
+        {services.map((s) => (
+          <div class="card svc-card" id={s.id}>
+            <h3>{s.name}</h3>
+            <p>{s.detail}</p>
+            <ul class="check-list">
+              {s.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+        <div class="card svc-card svc-card--cta">
+          <p class="eyebrow">Custom Quote</p>
+          <h3>Not sure what you need?</h3>
+          <p>Tell us about your space and we will recommend a scope and schedule that fits.</p>
+          <div class="btn-row" style="margin-top:auto; padding-top:18px;">
+            <a href={site.quoteHref} class="btn btn-solid">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px; align-items:center;">
+        <div>
+          <p class="eyebrow">Why Businesses Choose Us</p>
+          <h2>Professional, <span class="accent">predictable, precise</span></h2>
+          <p class="lede">Every commercial client gets a documented checklist, a consistent crew, and a single point of contact.</p>
+        </div>
+        <div class="card" style="padding:32px;">
+          <ul class="check-list" style="margin-top:0;">
+            {reasons.map((r) => <li>{r}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClosingCTA heading="Let's talk about your space" body="Tell us about your business and we will build a cleaning plan around your hours and your standards." />
+</Layout>
+
+<style>
+  .svc-card--cta {
+    background: var(--accent-soft);
+    border-color: #c9d9ff;
+  }
+</style>

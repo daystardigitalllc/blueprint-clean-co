@@ -3,16 +3,160 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
       "source": "/_astro/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/request-a-quote/",
+      "destination": "/contact/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/request-a-quote",
+      "destination": "/contact/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "destination": "/contact/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/contact/#faq",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/",
+      "destination": "/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/reviews",
+      "destination": "/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/residential-commercial-cleaning/",
+      "destination": "/residential-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/residential-commercial-cleaning",
+      "destination": "/residential-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/move-in-move-out-cleaning/",
+      "destination": "/residential-cleaning/#move-in-move-out",
+      "permanent": true
+    },
+    {
+      "source": "/move-in-move-out-cleaning",
+      "destination": "/residential-cleaning/#move-in-move-out",
+      "permanent": true
+    },
+    {
+      "source": "/pre-listing-cleaning/",
+      "destination": "/residential-cleaning/#pre-listing",
+      "permanent": true
+    },
+    {
+      "source": "/pre-listing-cleaning",
+      "destination": "/residential-cleaning/#pre-listing",
+      "permanent": true
+    },
+    {
+      "source": "/airbnb-turnover-cleaning/",
+      "destination": "/residential-cleaning/#short-term-rentals",
+      "permanent": true
+    },
+    {
+      "source": "/airbnb-turnover-cleaning",
+      "destination": "/residential-cleaning/#short-term-rentals",
+      "permanent": true
+    },
+    {
+      "source": "/premium-lifestyle-services/",
+      "destination": "/residential-cleaning/#home-support",
+      "permanent": true
+    },
+    {
+      "source": "/premium-lifestyle-services",
+      "destination": "/residential-cleaning/#home-support",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/residential-before-after/",
+      "destination": "/gallery/#residential",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/residential-before-after",
+      "destination": "/gallery/#residential",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/turnovers/",
+      "destination": "/gallery/#move-in-out",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/turnovers",
+      "destination": "/gallery/#move-in-out",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/pre-listing/",
+      "destination": "/gallery/#pre-listing",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/pre-listing",
+      "destination": "/gallery/#pre-listing",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/post-construction/",
+      "destination": "/gallery/#post-construction",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/post-construction",
+      "destination": "/gallery/#post-construction",
+      "permanent": true
     }
   ]
 }

@@ -122,7 +122,7 @@ const typeWords = [
       </p>
 
       <div class="btn-row">
-        <a href="/request-a-quote/" class="btn btn-solid">Get a Free Quote</a>
+        <a href={site.quoteHref} class="btn btn-solid">Get a Free Quote</a>
         <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
       </div>
 
@@ -320,6 +320,12 @@ const typeWords = [
   @media (max-width: 640px) {
     .bp-hero { height: 220vh; }
     .bp-hero__cue { display: none; }
+    /* Keep the content below the fixed header and above the bottom action bar on phones */
+    .bp-hero__content { padding-top: 96px; padding-bottom: 96px; }
+    .bp-hero h1 { font-size: 1.85rem; }
+    .bp-hero__type { font-size: 0.78rem; margin-bottom: 10px; }
+    .bp-hero__sub { margin-top: 12px; margin-bottom: 20px; font-size: 1rem; }
+    .bp-hero__trust { margin-top: 20px; gap: 6px 18px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -6,7 +6,7 @@ interface Props {
 }
 const {
   heading = 'Ready for spotless, stress-free results?',
-  body = "Tell us about your property and timeline, we'll build a plan tailored to your space.",
+  body = "Tell us about your space and timeline, we'll build a plan tailored to you.",
 } = Astro.props;
 ---
 <section class="closing-cta">
@@ -14,8 +14,9 @@ const {
     <h2>{heading}</h2>
     <p class="lede">{body}</p>
     <div class="btn-row" style="justify-content:center;">
-      <a href="/request-a-quote/" class="btn btn-invert">Get a Free Quote</a>
-      <a href={site.phoneHref} class="btn btn-ghost-light">Call {site.phone}</a>
+      <a href={site.quoteHref} class="btn btn-invert">Request a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
+      <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
     </div>
   </div>
 </section>
@@ -26,7 +27,7 @@ const {
   }
   .closing-cta__inner {
     text-align: center;
-    max-width: 620px;
+    max-width: 680px;
     margin: 0 auto;
   }
   .closing-cta h2,

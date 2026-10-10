@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Schema from '../components/Schema.astro';
 import Marquee from '../components/Marquee.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
 import { site, trustTicker } from '../lib/site';
 
 interface Props {
@@ -36,7 +37,7 @@ const GSC_VERIFICATION = '';
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
@@ -85,6 +86,7 @@ const GSC_VERIFICATION = '';
   </main>
   <Marquee items={trustTicker} />
   <Footer />
+  <MobileActionBar />
 
   <script>
     const io = new IntersectionObserver(

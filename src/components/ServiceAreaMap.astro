@@ -1,0 +1,111 @@
+---
+import { site } from '../lib/site';
+import { tnCounties, tnMapSize, servedBox } from '../lib/tnCounties';
+---
+<div class="area">
+  <figure class="area__map">
+    <svg
+      id="tnMap"
+      viewBox={`0 0 ${tnMapSize.width} ${tnMapSize.height}`}
+      data-full={`0 0 ${tnMapSize.width} ${tnMapSize.height}`}
+      data-zoom={`${servedBox.x} ${servedBox.y} ${servedBox.w} ${servedBox.h}`}
+      role="img"
+      aria-label={`Map of Tennessee with ${site.serviceCounties.length} service counties shaded blue: ${site.serviceCounties.join(', ')}`}
+    >
+      {tnCounties.filter((c) => !c.served).map((c) => (
+        <path d={c.d} class="county" />
+      ))}
+      {tnCounties.filter((c) => c.served).map((c) => (
+        <path d={c.d} class="county county--served"><title>{c.name} County</title></path>
+      ))}
+    </svg>
+  </figure>
+
+  <div class="area__list">
+    <p class="area__legend"><span class="area__swatch"></span> Counties we serve</p>
+    <ul>
+      {site.serviceCounties.map((name) => <li>{name}</li>)}
+    </ul>
+  </div>
+</div>
+
+<script>
+  // On narrow screens, zoom the map in on the service counties so they are easy to see.
+  const svg = document.getElementById('tnMap');
+  if (svg) {
+    const mq = window.matchMedia('(max-width: 700px)');
+    const apply = () => svg.setAttribute('viewBox', (mq.matches ? svg.dataset.zoom : svg.dataset.full) as string);
+    apply();
+    mq.addEventListener('change', apply);
+  }
+</script>
+
+<style>
+  .area {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .area__map {
+    margin: 0;
+  }
+
+  .area__map svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .county {
+    fill: #e6ebf3;
+    stroke: #ffffff;
+    stroke-width: 0.8;
+    stroke-linejoin: round;
+  }
+
+  .county--served {
+    fill: var(--accent);
+  }
+
+  .area__legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .area__swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .area__list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  .area__list li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 900px) {
+    .area {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+</style>
