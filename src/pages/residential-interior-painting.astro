@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import Marquee from '../components/Marquee.astro';
+import { site, trustTicker } from '../lib/site';
+import heroImg from '../assets/photos/empty-living-room-clean.jpg';
+
+const steps = [
+  {
+    phase: 'Step 01',
+    title: 'Walkthrough & Quote',
+    detail:
+      'Tell us which rooms you want painted, or send a short video walkthrough. We confirm scope, colors, and finish, then give you a clear quote and a start date.',
+  },
+  {
+    phase: 'Step 02',
+    title: 'Prep & Protect',
+    detail:
+      'We move and cover furniture, lay down floor protection, tape trim and fixtures, patch nail holes and small dings, and sand surfaces so the paint goes on smooth.',
+  },
+  {
+    phase: 'Step 03',
+    title: 'Paint & Finish',
+    detail:
+      'Clean cut lines, even coats, and careful attention to edges and corners. Walls, ceilings, trim, and doors are painted in the sequence that keeps the finish crisp.',
+  },
+  {
+    phase: 'Step 04',
+    title: 'Cleanup & Walkthrough',
+    detail:
+      'We remove tape and coverings, put furniture back, and clean up the work area. Then we walk the rooms with you to make sure every detail is right.',
+  },
+];
+
+const included = [
+  'Walls and ceilings',
+  'Trim, baseboards, and crown molding',
+  'Interior doors and door frames',
+  'Cabinets and built-ins',
+  'Accent walls and color changes',
+  'Drywall patching and minor repairs',
+];
+
+const faqs = [
+  {
+    q: 'Which rooms can you paint?',
+    a: 'Any interior room: living areas, bedrooms, kitchens, bathrooms, hallways, closets, and entryways. You can book a single room or the whole home.',
+  },
+  {
+    q: 'Do I need to move my furniture first?',
+    a: 'No. We move and cover furniture as part of prep. For fragile or personal items, it helps if you clear them out beforehand.',
+  },
+  {
+    q: 'Who supplies the paint?',
+    a: 'We can work with the paint and colors you choose, or help you pick a finish that suits each room. We will confirm this in your quote.',
+  },
+  {
+    q: 'How do I get a quote?',
+    a: 'Submit a request through our quote form, call or text us at (629) 932-6356, or send a short video walkthrough of the rooms so we can quote accurately.',
+  },
+  {
+    q: 'Can you combine painting with a cleaning?',
+    a: 'Yes. Many customers pair a fresh coat of paint with a post-renovation or deep clean, or a pre-listing clean before selling. Ask us when you request your quote.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Residential Interior Painting',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description:
+      'Residential interior painting in Nashville and Middle Tennessee: walls, ceilings, trim, doors, and cabinets, with careful prep, clean lines, and full cleanup.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Layout
+  title="Residential Interior Painting Nashville | Blueprint Clean Co."
+  description="Residential interior painting in Nashville and Middle Tennessee: walls, ceilings, trim, doors, and cabinets, with careful prep, clean lines, and full cleanup."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For Homeowners in Nashville & Middle Tennessee"
+    title="Residential Interior Painting"
+    subtitle="Fresh, clean color for the rooms you live in, with careful prep, crisp lines, and a spotless finish."
+    image={heroImg}
+    blueprint
+    sheetLabel="Sheet P-02 / Interior Painting Plan"
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href={site.quoteHref} class="btn btn-solid">Get a Free Quote</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
+      <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
+    </div>
+  </PageHero>
+  <Marquee items={trustTicker} />
+
+  <section class="bp-sheet">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How Our Painting Process Works</p>
+        <h2>From Tired Walls to <span class="accent">Fresh Finish</span></h2>
+        <p class="lede">
+          The same attention to detail that goes into our cleaning goes into every room we paint.
+        </p>
+      </div>
+
+      <div class="phase-list">
+        {steps.map((p) => (
+          <div class="phase-card">
+            <span class="phase-card__tag">{p.phase}</span>
+            <h3>{p.title}</h3>
+            <p>{p.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center; gap:56px;">
+        <div>
+          <p class="eyebrow">What We Paint</p>
+          <h2>Every surface, <span class="accent">done right</span></h2>
+          <ul class="standard-list">
+            {included.map((i) => <li>{i}</li>)}
+          </ul>
+          <a href={site.quoteHref} class="btn btn-solid" style="margin-top:16px;">Request a Quote</a>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Pair painting with:</h3>
+          <ul class="standard-list">
+            <li><a href="/residential-cleaning/">Residential deep cleaning</a> once the painting is done</li>
+            <li>Pre-listing prep before you sell</li>
+            <li>Move-in / move-out refresh for new owners or tenants</li>
+            <li><a href="/post-construction-cleaning/">Post-renovation cleaning</a> after larger projects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Interior Painting Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Trusted for <span class="accent">careful, clean work</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready for a fresh coat?" body="Tell us which rooms you have in mind and we'll put together a clear quote." />
+</Layout>
+
+<style>
+  .bp-sheet {
+    background-color: #0a1a33;
+    background-image:
+      linear-gradient(rgba(126, 166, 255, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(126, 166, 255, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .bp-sheet h2,
+  .bp-sheet h3 {
+    color: #ffffff;
+  }
+  .bp-sheet .eyebrow {
+    color: var(--accent-on-dark);
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    letter-spacing: 0.18em;
+  }
+  .bp-sheet .accent {
+    color: var(--accent-on-dark);
+  }
+  .bp-sheet .lede {
+    color: rgba(219, 231, 255, 0.85);
+  }
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .phase-card {
+    position: relative;
+    padding: 32px 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(126, 166, 255, 0.4);
+  }
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 18px;
+    height: 18px;
+    border-top: 3px solid var(--accent-on-dark);
+    border-left: 3px solid var(--accent-on-dark);
+  }
+  .phase-card__tag {
+    display: inline-block;
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-on-dark);
+    margin-bottom: 10px;
+  }
+  .phase-card p {
+    color: rgba(219, 231, 255, 0.85);
+    font-size: 0.94rem;
+    margin: 0;
+  }
+  .standard-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .standard-list li {
+    padding-left: 26px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .standard-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+  .standard-list a { color: var(--text); font-weight: 600; }
+  .standard-list a:hover { color: var(--accent-bright); }
+
+  @media (max-width: 1100px) {
+    .phase-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .phase-list { grid-template-columns: 1fr; }
+  }
+</style>

@@ -37,6 +37,7 @@ export const primaryNav: NavLink[] = [
   { label: 'Residential', href: '/residential-cleaning/' },
   { label: 'Commercial', href: '/commercial-cleaning/' },
   { label: 'Post-Construction', href: '/post-construction-cleaning/' },
+  { label: 'Painting', href: '/residential-interior-painting/' },
   { label: 'Gallery', href: '/gallery/' },
   { label: 'About Us', href: '/about/' },
   { label: 'Contact', href: '/contact/' },
@@ -59,6 +60,7 @@ export const quoteServices: string[] = [
   'New Construction Cleaning',
   'Post-Renovation Cleaning',
   'Builder & Contractor Cleaning',
+  'Residential Interior Painting',
   'Other',
 ];
 
