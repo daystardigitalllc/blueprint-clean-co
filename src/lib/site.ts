@@ -50,6 +50,7 @@ export const quoteServices: string[] = [
   'Pre-Listing Cleaning',
   'Home Organization',
   'Carpet & Upholstery Cleaning',
+  'Tile & Grout Deep Cleaning',
   'Senior Cleaning Services',
   'Office Cleaning',
   'Retail & Commercial Facility Cleaning',

@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import Marquee from '../components/Marquee.astro';
+import { site, trustTicker } from '../lib/site';
+import heroImg from '../assets/photos/gallery-bathroom-vanity.jpeg';
+
+const included = [
+  'Detailed grout line scrubbing',
+  'Removal of embedded dirt and surface buildup',
+  'Deep cleaning of tiled floors',
+  'Bathroom tile and grout detailing',
+  'Kitchen tile and grout cleaning',
+  'Targeted attention to high-traffic areas',
+  'Multiple cleaning passes when necessary',
+];
+
+const faqs = [
+  {
+    q: 'Why is grout cleaning a specialty service?',
+    a: 'Grout is porous and can absorb dirt, moisture, and buildup over time. Restoring its appearance often requires extensive hands-on scrubbing, specialized cleaning solutions, and additional labor. Unlike routine floor cleaning, detailed grout cleaning requires patience, precision, and significant attention to detail.',
+  },
+  {
+    q: 'How is tile and grout cleaning priced?',
+    a: 'Pricing is based on square footage, grout condition, severity of buildup, and estimated labor requirements. All specialty grout cleaning services require an individualized estimate.',
+  },
+  {
+    q: 'Will my grout look brand new?',
+    a: 'Results vary depending on grout age, staining, previous maintenance, and overall condition. Permanent discoloration may not be removable through cleaning alone.',
+  },
+  {
+    q: 'How do I get an estimate?',
+    a: 'Submit a request through our quote form, call or text us at (629) 932-6356, or send a short video or photos of the tiled areas so we can estimate accurately.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Tile & Grout Deep Cleaning',
+    provider: { '@type': 'HomeAndConstructionBusiness', name: 'Blueprint Clean Co.' },
+    areaServed: 'Nashville, TN',
+    description:
+      'Professional tile and grout deep cleaning in Nashville and Middle Tennessee: detailed grout line scrubbing and removal of embedded dirt and buildup on floors, bathrooms, and kitchens.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Layout
+  title="Tile & Grout Deep Cleaning Nashville | Blueprint Clean Co."
+  description="Professional tile and grout deep cleaning in Nashville and Middle Tennessee: detailed grout scrubbing and removal of embedded dirt and buildup on floors, bathrooms, and kitchens."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Specialty Service"
+    title="Professional Tile & Grout Deep Cleaning"
+    subtitle="Restore the Details. Refresh Your Floors."
+    image={heroImg}
+  >
+    <div class="btn-row" style="margin-top:24px;">
+      <a href={site.quoteHref} class="btn btn-solid">Request an Estimate</a>
+      <a href={site.phoneHref} class="btn btn-ghost-light">Call Now</a>
+      <a href={site.smsHref} class="btn btn-ghost-light">Text Us</a>
+    </div>
+  </PageHero>
+  <Marquee items={trustTicker} />
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Beyond Routine Mopping</p>
+        <h2>Deep clean the <span class="accent">grout lines</span></h2>
+        <p class="lede">
+          Over time, grout lines collect embedded dirt, grime, and buildup that routine mopping and traditional
+          cleaning methods simply cannot remove. At Blueprint Clean Co., we offer detailed tile and grout cleaning
+          designed to address stubborn buildup, discoloration, and heavily soiled grout lines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center; gap:56px;">
+        <div>
+          <p class="eyebrow">What's Included</p>
+          <h2>Our Tile &amp; Grout <span class="accent">Cleaning Services</span></h2>
+          <ul class="standard-list">
+            {included.map((i) => <li>{i}</li>)}
+          </ul>
+          <a href={site.quoteHref} class="btn btn-solid" style="margin-top:16px;">Request an Estimate</a>
+        </div>
+        <div class="card" style="padding:32px;">
+          <h3>Why is grout cleaning a specialty service?</h3>
+          <p>
+            Grout is porous and can absorb dirt, moisture, and buildup over time. Restoring its appearance often
+            requires extensive hands-on scrubbing, specialized cleaning solutions, and additional labor.
+          </p>
+          <p>
+            Unlike routine floor cleaning, detailed grout cleaning requires patience, precision, and significant
+            attention to detail.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Individualized <span class="accent">estimates</span></h2>
+        <p class="lede">
+          Pricing is based on square footage, grout condition, severity of buildup, and estimated labor
+          requirements. All specialty grout cleaning services require an individualized estimate.
+        </p>
+      </div>
+      <p class="note">
+        Please note: Results vary depending on grout age, staining, previous maintenance, and overall condition.
+        Permanent discoloration may not be removable through cleaning alone.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Tile &amp; Grout Cleaning Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <FAQAccordion items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-raised); border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Social Proof</p>
+        <h2>Trusted for <span class="accent">attention to detail</span></h2>
+      </div>
+      <TestimonialCarousel />
+    </div>
+  </section>
+
+  <ClosingCTA heading="Ready to restore your floors?" body="Send us a few photos of your tile and grout and we'll put together an individualized estimate." />
+</Layout>
+
+<style>
+  .standard-list {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .standard-list li {
+    padding-left: 26px;
+    position: relative;
+    color: var(--text-dim);
+  }
+  .standard-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+  .note {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    font-style: italic;
+  }
+</style>
